@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --color-navy: #0b1d2d;
+  --color-navy-light: #16324a;
+  --color-gold: #c6a25b;
+  --color-gold-soft: #d9bd85;
+  --color-parchment: #e9e2d6;
+  --color-ivory: #f6f3ec;
+  --color-sage: #8a948a;
+  --color-charcoal: #252525;
+
+  --background: var(--color-ivory);
+  --foreground: var(--color-charcoal);
+}
+
+@theme inline {
+  --color-navy: var(--color-navy);
+  --color-navy-light: var(--color-navy-light);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-parchment: var(--color-parchment);
+  --color-ivory: var(--color-ivory);
+  --color-sage: var(--color-sage);
+  --color-charcoal: var(--color-charcoal);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-reveal: reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+* {
+  border-color: var(--color-navy);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* Focus states: visible everywhere, gold ring on navy or light backgrounds */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Fine hairline divider used throughout instead of card shadows */
+.hairline {
+  position: relative;
+}
+.hairline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-gold) 55%, transparent),
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
