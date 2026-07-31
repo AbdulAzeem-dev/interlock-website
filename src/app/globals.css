@@ -66,6 +66,27 @@ body {
   border-radius: 2px;
 }
 
+/* Seamless ticker marquee - two duplicated tracks translated exactly -50% */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 42s linear infinite;
+}
+.marquee-paused {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 /* Fine hairline divider used throughout instead of card shadows */
 .hairline {
   position: relative;

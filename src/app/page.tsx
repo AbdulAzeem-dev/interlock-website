@@ -1,16 +1,16 @@
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { ButtonLink } from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import TrustStrip from "@/components/ui/TrustStrip";
 import MediaBlock from "@/components/ui/MediaBlock";
-import ProductCategoryCard from "@/components/ui/ProductCategoryCard";
-import ProcessStep from "@/components/ui/ProcessStep";
-import IndustryBlock from "@/components/ui/IndustryBlock";
 import HeritageTimeline from "@/components/ui/HeritageTimeline";
+import { ButtonLink } from "@/components/ui/Button";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import HeroSlideshow from "@/components/homepage/HeroSlideshow";
+import Ticker from "@/components/homepage/Ticker";
+import ProductDivisions from "@/components/homepage/ProductDivisions";
+import FactoryVideoSection from "@/components/homepage/FactoryVideoSection";
+import CapacitySection from "@/components/homepage/CapacitySection";
+import StackedProcessCards from "@/components/homepage/StackedProcessCards";
 import { site } from "@/content/site";
-import { productCategories } from "@/content/products";
-import { industries } from "@/content/industries";
 import { capabilities } from "@/content/capabilities";
 import { heritageTimeline } from "@/content/heritage";
 import type { Metadata } from "next";
@@ -25,57 +25,24 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      {/* HERO - asymmetric split, real sourced photography */}
-      <section className="mx-auto max-w-[1400px] px-5 pb-16 pt-12 sm:px-8 md:pt-20">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <h1 className="font-display text-4xl font-medium leading-[1.1] text-navy md:text-5xl lg:text-6xl">
-              Knitwear manufacturing, refined over four decades.
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-charcoal/80">
-              Established in Pakistan in 1982, INTERLOCK manufactures sweaters,
-              cardigans, uniform knitwear and accessories for international
-              buyers.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <ButtonLink href="/contact">{site.primaryCta}</ButtonLink>
-              <ButtonLink href="/manufacturing" variant="secondary">
-                {site.secondaryCta}
-              </ButtonLink>
-            </div>
-          </div>
-          <Reveal>
-            <MediaBlock
-              media={{
-                kind: "photo",
-                src: "/media/hero/hero-poster.jpg",
-                alt: "Circular knitting machine in production, yarn creel and cones in the background",
-                caption: "Illustrative circular-knitting process, not an INTERLOCK facility photograph.",
-              }}
-              className="aspect-[3/4] w-full"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              priority
-            />
-          </Reveal>
-        </div>
-      </section>
+      <HeroSlideshow />
 
-      <TrustStrip />
+      <Ticker />
 
-      {/* PRODUCT RANGE - bento-style grid, varied cell sizes */}
+      {/* PRODUCT DIVISIONS */}
       <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:py-28">
         <SectionHeading
-          title="One manufacturing partner. A wide knitwear range."
-          body="Nine categories, one production discipline: sampling against your reference, colour and sizing held to a fixed standard, and finishing checked before it is packed."
+          title="One manufacturing partner. Three specialist product divisions."
+          body="From fashion knitwear and institutional uniforms to hosiery and activewear, INTERLOCK supports diverse product programmes through one manufacturing relationship."
         />
-        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {productCategories.map((product, i) => (
-            <Reveal key={product.slug} delay={(i % 3) * 0.08}>
-              <ProductCategoryCard product={product} />
-            </Reveal>
-          ))}
+        <div className="mt-14">
+          <ProductDivisions />
         </div>
       </section>
+
+      <FactoryVideoSection />
+
+      <CapacitySection />
 
       {/* MANUFACTURER PROOF - dark section, process photography */}
       <section className="bg-navy py-20 md:py-28">
@@ -105,36 +72,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CAPABILITIES - full list, not equal cards */}
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:py-28">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.4fr]">
-          <SectionHeading
-            title="What happens after you enquire."
-            body="Every order runs through the same stages, whether it is a first sample or a repeat programme in its tenth year."
-          />
-          <div>
-            {capabilities.map((c, i) => (
-              <ProcessStep key={c.title} index={i + 1} title={c.title} description={c.description} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES SERVED */}
-      <section className="bg-parchment py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <SectionHeading
-            title="Built for how different buyers actually work."
-            body="Fashion brands, uniform distributors, institutional contractors, and wholesalers all order knitwear differently. Each is served on its own terms, not squeezed into one process."
-          />
-          <div className="mt-10">
-            {industries.map((industry) => (
-              <IndustryBlock key={industry.slug} industry={industry} />
-            ))}
           </div>
         </div>
       </section>
@@ -187,6 +124,8 @@ export default function Home() {
           <HeritageTimeline markers={heritageTimeline} tone="ivory" />
         </div>
       </section>
+
+      <StackedProcessCards />
 
       {/* PRIVATE LABEL CTA */}
       <section className="bg-parchment py-20 md:py-28">
