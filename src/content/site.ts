@@ -33,5 +33,5 @@ export const site = {
     { label: "Terms of Use", href: "/terms" },
   ],
   photoCredits:
-    "Illustrative process and material photography: Elkagye, Fallaner, Steve Snodgrass, Tinker & Rove, mripp, Breibeest - via Wikimedia Commons and Flickr, Public Domain / CC BY / CC BY-SA. Not photographs of INTERLOCK's own facility.",
+    "Illustrative process and product photography: Elkagye, Fallaner, Steve Snodgrass, Tinker & Rove, mripp, Breibeest, Tijana Drndarski, Karola G, Ksenia Chernaya, Mr. Mockup, Marija Makarova, Vie Studio - via Wikimedia Commons, Flickr, and Pexels, under Public Domain / CC BY / CC BY-SA / Pexels License. Not photographs of INTERLOCK's own facility or products.",
 } as const;

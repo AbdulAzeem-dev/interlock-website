@@ -14,26 +14,34 @@ Internal planning document. Not published on the website.
   horizontal nav lock-up at reduced scale, icon-only markhor mark (favicon, small UI
   contexts), monochrome ivory-on-navy version for dark sections.
 
-## Real photography (status: available in project after sourcing pass)
-Sourced from properly licensed origins (Wikimedia Commons CC0/CC-BY/public domain or
-equivalent free-licence stock). Full source/licence/creator log recorded in
-`ASSET_SOURCING_LOG.md` at the repo root. These are generic, honest illustrative
-photographs of yarn, knitting machinery, knit texture, and one finished-product
-category (scarf) - never captioned or implied to be INTERLOCK's own specific
-facility, staff, or client output, per the brief's authenticity rules (Section 8).
+## Real photography (status: every product category now has a real photo)
+Sourced from properly licensed origins (Wikimedia Commons CC0/CC-BY/public domain,
+Flickr CC BY, and Pexels License). Full source/licence/creator logs recorded in
+`ASSET_SOURCING_LOG.md` (first pass: hero, process, texture, scarf) and
+`ASSET_SOURCING_LOG_2.md` (second pass, done at the owner's explicit request to
+replace every remaining placeholder tile with premium real photography: sweater,
+cardigan, uniform-knitwear texture, military-institutional texture, cotton shirt,
+socks, gloves, private-label hang tag). These are generic, honest illustrative
+photographs - never captioned or implied to be INTERLOCK's own specific facility,
+staff, product, or client output, per the brief's authenticity rules (Section 8).
+As of the second sourcing pass, **no product category uses the abstract placeholder
+tile any more** - all nine categories show a real photograph.
 
-**Disclosure fix applied during the buyer audit (see BUYER_AUDIT.md):** every use of
-one of these photos in a trust-critical position (hero, manufacturer-proof section,
-quality section, manufacturing page, about page, and every product page that uses
-the scarf photo) now carries a small on-page caption stating it is illustrative and
-not an INTERLOCK photograph, in addition to the sitewide footer credit line. A
-skeptical sourcing/QA buyer who reverse-image-searches a hero photo will find the
-same disclosure already on the page, not a surprise.
+**Disclosure applied consistently:** every one of these photos, in every position
+across the site (hero, manufacturer-proof section, quality section, manufacturing
+page, about page, and every product category page), carries a small on-page
+caption stating it is illustrative and not an INTERLOCK photograph, in addition to
+the sitewide footer credit line (`site.photoCredits`). A skeptical sourcing/QA buyer
+who reverse-image-searches any photo on the site will find the same disclosure
+already on the page, not a surprise.
 
-Target files: `public/media/hero/hero-poster.jpg`,
-`public/media/process/{knitting-machine,yarn-cones,finishing-hands}.jpg`,
-`public/media/texture/knit-rib-macro.jpg`,
-`public/media/products/{sweater,cardigan,socks,gloves,scarf,cotton-shirt,wool-texture}.jpg`.
+Files in use: `public/media/hero/hero-poster.jpg`,
+`public/media/process/{knitting-machine,yarn-cones}.jpg`,
+`public/media/texture/{knit-rib-macro,wool-texture}.jpg`,
+`public/media/products/{sweater,cardigan,uniform-knitwear,military-institutional,
+cotton-shirt,socks,gloves,scarf,private-label}.jpg`. `wool-texture.jpg` remains
+unused on any page; a good candidate is a materials/yarn section on the
+Manufacturing or About page.
 
 ## Decorative CSS/SVG assets (generated, not photographic — honest by construction)
 Used only where the brief explicitly allows generated media: abstract knit-stitch

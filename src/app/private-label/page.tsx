@@ -53,7 +53,12 @@ export default function PrivateLabelPage() {
           </div>
           <Reveal>
             <MediaBlock
-              media={{ kind: "placeholder", label: "Private Label Development", tone: "gold" }}
+              media={{
+                kind: "photo",
+                src: "/media/products/private-label.jpg",
+                alt: "Blank hang tag on folded fabric, representing custom branding and labelling",
+                caption: "Illustrative example, not an INTERLOCK production photograph.",
+              }}
               className="aspect-[4/5] w-full"
             />
           </Reveal>

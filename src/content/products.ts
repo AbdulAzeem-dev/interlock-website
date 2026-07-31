@@ -42,11 +42,13 @@ export const productCategories: ProductCategory[] = [
       "Share a reference garment, sketch, or technical pack to begin.",
       "Sizing is developed against your measurement chart, not a generic block.",
     ],
-    media: { kind: "placeholder", label: "Sweaters", tone: "navy" },
-    gallery: [
-      { kind: "placeholder", label: "Rib cuff detail", tone: "parchment" },
-      { kind: "placeholder", label: "Crew neck construction", tone: "gold" },
-    ],
+    media: {
+      kind: "photo",
+      src: "/media/products/sweater.jpg",
+      alt: "Stack of folded knitted sweaters in neutral tones showing rib and cable structure",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
+    gallery: [],
   },
   {
     slug: "cardigans",
@@ -71,10 +73,13 @@ export const productCategories: ProductCategory[] = [
     considerations: [
       "Button and trim sourcing can follow your specification or ours, confirmed at the sampling stage.",
     ],
-    media: { kind: "placeholder", label: "Cardigans", tone: "gold" },
-    gallery: [
-      { kind: "placeholder", label: "Placket and button detail", tone: "navy" },
-    ],
+    media: {
+      kind: "photo",
+      src: "/media/products/cardigan.jpg",
+      alt: "Macro detail of a ribbed cardigan showing button and pocket construction",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
+    gallery: [],
   },
   {
     slug: "uniform-knitwear",
@@ -100,10 +105,13 @@ export const productCategories: ProductCategory[] = [
       "Colour consistency is managed against a retained reference standard for every reorder.",
       "Seasonal delivery planning is agreed at the start of a programme, not order by order.",
     ],
-    media: { kind: "placeholder", label: "Uniform Knitwear", tone: "parchment" },
-    gallery: [
-      { kind: "placeholder", label: "Crest embroidery placement", tone: "gold" },
-    ],
+    media: {
+      kind: "photo",
+      src: "/media/products/uniform-knitwear.jpg",
+      alt: "Macro detail of navy cable-knit fabric texture",
+      caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
+    },
+    gallery: [],
   },
   {
     slug: "military-institutional-knitwear",
@@ -129,10 +137,13 @@ export const productCategories: ProductCategory[] = [
       "INTERLOCK manufactures to specification as a production partner; it does not represent itself as a direct supplier to any government or military body.",
       "Confidentiality on specification and buyer identity is standard practice for this category.",
     ],
-    media: { kind: "placeholder", label: "Military & Institutional Knitwear", tone: "navy" },
-    gallery: [
-      { kind: "placeholder", label: "Specification-matched construction", tone: "parchment" },
-    ],
+    media: {
+      kind: "photo",
+      src: "/media/products/military-institutional.jpg",
+      alt: "Macro detail of grey ribbed wool knit texture",
+      caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
+    },
+    gallery: [],
   },
   {
     slug: "knitted-cotton-shirts",
@@ -157,10 +168,13 @@ export const productCategories: ProductCategory[] = [
     considerations: [
       "Suited to buyers who need a lighter-weight complement to a heavier winter knitwear range.",
     ],
-    media: { kind: "placeholder", label: "Knitted Cotton Shirts", tone: "gold" },
-    gallery: [
-      { kind: "placeholder", label: "Collar construction", tone: "navy" },
-    ],
+    media: {
+      kind: "photo",
+      src: "/media/products/cotton-shirt.jpg",
+      alt: "Folded plain knitted cotton t-shirt on a neutral background",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
+    gallery: [],
   },
   {
     slug: "socks",
@@ -184,7 +198,12 @@ export const productCategories: ProductCategory[] = [
     considerations: [
       "Bulk repeatability is the priority for this category; sampling confirms construction before full production.",
     ],
-    media: { kind: "placeholder", label: "Socks", tone: "parchment" },
+    media: {
+      kind: "photo",
+      src: "/media/products/socks.jpg",
+      alt: "Ribbed knitted socks worn with knitted trouser cuffs",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
     gallery: [],
   },
   {
@@ -209,7 +228,12 @@ export const productCategories: ProductCategory[] = [
     considerations: [
       "Suited to buyers who need gloves alongside a wider knitwear or uniform programme.",
     ],
-    media: { kind: "placeholder", label: "Gloves", tone: "gold" },
+    media: {
+      kind: "photo",
+      src: "/media/products/gloves.jpg",
+      alt: "Pair of knitted gloves with a matching ball of yarn",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
     gallery: [],
   },
   {
@@ -271,7 +295,12 @@ export const productCategories: ProductCategory[] = [
     considerations: [
       "See the Private Label page for the full collaboration process.",
     ],
-    media: { kind: "placeholder", label: "Private Label", tone: "navy" },
+    media: {
+      kind: "photo",
+      src: "/media/products/private-label.jpg",
+      alt: "Blank hang tag on folded fabric, representing custom branding and labelling",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
     gallery: [],
   },
 ];
