@@ -174,42 +174,6 @@ export const tickerTerms = [
   "Manufacturing Since 1982",
 ];
 
-export type EnquiryStep = {
-  index: number;
-  title: string;
-  description: string;
-};
-
-export const enquiryProcessSteps: EnquiryStep[] = [
-  {
-    index: 1,
-    title: "Share Your Requirements",
-    description:
-      "Provide product references, quantities, materials, sizing, branding, and delivery requirements.",
-  },
-  {
-    index: 2,
-    title: "Product and Material Consultation",
-    description:
-      "Align on construction, yarn, colours, measurements, finishes, and manufacturing requirements.",
-  },
-  {
-    index: 3,
-    title: "Sampling and Approval",
-    description: "Develop and refine the sample before moving into bulk production.",
-  },
-  {
-    index: 4,
-    title: "Production and Quality Control",
-    description: "Manufacture the approved product while maintaining checks throughout production.",
-  },
-  {
-    index: 5,
-    title: "Packing and Dispatch",
-    description: "Complete final inspection, packing, documentation, and shipment preparation.",
-  },
-];
-
 export type HeroComposite = {
   eyebrow: string;
   /** Dominant image, larger frame */

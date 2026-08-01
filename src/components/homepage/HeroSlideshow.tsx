@@ -91,7 +91,7 @@ export default function HeroSlideshow() {
   return (
     <section
       aria-label="INTERLOCK manufacturing showcase"
-      className="relative flex min-h-[100dvh] items-end overflow-hidden bg-navy text-ivory"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-navy text-ivory"
     >
       <div className="absolute inset-0">
         <AnimatePresence initial={false} mode="sync">
@@ -133,24 +133,26 @@ export default function HeroSlideshow() {
             </div>
           </motion.div>
         </AnimatePresence>
-        {/* Dimmed overlay for text legibility - flat tint, no glow/gradient excess */}
-        <div className="absolute inset-0 bg-navy/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-transparent" />
+        {/* Dimmed overlay for text legibility. Strong and uniform rather than
+            a bottom-only gradient, since the composite (multiple photos) has
+            no single "quiet" zone to anchor light text against. */}
+        <div className="absolute inset-0 bg-navy/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(11,29,45,0.55)_0%,rgba(11,29,45,0.25)_45%,rgba(11,29,45,0.55)_100%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-28 pt-20 sm:px-8 md:pb-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">
+      <div className="relative z-10 mx-auto w-full max-w-3xl px-5 py-20 text-center sm:px-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]">
           {slide.eyebrow}
         </p>
-        <h1 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-[1.1] md:text-5xl lg:text-6xl">
+        <h1 className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-[1.1] [text-shadow:0_4px_24px_rgba(0,0,0,0.55)] md:text-5xl lg:text-6xl">
           Knitwear manufacturing, refined over four decades.
         </h1>
-        <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/85">
+        <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-ivory/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
           Established in Pakistan in 1982, INTERLOCK manufactures sweaters,
           cardigans, uniform knitwear and accessories for international
           buyers.
         </p>
-        <div className="mt-9 flex flex-wrap gap-4">
+        <div className="mt-9 flex flex-wrap justify-center gap-4">
           <ButtonLink href="/contact">{site.primaryCta}</ButtonLink>
           <ButtonLink href="/manufacturing" variant="ghost">
             {site.secondaryCta}
