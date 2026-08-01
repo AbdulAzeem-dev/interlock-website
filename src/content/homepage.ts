@@ -15,6 +15,8 @@ export type ProductDivision = {
   id: string;
   name: string;
   intro: string;
+  /** Image shown on the top-level division card, before drilling in. */
+  cardMedia: MediaRef;
   subcategories: DivisionSubcategory[];
 };
 
@@ -24,6 +26,12 @@ export const productDivisions: ProductDivision[] = [
     name: "Knitwear",
     intro:
       "Sweaters, cardigans, pullovers and vests built for fashion, uniform, and institutional programmes.",
+    cardMedia: {
+      kind: "photo",
+      src: "/media/products/division-knitwear.jpg",
+      alt: "Folded knitted sweaters in navy, tan, and burgundy",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
     subcategories: [
       {
         name: "Fashion & Casual Sweaters",
@@ -44,9 +52,9 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/uniform-knitwear",
         media: {
           kind: "photo",
-          src: "/media/products/uniform-knitwear.jpg",
-          alt: "Macro detail of navy cable-knit fabric texture",
-          caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
+          src: "/media/products/uniform-knitwear-real.jpg",
+          alt: "Navy knitted school-uniform vest with crest detail",
+          caption: "Illustrative example, not an INTERLOCK production photograph.",
         },
       },
       {
@@ -56,9 +64,9 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/military-institutional-knitwear",
         media: {
           kind: "photo",
-          src: "/media/products/military-institutional.jpg",
-          alt: "Macro detail of grey ribbed wool knit texture",
-          caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
+          src: "/media/products/military-institutional-real.jpg",
+          alt: "Olive commando-style knitted sweater with button placket",
+          caption: "Illustrative example, not an INTERLOCK production photograph.",
         },
       },
     ],
@@ -68,6 +76,12 @@ export const productDivisions: ProductDivision[] = [
     name: "Hosiery & Accessories",
     intro:
       "Socks, scarves, gloves, and knitted headwear produced to the same colour and yarn discipline as the core range.",
+    cardMedia: {
+      kind: "photo",
+      src: "/media/products/division-hosiery.jpg",
+      alt: "Flat lay of colourful knitted socks",
+      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    },
     subcategories: [
       {
         name: "Socks",
@@ -75,8 +89,8 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/socks",
         media: {
           kind: "photo",
-          src: "/media/products/socks.jpg",
-          alt: "Ribbed knitted socks worn with knitted trouser cuffs",
+          src: "/media/products/socks-real.jpg",
+          alt: "Flat lay of colourful ribbed knitted socks",
           caption: "Illustrative example, not an INTERLOCK production photograph.",
         },
       },
@@ -115,6 +129,7 @@ export const productDivisions: ProductDivision[] = [
     name: "Activewear",
     intro:
       "Knitted tracksuits and training wear, built with the same yarn and construction discipline as the rest of the range.",
+    cardMedia: { kind: "placeholder", label: "Activewear", tone: "navy" },
     subcategories: [
       {
         name: "Tracksuits",
@@ -195,40 +210,77 @@ export const enquiryProcessSteps: EnquiryStep[] = [
   },
 ];
 
-export const heroSlides: {
-  media: MediaRef;
+export type HeroComposite = {
   eyebrow: string;
-}[] = [
+  /** Dominant image, larger frame */
+  large: MediaRef;
+  /** One or two supporting images, smaller frames */
+  small: MediaRef[];
+};
+
+// Each "slide" combines 2-3 real photographs into one composite background
+// moment (large frame + smaller supporting frames), rather than a single
+// full-bleed image. Photos are illustrative process/material/product
+// photography - see ASSET_MANIFEST.md.
+export const heroSlides: HeroComposite[] = [
   {
-    eyebrow: "Raw Materials",
-    media: {
+    eyebrow: "Raw Materials & Machinery",
+    large: {
       kind: "photo",
-      src: "/media/hero/hero-slide-1-materials.jpg",
-      alt: "Yarn cones mounted on a flat knitting machine on the production floor",
+      src: "/media/hero/machine-studio.jpg",
+      alt: "Flat knitting machine with yarn cones mounted, production floor",
     },
+    small: [
+      {
+        kind: "photo",
+        src: "/media/hero/yarn-warm.jpg",
+        alt: "Cones of warm-toned yarn ready for knitting",
+      },
+      {
+        kind: "photo",
+        src: "/media/hero/yarn-dark.jpg",
+        alt: "Row of yarn cones in blue and green tones",
+      },
+    ],
   },
   {
-    eyebrow: "Machinery",
-    media: {
+    eyebrow: "Machinery & Craft",
+    large: {
       kind: "photo",
-      src: "/media/hero/hero-slide-2-machine.jpg",
-      alt: "Flat knitting machine in operation",
+      src: "/media/hero/machine-blue-yarn.jpg",
+      alt: "Flat knitting machine in operation with blue yarn",
     },
+    small: [
+      {
+        kind: "photo",
+        src: "/media/hero/needles-macro.jpg",
+        alt: "Macro detail of knitting machine needles",
+      },
+      {
+        kind: "photo",
+        src: "/media/hero/yarn-cream-burgundy.jpg",
+        alt: "Cones of cream and burgundy yarn",
+      },
+    ],
   },
   {
-    eyebrow: "Craftsmanship",
-    media: {
+    eyebrow: "Finished Knitwear",
+    large: {
       kind: "photo",
-      src: "/media/hero/hero-slide-3-craft.jpg",
-      alt: "Macro detail of a fair-isle knitted panel showing colour-work construction",
+      src: "/media/hero/factory-bw.jpg",
+      alt: "Black and white photograph of a knitwear production floor",
     },
-  },
-  {
-    eyebrow: "Finishing",
-    media: {
-      kind: "photo",
-      src: "/media/hero/hero-slide-4-finished.jpg",
-      alt: "Finished knitwear being pressed and inspected on the production floor",
-    },
+    small: [
+      {
+        kind: "photo",
+        src: "/media/hero/socks-flatlay.jpg",
+        alt: "Flat lay of colourful knitted socks",
+      },
+      {
+        kind: "photo",
+        src: "/media/hero/sweaters-folded.jpg",
+        alt: "Folded knitted sweaters in navy, tan, and burgundy",
+      },
+    ],
   },
 ];

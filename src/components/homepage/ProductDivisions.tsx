@@ -2,105 +2,102 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CaretDown } from "@phosphor-icons/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react";
 import MediaBlock from "@/components/ui/MediaBlock";
 import { productDivisions } from "@/content/homepage";
 import { cn } from "@/lib/cn";
 
 export default function ProductDivisions() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
+  const reduce = useReducedMotion();
+
+  const division = active !== null ? productDivisions[active] : null;
 
   return (
     <div>
-      {/* Desktop: tab rail + large panels */}
-      <div className="hidden md:block">
-        <div
-          role="tablist"
-          aria-label="Product divisions"
-          className="flex gap-10 border-b border-navy/15"
-        >
-          {productDivisions.map((division, i) => (
+      <AnimatePresence mode="wait" initial={false}>
+        {division === null ? (
+          <motion.div
+            key="grid"
+            initial={reduce ? undefined : { opacity: 0 }}
+            animate={reduce ? undefined : { opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-3"
+          >
+            {productDivisions.map((div, i) => (
+              <button
+                key={div.id}
+                type="button"
+                onClick={() => setActive(i)}
+                className="group relative block aspect-[3/4] w-full overflow-hidden text-left focus-visible:outline-2 focus-visible:outline-gold"
+                aria-label={`View ${div.name} range`}
+              >
+                <MediaBlock
+                  media={div.cardMedia}
+                  className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/25 to-navy/10" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <h3 className="font-display text-2xl text-ivory md:text-3xl">{div.name}</h3>
+                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-ivory/75">
+                    {div.intro}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                    View Range
+                    <ArrowUpRight
+                      size={14}
+                      weight="bold"
+                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </span>
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="detail"
+            initial={reduce ? undefined : { opacity: 0 }}
+            animate={reduce ? undefined : { opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.35 }}
+          >
             <button
-              key={division.id}
               type="button"
-              role="tab"
-              aria-selected={active === i}
-              onClick={() => setActive(i)}
-              className={cn(
-                "relative pb-5 font-display text-2xl transition-colors focus-visible:outline-2 focus-visible:outline-gold",
-                active === i ? "text-navy" : "text-navy/40 hover:text-navy/70"
-              )}
+              onClick={() => setActive(null)}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-navy/70 transition-colors hover:text-navy focus-visible:outline-2 focus-visible:outline-gold"
             >
-              {division.name}
-              {active === i && (
-                <span className="absolute inset-x-0 -bottom-px h-[2px] bg-gold" />
-              )}
+              <ArrowLeft size={14} weight="bold" />
+              All Divisions
             </button>
-          ))}
-        </div>
 
-        {productDivisions.map((division, i) => (
-          <div key={division.id} hidden={active !== i} role="tabpanel">
-            <p className="mt-8 max-w-xl text-sm leading-relaxed text-charcoal/70">
+            <h3 className="mt-5 font-display text-3xl text-navy md:text-4xl">{division.name}</h3>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-charcoal/70">
               {division.intro}
             </p>
+
             <div
               className={cn(
-                "mt-10 grid grid-cols-1 gap-8",
-                division.subcategories.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"
+                "mt-10 grid grid-cols-2 gap-6",
+                division.subcategories.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"
               )}
             >
               {division.subcategories.map((sub) => (
                 <Link key={sub.name} href={sub.href} className="group block">
                   <MediaBlock media={sub.media} className="aspect-[3/4] w-full" />
-                  <h3 className="mt-4 font-display text-lg text-navy">{sub.name}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-charcoal/70">
+                  <h4 className="mt-4 font-display text-base text-navy md:text-lg">{sub.name}</h4>
+                  <p className="mt-1.5 hidden text-sm leading-relaxed text-charcoal/70 sm:block">
                     {sub.summary}
                   </p>
                 </Link>
               ))}
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile: accordion */}
-      <div className="md:hidden">
-        {productDivisions.map((division, i) => {
-          const open = active === i;
-          return (
-            <div key={division.id} className="border-b border-navy/15">
-              <button
-                type="button"
-                onClick={() => setActive(open ? -1 : i)}
-                aria-expanded={open}
-                className="flex w-full items-center justify-between py-5 text-left focus-visible:outline-2 focus-visible:outline-gold"
-              >
-                <span className="font-display text-xl text-navy">{division.name}</span>
-                <CaretDown
-                  size={18}
-                  className={cn("text-gold transition-transform", open && "rotate-180")}
-                />
-              </button>
-              {open && (
-                <div className="pb-8">
-                  <p className="max-w-xl text-sm leading-relaxed text-charcoal/70">
-                    {division.intro}
-                  </p>
-                  <div className="mt-6 grid grid-cols-2 gap-5">
-                    {division.subcategories.map((sub) => (
-                      <Link key={sub.name} href={sub.href} className="group block">
-                        <MediaBlock media={sub.media} className="aspect-[3/4] w-full" />
-                        <h3 className="mt-3 font-display text-sm text-navy">{sub.name}</h3>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

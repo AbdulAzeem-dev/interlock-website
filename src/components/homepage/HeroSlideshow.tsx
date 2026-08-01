@@ -10,6 +10,31 @@ import { heroSlides } from "@/content/homepage";
 
 const SLIDE_DURATION_MS = 6500;
 
+function KenBurnsImage({
+  src,
+  alt,
+  priority,
+  reduce,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  reduce: boolean | null;
+}) {
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.div
+        initial={reduce ? undefined : { scale: 1 }}
+        animate={reduce ? undefined : { scale: 1.06 }}
+        transition={{ duration: SLIDE_DURATION_MS / 1000, ease: "linear" }}
+        className="absolute inset-0"
+      >
+        <Image src={src} alt={alt} fill sizes="60vw" priority={priority} className="object-cover" />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function HeroSlideshow() {
   const [index, setIndex] = useState(0);
   const reduce = useReducedMotion();
@@ -78,29 +103,39 @@ export default function HeroSlideshow() {
             transition={{ duration: reduce ? 0.3 : 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <motion.div
-              initial={reduce ? undefined : { scale: 1 }}
-              animate={reduce ? undefined : { scale: 1.07 }}
-              transition={{ duration: SLIDE_DURATION_MS / 1000, ease: "linear" }}
-              className="absolute inset-0"
-            >
-              {slide.media.kind === "photo" && (
-                <Image
-                  src={slide.media.src}
-                  alt={slide.media.alt}
-                  fill
-                  sizes="100vw"
+            {/* Composite: one large frame + up to two smaller supporting
+                frames, combined into a single background moment. Mobile
+                shows the large frame only - the grid is too busy at
+                narrow widths. */}
+            <div className="grid h-full w-full grid-cols-1 md:grid-cols-[1.6fr_1fr] md:grid-rows-2 md:gap-1.5 lg:gap-2">
+              <div className="relative md:col-start-1 md:row-span-2 md:row-start-1">
+                <KenBurnsImage
+                  src={slide.large.kind === "photo" ? slide.large.src : ""}
+                  alt={slide.large.kind === "photo" ? slide.large.alt : ""}
                   priority={index === 0}
-                  loading={index === 0 ? undefined : "eager"}
-                  className="object-cover"
+                  reduce={reduce}
                 />
-              )}
-            </motion.div>
+              </div>
+              {slide.small.map((img, i) => (
+                <div
+                  key={i}
+                  className={`relative hidden md:block md:col-start-2 ${
+                    i === 0 ? "md:row-start-1" : "md:row-start-2"
+                  }`}
+                >
+                  <KenBurnsImage
+                    src={img.kind === "photo" ? img.src : ""}
+                    alt={img.kind === "photo" ? img.alt : ""}
+                    reduce={reduce}
+                  />
+                </div>
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
         {/* Dimmed overlay for text legibility - flat tint, no glow/gradient excess */}
-        <div className="absolute inset-0 bg-navy/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
+        <div className="absolute inset-0 bg-navy/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-28 pt-20 sm:px-8 md:pb-32">

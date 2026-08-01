@@ -14,6 +14,22 @@ Internal planning document. Not published on the website.
   horizontal nav lock-up at reduced scale, icon-only markhor mark (favicon, small UI
   contexts), monochrome ivory-on-navy version for dark sections.
 
+## Owner-supplied photography (`public/media/new assests/`, third sourcing round)
+The owner supplied a folder of additional real photographs directly (yarn, knitting
+machinery, socks, sweaters, a commando-style sweater, and school-uniform knitwear)
+and asked that these replace the second sourcing pass's images on the homepage hero
+and the Knitwear/Hosiery division cards, since they are stronger than what was
+sourced independently. These are used in `public/media/hero/` (composite hero
+slides) and `public/media/products/*-real.jpg` (division cards and the
+military/uniform subcategory tiles). Unlike the first two sourcing passes, no
+photographer name or licence could be independently verified for these files -
+they were provided directly by the site owner rather than sourced with a
+documented licence trail. They are treated the same as the rest of the site's
+non-INTERLOCK photography: real, unbranded, and disclosed with the same
+"illustrative example, not an INTERLOCK production photograph" caption. One file
+from the owner's folder (a knitted polo shirt with a visible "J.Crew" neck tag) was
+deliberately excluded for showing a competitor's brand.
+
 ## Real photography (status: every product category now has a real photo)
 Sourced from properly licensed origins (Wikimedia Commons CC0/CC-BY/public domain,
 Flickr CC BY, and Pexels License). Full source/licence/creator logs recorded in
