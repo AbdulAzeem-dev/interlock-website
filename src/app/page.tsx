@@ -4,12 +4,12 @@ import MediaBlock from "@/components/ui/MediaBlock";
 import HeritageTimeline from "@/components/ui/HeritageTimeline";
 import { ButtonLink } from "@/components/ui/Button";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import ProcessStep from "@/components/ui/ProcessStep";
 import HeroSlideshow from "@/components/homepage/HeroSlideshow";
 import Ticker from "@/components/homepage/Ticker";
 import ProductDivisions from "@/components/homepage/ProductDivisions";
 import FactoryVideoSection from "@/components/homepage/FactoryVideoSection";
 import CapacitySection from "@/components/homepage/CapacitySection";
+import EnquiryStack from "@/components/homepage/EnquiryStack";
 import { site } from "@/content/site";
 import { capabilities } from "@/content/capabilities";
 import { heritageTimeline } from "@/content/heritage";
@@ -44,21 +44,6 @@ export default function Home() {
 
       <CapacitySection />
 
-      {/* CAPABILITIES - full list, not equal cards (restored to match production) */}
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:py-28">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.4fr]">
-          <SectionHeading
-            title="What happens after you enquire."
-            body="Every order runs through the same stages, whether it is a first sample or a repeat programme in its tenth year."
-          />
-          <div>
-            {capabilities.map((c, i) => (
-              <ProcessStep key={c.title} index={i + 1} title={c.title} description={c.description} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* MANUFACTURER PROOF - dark section, process photography */}
       <section className="bg-navy py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
@@ -90,6 +75,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <EnquiryStack />
 
       {/* QUALITY - dark section, texture photography */}
       <section className="bg-navy py-20 md:py-28">
