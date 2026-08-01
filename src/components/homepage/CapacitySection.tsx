@@ -2,12 +2,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 
 // Only the two figures explicitly approved by the owner are shown as numbers
-// (50 pieces to start; up to 50,000 pieces per month). The middle stop is a
+// (50 pieces to start; up to 10,000 pieces per month). The middle stop is a
 // qualitative label only - no invented figure sits between them.
 const stops = [
   { value: "50", label: "Focused Runs", detail: "pieces, to start" },
   { value: "→", label: "Growing Programmes", detail: "adapted to your schedule" },
-  { value: "50,000", label: "Scaled Production", detail: "pieces, per month" },
+  { value: "10,000", label: "Scaled Production", detail: "pieces, per month" },
 ];
 
 export default function CapacitySection() {
@@ -17,7 +17,7 @@ export default function CapacitySection() {
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <SectionHeading
             title="Flexible capacity. Built to scale."
-            body="From low-volume runs starting at 50 pieces to monthly production programmes of up to 50,000 pieces. Production planning is adapted to product category, construction, yarn, gauge, complexity, and delivery schedule, from sampling and product development through to bulk manufacturing."
+            body="From low-volume runs starting at 50 pieces to monthly production programmes of up to 10,000 pieces. Production planning is adapted to product category, construction, yarn, gauge, complexity, and delivery schedule, from sampling and product development through to bulk manufacturing."
           />
           <Reveal>
             <div className="relative">
