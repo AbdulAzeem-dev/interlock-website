@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: site.description,
   },
   robots: {
-    index: true,
+    index: site.domainConfirmed,
     follow: true,
   },
 };
@@ -65,8 +65,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${cormorant.variable} ${montserrat.variable} h-full antialiased`}
     >
+      <head><script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('interlock-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}` }} /></head>
       <body className="min-h-full flex flex-col bg-ivory text-charcoal">
         <a
           href="#main-content"

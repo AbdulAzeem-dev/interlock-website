@@ -1,53 +1,22 @@
 import type { Metadata } from "next";
-import { EnvelopeSimple, MapPin } from "@phosphor-icons/react/dist/ssr";
+import { EnvelopeSimple, MapPin, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import PageIntro from "@/components/ui/PageIntro";
 import RFQForm from "@/components/ui/RFQForm";
 import { site } from "@/content/site";
-
-export const metadata: Metadata = {
-  title: "Contact & Request a Quote",
-  description:
-    "Start an enquiry with INTERLOCK. Share your product category, reference, quantities, materials and target timeline for a practical next step.",
-  alternates: { canonical: "/contact" },
-};
-
-export default function ContactPage() {
-  return (
-    <>
-      <PageIntro
-        title="Start with your product brief."
-        body="Share your product category, reference, quantities, materials and target timeline. Our team will review the requirements and respond with the next practical step."
-      />
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-20">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <h2 className="font-display text-2xl text-navy">Direct contact</h2>
-            <ul className="mt-6 space-y-4 text-sm text-charcoal/80">
-              <li className="flex items-center gap-3">
-                <EnvelopeSimple size={20} weight="light" className="text-gold" />
-                <a href={`mailto:${site.contact.email}`} className="hover:text-navy">
-                  {site.contact.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <MapPin size={20} weight="light" className="text-gold" />
-                {site.country}
-              </li>
-            </ul>
-            <div className="mt-10 border-t border-navy/15 pt-6">
-              <h3 className="font-display text-lg text-navy">
-                Not ready for a full brief?
-              </h3>
-              <p className="mt-2 max-w-sm text-sm leading-relaxed text-charcoal/70">
-                An incomplete enquiry is still useful. Share what you know, a
-                product category and rough quantity is enough for our team to
-                come back with the right next question.
-              </p>
-            </div>
-          </div>
-          <RFQForm />
-        </div>
-      </section>
-    </>
-  );
+import { getProductBySlug } from "@/content/products";
+export const metadata: Metadata = {title:"Contact & Request a Quote",description:"Discuss your next knitwear collection with INTERLOCK. Share a reference, approximate quantities and your delivery destination.",alternates:{canonical:"/contact"}};
+export default async function ContactPage({searchParams}:{searchParams:Promise<{category?:string}>}) {
+  const {category}=await searchParams;
+  const selected=category&&(getProductBySlug(category)||category==="private-label")?category:"general";
+  return <><PageIntro eyebrow="Let’s work together" title="Good knitwear starts with a conversation." body="A first collection or an established programme. Share your idea and we’ll discuss the next step."/>
+  <section className="shell contact-layout">
+    <aside className="contact-aside"><h2>A direct conversation.</h2><p>Prefer to email or talk through your idea? Use the contact details below.</p>
+      <div className="contact-method"><EnvelopeSimple size={24}/><div><h3>Email</h3>{site.contact.email?<a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>:<p>{site.contact.placeholders.email}</p>}</div></div>
+      <div className="contact-method"><WhatsappLogo size={24}/><div><h3>WhatsApp</h3>{site.contact.whatsappUrl?<a href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp}</a>:<p>{site.contact.placeholders.whatsapp}</p>}</div></div>
+      <div className="contact-method"><MapPin size={24}/><div><h3>Our location</h3><p>{site.contact.address||site.contact.placeholders.address}</p></div></div>
+      <div className="contact-next"><h3>What happens next?</h3><ol><li>We review your product and quantity requirements.</li><li>We discuss feasibility, missing details and sampling.</li><li>We agree a quotation and production plan with you.</li></ol></div>
+    </aside>
+    <RFQForm key={selected} category={selected} deliveryEnabled={Boolean(process.env.RFQ_WEBHOOK_URL)}/>
+  </section></>;
 }
+

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/ui/PageIntro";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
@@ -62,9 +63,13 @@ export default function TermsPage() {
             <h2 className="font-display text-xl text-navy">Contact</h2>
             <p className="mt-3">
               Questions about these terms can be sent to{" "}
-              <a href="mailto:enquiries@interlockknits.com" className="text-navy underline decoration-gold underline-offset-4">
-                enquiries@interlockknits.com
-              </a>
+              {site.contact.email ? (
+                <a href={`mailto:${site.contact.email}`} className="text-navy underline decoration-gold underline-offset-4">
+                  {site.contact.email}
+                </a>
+              ) : (
+                <span className="text-navy">{site.contact.placeholders.email}</span>
+              )}
               .
             </p>
           </div>

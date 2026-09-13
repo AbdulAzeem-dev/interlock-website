@@ -1,108 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageIntro from "@/components/ui/PageIntro";
-import SectionHeading from "@/components/ui/SectionHeading";
-import MediaBlock from "@/components/ui/MediaBlock";
-import Reveal from "@/components/ui/Reveal";
-import { ButtonLink } from "@/components/ui/Button";
-import { capabilities, collaborationSteps } from "@/content/capabilities";
+import InquiryCTA from "@/components/ui/InquiryCTA";
+import BuyerFAQ from "@/components/ui/BuyerFAQ";
+export const metadata: Metadata={title:"Knitwear Manufacturing & Sampling",description:"Explore INTERLOCK’s process from yarn and sampling to knitting, finishing, production checks and private-label packing.",alternates:{canonical:"/manufacturing"}};
+const stages=[["Review & development","We review your reference, quantities and intended use, then discuss yarn, construction, measurements and sampling."],["Sample & approval","Colour, fit, stitch and finish are reviewed against the agreed brief. The approved sample becomes the production reference."],["Knitting & finishing","Production follows the agreed construction, with checks through knitting, linking and finishing."],["Branding & dispatch","Labels, trims and packing are checked against your requirements before the agreed dispatch or export handover."]];
+export default function ManufacturingPage(){return <>
+<PageIntro eyebrow="From yarn to finished garment" title="Made to an agreed standard." body="A clear specification. An approved sample. A production process built around the details of your order."/>
+<section className="shell section-space"><div className="story-grid"><figure><div className="story-image"><Image src="/media/hero/machine-studio.jpg" alt="Flat knitting equipment with yarn cones" fill preload sizes="(min-width:768px) 45vw,100vw" className="object-cover"/></div><figcaption>Illustrative knitting equipment, not an INTERLOCK factory photograph.</figcaption></figure><div className="story-copy"><h2>The sample sets<br/>the standard.</h2><p>Every programme starts by agreeing what will be made. The yarn, colour, size chart and construction are developed together so the production reference is clear.</p><p>Runs can start from 50 pieces, with monthly capacity of up to 10,000 pieces. Feasibility, minimums and scheduling depend on the product mix, yarn and construction.</p><p>Share any gauge, machine, testing or compliance requirements with your brief. We’ll review them for your specific product before sampling.</p></div></div></section>
+<section className="material-section"><div className="shell"><h2>How your order moves through production.</h2><ol className="process-grid">{stages.map(([title,body],i)=><li key={title}><span className="step-number">0{i+1}</span><h3>{title}</h3><p>{body}</p></li>)}</ol></div></section>
+<section className="shell section-space"><div className="section-top"><div><h2>Checks that matter to the finished garment.</h2><p>The agreed sample and specification guide what is checked.</p></div></div><div className="quality-grid">{[["Colour & yarn","Yarn and colour are checked against the agreed reference, with attention to consistency across a programme."],["Measurements & fit","Measurements follow your size chart. Size grading and tolerances are discussed during development."],["Construction & finish","Stitch, seams, linking and finishing are reviewed during production."],["Branding & packing","Label, embroidery and trim placement, folding and packing follow the agreed requirements."]].map(([title,body])=><div key={title}><h3>{title}</h3><p>{body}</p></div>)}</div></section>
+<section className="shell section-space faq-section"><div><h2>Planning your first order.</h2><p>Practical questions to resolve before production.</p></div><BuyerFAQ/></section>
+<InquiryCTA title="Bring us your specification." body="Share your reference, quantity, delivery date and any testing requirements. We’ll review the production fit."/>
+</>;}
 
-export const metadata: Metadata = {
-  title: "Manufacturing Capability",
-  description:
-    "How INTERLOCK manufactures knitwear to specification: requirement review, sampling, colour and sizing management, production checks, branding, and packing.",
-  alternates: { canonical: "/manufacturing" },
-};
-
-export default function ManufacturingPage() {
-  return (
-    <>
-      <PageIntro
-        title="What it takes to manufacture knitwear to specification."
-        body="INTERLOCK produces sweaters, cardigans, uniform knitwear, cotton knits, and accessories through a fixed sequence, whether the order is a first sample or the tenth repeat of a long-running programme."
-      />
-
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-20">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <MediaBlock
-              media={{
-                kind: "photo",
-                src: "/media/process/knitting-machine.jpg",
-                alt: "Circular knitting machine used in knitwear production",
-                caption: "Illustrative knitting equipment, not an INTERLOCK facility photograph.",
-              }}
-              className="aspect-[4/5] w-full"
-              priority
-            />
-          </Reveal>
-          <div>
-            <SectionHeading
-              eyebrow="Production"
-              title="Knitting, linking, and finishing under one roof."
-              body="Machinery, technique, and finishing knowledge built up since 1982 are what let colour and sizing stay consistent from the first sample to a reorder placed years later."
-            />
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-charcoal/70">
-              Specific machine counts, gauges, and floor capacity are being
-              documented for publication here. Until then, capability is described
-              by process rather than by unverified figures.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-navy py-16 md:py-24">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <SectionHeading tone="ivory" title="The production sequence" />
-          <div className="mt-10 grid grid-cols-1 gap-x-16 gap-y-2 lg:grid-cols-2">
-            {capabilities.map((c, i) => (
-              <div key={c.title} className="flex gap-5 border-l-2 border-gold/40 py-4 pl-5">
-                <span className="font-display text-2xl italic text-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-lg text-ivory">{c.title}</h3>
-                  <p className="mt-1.5 max-w-md text-sm leading-relaxed text-ivory/70">
-                    {c.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-24">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1fr_1fr]">
-          <SectionHeading
-            title="From enquiry to dispatch"
-            body="This is the practical path an order follows, regardless of category or order size."
-          />
-          <ol className="space-y-0">
-            {collaborationSteps.map((step, i) => (
-              <li key={step} className="flex gap-4 border-t border-navy/15 py-4 first:border-t-0">
-                <span className="font-display text-lg italic text-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-sm leading-relaxed text-charcoal/80">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="bg-parchment py-16 md:py-24">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <SectionHeading
-              title="What we need from you to start"
-              body="A technical pack, a reference garment, a product photo, or a size chart is enough to begin a feasibility review. Colour references and branding artwork can follow once the construction is agreed."
-            />
-            <div className="flex lg:justify-end">
-              <ButtonLink href="/contact">Discuss Your Requirements</ButtonLink>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}

@@ -1,315 +1,343 @@
 export type MediaRef =
   | { kind: "photo"; src: string; alt: string; caption?: string }
   | { kind: "placeholder"; label: string; tone: "navy" | "gold" | "parchment" };
-
 export type ProductCategory = {
-  slug: string;
-  name: string;
-  shortName: string;
-  summary: string;
-  description: string[];
-  applications: string[];
-  customization: string[];
-  considerations: string[];
-  media: MediaRef;
-  gallery: MediaRef[];
+ slug: string; name: string; shortName: string; range: string; summary: string; styles: string[];
+ description: string[]; applications: string[]; customization: string[]; considerations: string[];
+ media: MediaRef; gallery: MediaRef[];
 };
-
 export const productCategories: ProductCategory[] = [
   {
-    slug: "sweaters",
-    name: "Sweaters",
-    shortName: "Sweaters",
-    summary:
-      "Crew neck, V-neck, and full-zip sweaters in fine and mid-gauge knits, developed to a reference garment or technical specification.",
-    description: [
-      "Sweater production is where INTERLOCK's decades of gauge and shaping experience are most visible. Bodies, sleeves, and collars are knitted to the measurements and silhouette a buyer specifies, then linked and finished by hand.",
-      "Work ranges from simple crew necks for institutional programmes to more constructed silhouettes for fashion and private-label buyers, including cable, rib, and jacquard structures.",
+    "slug": "sweaters",
+    "name": "Sweaters",
+    "shortName": "Sweaters",
+    "range": "fashion",
+    "summary": "Crew necks, V-necks and zip styles. Fine and mid-weight knits, made to your fit and finish.",
+    "styles": [
+      "Crew neck",
+      "V-neck",
+      "Half zip",
+      "Cable & rib"
     ],
-    applications: [
-      "Fashion and private-label collections",
-      "School and college uniform ranges",
-      "Corporate and institutional issue",
+    "description": [
+      "Develop a sweater around your own silhouette, yarn and measurement chart. Shape, stitch structure and finishing are reviewed during sampling before the production specification is agreed."
     ],
-    customization: [
-      "Yarn and fibre selection",
-      "Gauge and knit structure",
-      "Colourway and stripe or panel placement",
-      "Neckline, cuff, and hem construction",
-      "Woven labels, embroidery, and printed branding",
-    ],
-    considerations: [
-      "Share a reference garment, sketch, or technical pack to begin.",
-      "Sizing is developed against your measurement chart, not a generic block.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/sweater.jpg",
-      alt: "Stack of folded knitted sweaters in neutral tones showing rib and cable structure",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "cardigans",
-    name: "Cardigans",
-    shortName: "Cardigans",
-    summary:
-      "Button-front and open cardigans across fine-gauge fashion styling and heavier institutional wear.",
-    description: [
-      "Cardigan construction adds placket, button, and closure detail to the same shaping discipline used across the sweater range. Placket weight, button placement, and pocket construction are agreed against your specification before bulk production begins.",
-    ],
-    applications: [
-      "Fashion and private-label ranges",
-      "School and college uniform cardigans",
-      "Corporate uniform and workwear",
-    ],
-    customization: [
-      "Button type, spacing, and placket construction",
-      "Pocket styles",
-      "Yarn blend and weight",
-      "Colour and trim detailing",
-    ],
-    considerations: [
-      "Button and trim sourcing can follow your specification or ours, confirmed at the sampling stage.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/cardigan.jpg",
-      alt: "Macro detail of a ribbed cardigan showing button and pocket construction",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "uniform-knitwear",
-    name: "Uniform Knitwear",
-    shortName: "Uniform Knitwear",
-    summary:
-      "School and college jumpers, cardigans, and knitted accessories, produced for repeatable colour and sizing across seasonal reorders.",
-    description: [
-      "This is INTERLOCK's longest-standing area of production. Established and premium schools across Pakistan rely on the same colour and sizing outcome, order after order, which is the standard we bring to distributor and institutional partners abroad.",
-      "Uniform programmes are managed against a fixed specification: an agreed colour reference, a full size run, and a consistent embroidery or badge position, so repeat orders match earlier deliveries.",
-    ],
-    applications: [
-      "School and college uniform distributors",
-      "Institutional and corporate uniform suppliers",
-    ],
-    customization: [
-      "School or institution colourways",
-      "Badge, crest, and embroidery placement",
-      "Full size-run grading",
-      "V-neck, crew neck, and cardigan formats",
-    ],
-    considerations: [
-      "Colour consistency is managed against a retained reference standard for every reorder.",
-      "Seasonal delivery planning is agreed at the start of a programme, not order by order.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/uniform-knitwear.jpg",
-      alt: "Macro detail of navy cable-knit fabric texture",
-      caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "military-institutional-knitwear",
-    name: "Military & Institutional Knitwear",
-    shortName: "Military & Institutional",
-    summary:
-      "Specification-led jerseys, sweaters, and knitted accessories developed to fixed technical and colour standards for institutional and defence-adjacent supply chains.",
-    description: [
-      "INTERLOCK has manufactured specification-led military-style knitwear, including jerseys, socks, and gloves, through a Pakistani export partner. Production followed fixed technical specifications rather than fashion styling: precise colour matching, consistent construction, and documentation to support the partner's own compliance requirements.",
-      "This experience carries directly into institutional and government-adjacent supply work, where the priority is exact repeatability rather than seasonal design change.",
-    ],
-    applications: [
-      "Institutional and defence-adjacent contractors",
-      "Government procurement suppliers (via appointed partners)",
-      "Corporate and security-sector uniform programmes",
-    ],
-    customization: [
-      "Fixed colour and yarn specification matching",
-      "Reinforced construction for durability",
-      "Consistent documentation for repeat production runs",
-    ],
-    considerations: [
-      "INTERLOCK manufactures to specification as a production partner; it does not represent itself as a direct supplier to any government or military body.",
-      "Confidentiality on specification and buyer identity is standard practice for this category.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/military-institutional.jpg",
-      alt: "Macro detail of grey ribbed wool knit texture",
-      caption: "Illustrative knit texture, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "knitted-cotton-shirts",
-    name: "Knitted Cotton Shirts",
-    shortName: "Cotton Shirts",
-    summary:
-      "Knitted cotton summer shirts and polos, built for warm-climate wear and consistent bulk repeatability.",
-    description: [
-      "Lighter-weight cotton knits sit alongside the wool and acrylic sweater range, suited to warm-climate institutional wear and summer collections. Collar, placket, and hem construction are agreed at sampling stage.",
-    ],
-    applications: [
-      "Summer uniform programmes",
-      "Fashion and private-label warm-weather ranges",
-      "Corporate polo and workwear programmes",
-    ],
-    customization: [
-      "Cotton yarn blend and weight",
-      "Collar and placket construction",
-      "Colour and trim detailing",
-      "Embroidered branding",
-    ],
-    considerations: [
-      "Suited to buyers who need a lighter-weight complement to a heavier winter knitwear range.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/cotton-shirt.jpg",
-      alt: "Folded plain knitted cotton t-shirt on a neutral background",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "socks",
-    name: "Socks",
-    shortName: "Socks",
-    summary:
-      "Knitted socks in institutional, uniform, and specification-led constructions, including military-style production experience.",
-    description: [
-      "Sock production draws on the same specification-matching discipline used across INTERLOCK's institutional and military-style work: consistent yarn, colour, and construction across large repeat volumes.",
-    ],
-    applications: [
-      "School and institutional uniform programmes",
-      "Military-style and specification-led supply",
-      "Corporate and workwear programmes",
-    ],
-    customization: [
-      "Yarn blend and cushioning construction",
-      "Colour and stripe detailing",
-      "Sizing range",
-    ],
-    considerations: [
-      "Bulk repeatability is the priority for this category; sampling confirms construction before full production.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/socks.jpg",
-      alt: "Ribbed knitted socks worn with knitted trouser cuffs",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "gloves",
-    name: "Gloves",
-    shortName: "Gloves",
-    summary:
-      "Knitted gloves for institutional, uniform, and specification-led supply, including military-style production experience.",
-    description: [
-      "Knitted glove production follows the same fixed-specification approach as INTERLOCK's other institutional accessory work, prioritising consistent sizing and construction across volume orders.",
-    ],
-    applications: [
-      "Institutional and uniform supply",
-      "Military-style and specification-led supply",
-      "Corporate and workwear programmes",
-    ],
-    customization: [
-      "Yarn blend and grip construction",
-      "Colour and cuff detailing",
-      "Sizing range",
-    ],
-    considerations: [
-      "Suited to buyers who need gloves alongside a wider knitwear or uniform programme.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/gloves.jpg",
-      alt: "Pair of knitted gloves with a matching ball of yarn",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [],
-  },
-  {
-    slug: "mufflers-scarves",
-    name: "Mufflers & Scarves",
-    shortName: "Mufflers & Scarves",
-    summary:
-      "Knitted scarves, mufflers, and caps, produced as standalone accessory orders or alongside a wider sweater and uniform programme.",
-    description: [
-      "Accessory knitwear is produced to the same colour and yarn discipline as INTERLOCK's core range, making it straightforward to match to an existing sweater or uniform programme, or to order independently.",
-    ],
-    applications: [
-      "Fashion and private-label accessory ranges",
-      "School and institutional uniform accessories",
-      "Corporate gifting and workwear programmes",
-    ],
-    customization: [
-      "Yarn blend and weight",
-      "Colourway, stripe, and fringe detailing",
-      "Woven labels and branding",
-    ],
-    considerations: [
-      "Often ordered to match an existing sweater or uniform colour reference.",
-    ],
-    media: {
-      kind: "photo",
-      src: "/media/products/scarf.jpg",
-      alt: "Knitted scarf showing gradient colourway and ribbed structure",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
-    },
-    gallery: [
-      {
-        kind: "photo",
-        src: "/media/products/scarf.jpg",
-        alt: "Ribbed knit scarf detail",
-        caption: "Illustrative example, not an INTERLOCK production photograph.",
-      },
-    ],
-  },
-  {
-    slug: "private-label",
-    name: "Custom & Private-Label Knitwear",
-    shortName: "Private Label",
-    summary:
-      "Product developed from your brief, reference garment, or technical pack, produced under your own label and packaging.",
-    description: [
-      "Private-label work spans every category above. It begins with what you already have: a technical pack, a reference garment, a photograph, or a size chart, and is developed into a produced, packed, and labelled product under your brand.",
-    ],
-    applications: [
+    "applications": [
       "Fashion and lifestyle brands",
-      "Distributors and wholesalers building an own-brand range",
-      "Retail groups sourcing a manufacturing partner",
+      "Private-label seasonal collections",
+      "Uniform and distributor ranges"
     ],
-    customization: [
-      "Full private-label branding, woven labels, and hang tags",
-      "Custom packaging and folding specification",
-      "Product development from a reference garment or tech pack",
+    "customization": [
+      "Yarn blend, weight and knit structure",
+      "Neckline, cuffs, hem and silhouette",
+      "Colourways, stripes and pattern placement",
+      "Woven labels and branded trims"
     ],
-    considerations: [
-      "See the Private Label page for the full collaboration process.",
+    "considerations": [
+      "Send a tech pack, sketch or reference garment.",
+      "Include quantities by style and colour, plus your target delivery date."
     ],
-    media: {
-      kind: "photo",
-      src: "/media/products/private-label.jpg",
-      alt: "Blank hang tag on folded fabric, representing custom branding and labelling",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/knitwear cover.jpg",
+      "alt": "Folded sweaters in neutral colours showing rib and cable knit",
+      "caption": "Illustrative knitwear reference."
     },
-    gallery: [],
+    "gallery": [
+      {
+        "kind": "photo",
+        "src": "/media/products/division-knitwear.jpg",
+        "alt": "Folded crew-neck sweaters in navy, beige and burgundy",
+        "caption": "Illustrative colour and silhouette references."
+      },
+      {
+        "kind": "photo",
+        "src": "/media/texture/knit-rib-macro.jpg",
+        "alt": "Close-up of a ribbed knit structure",
+        "caption": "Illustrative stitch detail."
+      }
+    ]
   },
+  {
+    "slug": "cardigans",
+    "name": "Cardigans",
+    "shortName": "Cardigans",
+    "range": "fashion",
+    "summary": "Button-front and open styles, with your choice of knit, silhouette, pockets and trims.",
+    "styles": [
+      "Button front",
+      "Open front",
+      "V-neck",
+      "Patterned knits"
+    ],
+    "description": [
+      "Cardigans add placket, pocket and closure detail to the core knitwear construction. Agree the shape, button spacing, trim and finishing at sampling so each part works together."
+    ],
+    "applications": [
+      "Fashion and private-label collections",
+      "School and college ranges",
+      "Corporate uniform suppliers"
+    ],
+    "customization": [
+      "Button choice and placket construction",
+      "Pocket placement and shape",
+      "Yarn, colour and knit structure",
+      "Fit, sleeve length and branding"
+    ],
+    "considerations": [
+      "Share your desired fit and closure details.",
+      "Button and trim availability is confirmed during development."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/cardigan-real.jpg",
+      "alt": "Green button-front cardigan with a brown knitted pattern",
+      "caption": "Illustrative cardigan reference."
+    },
+    "gallery": [
+      {
+        "kind": "photo",
+        "src": "/media/products/cardigan.jpg",
+        "alt": "Grey ribbed cardigan with button and pocket detail",
+        "caption": "Illustrative placket and pocket construction."
+      }
+    ]
+  },
+  {
+    "slug": "knitted-cotton-shirts",
+    "name": "Knitted Cotton Shirts",
+    "shortName": "Cotton Shirts",
+    "range": "fashion",
+    "summary": "Lighter cotton knit shirts and polos for summer collections, corporate wear and uniform ranges.",
+    "styles": [
+      "Summer knits",
+      "Polo styles",
+      "Crew neck"
+    ],
+    "description": [
+      "Develop a lighter-weight complement to your sweater range. Yarn, fabric weight, neckline or collar, placket and hem are agreed with you before sampling."
+    ],
+    "applications": [
+      "Warm-weather fashion collections",
+      "Summer uniform programmes",
+      "Corporate and distributor ranges"
+    ],
+    "customization": [
+      "Cotton yarn blend and fabric weight",
+      "Neckline, collar and placket",
+      "Colours and trim details",
+      "Embroidery and private labels"
+    ],
+    "considerations": [
+      "Confirm the required construction with a reference image or garment.",
+      "Include any wash, wear or shrinkage requirements in your brief."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/cotton-shirt.jpg",
+      "alt": "Plain white cotton knit shirt on a light background",
+      "caption": "Illustrative cotton shirt reference."
+    },
+    "gallery": []
+  },
+  {
+    "slug": "uniform-knitwear",
+    "name": "Uniform Knitwear",
+    "shortName": "Uniform Knitwear",
+    "range": "uniforms",
+    "summary": "School, college and corporate sweaters, cardigans and vests, developed for consistent repeat orders.",
+    "styles": [
+      "V-neck jumpers",
+      "Sweater vests",
+      "Cardigans",
+      "School & corporate"
+    ],
+    "description": [
+      "Uniform knitwear is a longstanding part of INTERLOCK’s manufacturing history. Programmes are developed around an agreed colour reference, size run and branding position so the specification can be retained for repeat orders."
+    ],
+    "applications": [
+      "School and college uniform distributors",
+      "Corporate and institutional suppliers",
+      "Wholesalers managing seasonal programmes"
+    ],
+    "customization": [
+      "Institution colours and stripe placement",
+      "Badge, crest or embroidery position",
+      "Full size-run grading",
+      "V-neck, crew neck, vest and cardigan formats"
+    ],
+    "considerations": [
+      "Share your colour reference and size breakdown.",
+      "Let us know your seasonal delivery schedule and reorder plans."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/new assests/school uniform.jpg",
+      "alt": "Navy V-neck school sweater vest with contrast trim",
+      "caption": "Illustrative uniform reference. No affiliation with the depicted institution is implied."
+    },
+    "gallery": [
+      {
+        "kind": "photo",
+        "src": "/media/products/uniform-knitwear.jpg",
+        "alt": "Navy cable-knit fabric construction",
+        "caption": "Illustrative navy knit detail."
+      }
+    ]
+  },
+  {
+    "slug": "military-institutional-knitwear",
+    "name": "Military & Institutional Knitwear",
+    "shortName": "Institutional Knitwear",
+    "range": "uniforms",
+    "summary": "Specification-led jerseys and sweaters with agreed colour, construction and reinforcement details.",
+    "styles": [
+      "Jerseys",
+      "Reinforced styles",
+      "Fixed specifications"
+    ],
+    "description": [
+      "INTERLOCK has manufactured military-style knitwear through a Pakistani export partner. This experience supports specification-led institutional work, where repeatable construction, colour and sizing matter."
+    ],
+    "applications": [
+      "Institutional knitwear contractors",
+      "Security-sector uniform programmes",
+      "Specification-led procurement partners"
+    ],
+    "customization": [
+      "Fixed yarn and colour specifications",
+      "Reinforcement and trim details",
+      "Size grading and construction tolerances",
+      "Programme-specific labels and packing"
+    ],
+    "considerations": [
+      "Share the complete technical specification and required documentation.",
+      "INTERLOCK is a manufacturing partner and does not claim a direct contract or affiliation with a government or military body."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/military-institutional-real.jpg",
+      "alt": "Olive ribbed institutional-style sweater with a button placket",
+      "caption": "Illustrative institutional knitwear reference."
+    },
+    "gallery": []
+  },
+  {
+    "slug": "socks",
+    "name": "Socks",
+    "shortName": "Socks",
+    "range": "accessories",
+    "summary": "Knitted socks for uniform, everyday and specification-led ranges, in coordinated colours and sizes.",
+    "styles": [
+      "Ribbed",
+      "Uniform",
+      "Everyday"
+    ],
+    "description": [
+      "Sock production is developed around an agreed yarn, construction and size range. Colour and stripe details can be coordinated with a wider knitwear programme."
+    ],
+    "applications": [
+      "Uniform distributors",
+      "Private-label accessory ranges",
+      "Institutional and workwear suppliers"
+    ],
+    "customization": [
+      "Yarn blend and construction",
+      "Colourways, stripe and cuff details",
+      "Size range",
+      "Labels and packing"
+    ],
+    "considerations": [
+      "Tell us the intended use and required fit.",
+      "Sample approval confirms the construction before bulk production."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/socks-real.jpg",
+      "alt": "Flat lay of ribbed socks in coordinated muted colours",
+      "caption": "Illustrative sock range."
+    },
+    "gallery": []
+  },
+  {
+    "slug": "gloves",
+    "name": "Gloves",
+    "shortName": "Gloves",
+    "range": "accessories",
+    "summary": "Knitted gloves for uniform and cold-weather programmes, with coordinated yarns, colours and sizing.",
+    "styles": [
+      "Knitted gloves",
+      "Ribbed cuffs",
+      "Programme matching"
+    ],
+    "description": [
+      "Develop gloves as an accessory order or part of a wider knitwear programme. Sizing, yarn and cuff construction are confirmed at sampling."
+    ],
+    "applications": [
+      "Uniform and institutional suppliers",
+      "Cold-weather accessory ranges",
+      "Corporate and workwear programmes"
+    ],
+    "customization": [
+      "Yarn blend and colour",
+      "Cuff construction",
+      "Size range",
+      "Branding and packing"
+    ],
+    "considerations": [
+      "Specify the intended use and any required product testing.",
+      "Special performance requirements must be reviewed before an order is accepted."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/gloves.jpg",
+      "alt": "Light knitted gloves with a matching yarn ball",
+      "caption": "Illustrative knitted glove reference."
+    },
+    "gallery": []
+  },
+  {
+    "slug": "mufflers-scarves",
+    "name": "Scarves & Mufflers",
+    "shortName": "Scarves",
+    "range": "accessories",
+    "summary": "Knitted scarves and mufflers with custom colourways, stitch structures, lengths and finishing.",
+    "styles": [
+      "Ribbed",
+      "Plain knit",
+      "Striped",
+      "Fringed"
+    ],
+    "description": [
+      "Build a standalone scarf range or coordinate accessories with sweaters and uniforms. Dimensions, knit structure and finishing are developed against your reference."
+    ],
+    "applications": [
+      "Fashion and lifestyle brands",
+      "Seasonal accessory collections",
+      "Uniform and corporate programmes"
+    ],
+    "customization": [
+      "Yarn blend, weight and stitch",
+      "Length, width and fringe detailing",
+      "Colours and stripe placement",
+      "Woven labels and packaging"
+    ],
+    "considerations": [
+      "Share your dimensions or a reference accessory.",
+      "Coordinated colours can be discussed alongside a wider knitwear order."
+    ],
+    "media": {
+      "kind": "photo",
+      "src": "/media/products/scarves-neutral.jpg",
+      "alt": "Folded scarves in cream and brown showing rib and cable knit structures",
+      "caption": "Illustrative scarf reference."
+    },
+    "gallery": []
+  }
 ];
-
-export function getProductBySlug(slug: string) {
-  return productCategories.find((p) => p.slug === slug);
-}
-
+export function getProductBySlug(slug: string) { return productCategories.find(p => p.slug === slug); }
 export function getRelatedProducts(slug: string, count = 3) {
-  const others = productCategories.filter((p) => p.slug !== slug);
-  return others.slice(0, count);
+ const current = getProductBySlug(slug);
+ return productCategories.filter(p => p.slug !== slug).sort((a,b) => Number(b.range === current?.range) - Number(a.range === current?.range)).slice(0,count);
 }
+

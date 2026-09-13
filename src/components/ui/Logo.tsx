@@ -46,7 +46,7 @@ export default function Logo({
         <span className="flex flex-col leading-none">
           <span
             className={cn(
-              "font-display text-2xl font-semibold tracking-wide",
+              "font-[family-name:var(--font-cormorant)] text-2xl font-semibold tracking-wide",
               tone === "navy" ? "text-navy" : "text-ivory"
             )}
           >

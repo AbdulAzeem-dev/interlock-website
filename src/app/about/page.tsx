@@ -1,86 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageIntro from "@/components/ui/PageIntro";
-import SectionHeading from "@/components/ui/SectionHeading";
-import HeritageTimeline from "@/components/ui/HeritageTimeline";
-import MediaBlock from "@/components/ui/MediaBlock";
-import Reveal from "@/components/ui/Reveal";
-import { heritageTimeline } from "@/content/heritage";
+import InquiryCTA from "@/components/ui/InquiryCTA";
+export const metadata: Metadata={title:"About INTERLOCK",description:"A Pakistan-based knitwear manufacturer established in 1982. Discover our production background and the next chapter in international partnerships.",alternates:{canonical:"/about"}};
+export default function AboutPage(){return <>
+<PageIntro eyebrow="The INTERLOCK story" title="Four decades in the making." body="A knitwear manufacturing business, established in Pakistan in 1982. Built on the work of making garments, season after season."/>
+<section className="shell section-space"><div className="story-grid"><div className="story-copy"><h2>Experience you can<br/>build a range around.</h2><p>INTERLOCK’s roots are in sweaters, cardigans and uniform knitwear. Our domestic work has developed around consistent colour, sizing and finishing for repeat programmes.</p><p>Alongside school and institutional production, we have manufactured military-style knitwear through a Pakistani export partner, working to fixed product specifications.</p><p>We are now opening direct relationships with international fashion brands, distributors and uniform buyers. It is a new chapter built on an established manufacturing background.</p></div><figure><div className="story-image"><Image src="/brand/interlock-label.png" alt="INTERLOCK brand label with the markhor symbol and Since 1982 inscription" fill sizes="(min-width:768px) 45vw,100vw" className="object-contain p-6"/></div><figcaption>INTERLOCK label artwork, supplied by the company.</figcaption></figure></div></section>
+<section className="material-section"><div className="shell"><h2>Our background, in brief.</h2><div className="timeline"><div><span className="time-label">1982</span><h3>Established in Pakistan</h3><p>The start of INTERLOCK’s knitwear manufacturing history.</p></div><div><span className="time-label">Over the years</span><h3>Production that repeats</h3><p>Experience in domestic uniform knitwear and specification-led production through an export partner.</p></div><div><span className="time-label">Today</span><h3>Direct international relationships</h3><p>Working towards long-term partnerships with brands and buyers beyond Pakistan.</p></div></div></div></section>
+<section className="shell section-space"><h2>Get to know your manufacturing partner.</h2><div className="story-points"><div><h3>Discuss the product</h3><p>Talk through the construction, fit, quantity and finish with us before deciding on a sample.</p></div><div><h3>Ask for what you need</h3><p>Tell us which company details, current production information or product references you need for your supplier review.</p></div><div><h3>Agree the next step</h3><p>Sampling, commercial terms and production planning are agreed around the requirements of your order.</p></div></div></section>
+<InquiryCTA title="Let’s get to know your brand." body="Tell us what you are building, and what you need from a knitwear manufacturing partner."/>
+</>;}
 
-export const metadata: Metadata = {
-  title: "About INTERLOCK",
-  description:
-    "INTERLOCK is a Pakistan-based knitwear manufacturer established in 1982, now building direct partnerships with international brands, distributors, and institutional buyers.",
-  alternates: { canonical: "/about" },
-};
-
-export default function AboutPage() {
-  return (
-    <>
-      <PageIntro
-        title="Manufacturing knitwear since 1982."
-        body="Four decades of Pakistani knitwear manufacturing, now opening into direct international partnerships."
-      />
-
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-20">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-6">
-            <p className="max-w-[60ch] text-base leading-relaxed text-charcoal/85">
-              INTERLOCK began manufacturing knitwear in Pakistan in 1982. Over
-              four decades, that work built into deep experience across
-              sweaters, cardigans, uniform knitwear, and knitted accessories,
-              alongside the machinery and production discipline needed to
-              repeat a result reliably, order after order.
-            </p>
-            <p className="max-w-[60ch] text-base leading-relaxed text-charcoal/85">
-              A significant part of that history is uniform knitwear for
-              established and premium schools across Pakistan, where the
-              standard buyers expect is not novelty but consistency: the same
-              colour, the same fit, the same finish, reorder after reorder.
-              Alongside this, INTERLOCK has manufactured specification-led
-              military-style knitwear, including jerseys, socks, and gloves,
-              through a Pakistani export partner, working to fixed technical
-              standards rather than fashion styling.
-            </p>
-            <p className="max-w-[60ch] text-base leading-relaxed text-charcoal/85">
-              That combination, decades of domestic manufacturing experience
-              plus the discipline of specification-led production, is what
-              INTERLOCK now brings directly to international brands,
-              distributors, and institutional buyers. This is a natural next
-              stage for a business with a long production history, not a
-              reaction to any single event: the aim is long-term
-              manufacturing relationships built on the same reliability that
-              has held for over forty years at home.
-            </p>
-          </div>
-          <Reveal>
-            <MediaBlock
-              media={{
-                kind: "photo",
-                src: "/media/process/yarn-cones.jpg",
-                alt: "Yarn cones prepared for a knitting production run",
-                caption: "Illustrative yarn preparation, not INTERLOCK's own archive photograph.",
-              }}
-              className="aspect-[4/5] w-full"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-navy py-16 md:py-24">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <SectionHeading tone="ivory" title="Four decades, in brief" />
-          <div className="mt-12">
-            <HeritageTimeline markers={heritageTimeline} tone="ivory" />
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-24">
-        <SectionHeading
-          title="Why experience matters more than novelty here"
-          body="A knitwear order rarely goes wrong at the design stage. It goes wrong in gauge, tension, colour drift, or a size grade that does not repeat. Forty years of production gives INTERLOCK the judgement to catch that before it reaches you, and to keep a programme consistent for as long as you need it to run."
-        />
-      </section>
-    </>
-  );
-}

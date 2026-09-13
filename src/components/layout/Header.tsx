@@ -1,91 +1,61 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { List, X } from "@phosphor-icons/react";
+import { ArrowUpRight, CaretDown, List, X } from "@phosphor-icons/react";
 import Logo from "@/components/ui/Logo";
-import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/content/site";
-import { cn } from "@/lib/cn";
 
+const ranges = [
+  { name: "Fashion & private label", items: [["View collections", "/products/divisions/fashion"], ["Sweaters", "/products/sweaters"], ["Cardigans", "/products/cardigans"]] },
+  { name: "Military & defence", items: [["View the division", "/products/divisions/military"], ["Institutional knitwear", "/products/military-institutional-knitwear"]] },
+  { name: "School & institutional", items: [["View the division", "/products/divisions/uniforms"], ["Uniform knitwear", "/products/uniform-knitwear"]] },
+  { name: "Hosiery & accessories", items: [["View the division", "/products/divisions/hosiery-accessories"], ["Socks", "/products/socks"], ["Gloves & scarves", "/products/gloves"]] },
+];
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
+  const [menu, setMenu] = useState<"products" | "mobile" | null>(null);
+  const root = useRef<HTMLElement>(null);
+  const productToggle = useRef<HTMLButtonElement>(null);
+  const mobileToggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    if (!menu) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenu(null);
+        (menu === "products" ? productToggle : mobileToggle).current?.focus();
+      }
     };
-  }, [open]);
-
+    const onPointer = (event: PointerEvent) => {
+      if (!root.current?.contains(event.target as Node)) setMenu(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [menu]);
+  const close = () => setMenu(null);
   return (
-    <header className="sticky top-0 z-50 border-b border-navy/10 bg-ivory/95 backdrop-blur">
-      <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-5 sm:px-8">
-        <Logo />
-
-        <nav
-          aria-label="Primary"
-          className="hidden items-center gap-8 xl:flex"
-        >
-          {site.nav.slice(1).map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium tracking-wide text-navy/80 transition-colors hover:text-navy",
-                pathname === item.href && "text-navy"
-              )}
-            >
-              {item.label}
-            </a>
-          ))}
+    <header ref={root} className="site-header" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) close(); }}>
+      <div className="shell nav-inner">
+        <div onClick={close}><Logo /></div>
+        <nav className="desktop-nav" aria-label="Primary">
+          <div className="product-nav">
+            <Link href="/products" onClick={close} aria-current={pathname.startsWith("/products") ? "page" : undefined}>Products</Link>
+            <button ref={productToggle} type="button" aria-label="Browse product categories" aria-expanded={menu === "products"} aria-controls="product-menu" onClick={() => setMenu(menu === "products" ? null : "products")}><CaretDown size={14} /></button>
+          </div>
+          {site.nav.slice(1).map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}
         </nav>
-
-        <div className="hidden xl:block">
-          <ButtonLink href="/contact" variant="primary" className="text-xs">
-            {site.primaryCta}
-          </ButtonLink>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-10 w-10 items-center justify-center text-navy xl:hidden"
-        >
-          {open ? <X size={26} /> : <List size={26} />}
-        </button>
-      </div>
-
-      <div
-        className={cn(
-          "fixed inset-x-0 top-[72px] bottom-0 z-40 flex flex-col overflow-y-auto bg-ivory transition-[opacity,visibility] duration-300 xl:hidden",
-          open ? "visible opacity-100" : "invisible opacity-0"
-        )}
-      >
-        <nav
-          aria-label="Mobile"
-          className="flex flex-1 flex-col gap-1 px-6 pt-6"
-        >
-          {site.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="border-b border-navy/10 py-4 font-display text-2xl text-navy"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <div className="px-6 pb-10 pt-4">
-          <ButtonLink href="/contact" variant="primary" className="w-full">
-            {site.primaryCta}
-          </ButtonLink>
+        <div className="nav-actions">
+          <Link href="/contact" className="button button-primary nav-quote" onClick={close}>Request a quote <ArrowUpRight size={17} /></Link>
+          <button ref={mobileToggle} type="button" className="mobile-toggle" aria-label={menu === "mobile" ? "Close menu" : "Open menu"} aria-expanded={menu === "mobile"} aria-controls="mobile-menu" onClick={() => setMenu(menu === "mobile" ? null : "mobile")}>{menu === "mobile" ? <X size={25} /> : <List size={25} />}</button>
         </div>
       </div>
+      {menu === "products" && <nav id="product-menu" className="mega-menu" aria-label="Product categories"><div className="shell mega-grid">{ranges.map(range => <div key={range.name}><p className="menu-heading">{range.name}</p>{range.items.map(([name, href]) => <Link href={href} onClick={close} key={href}>{name}<ArrowUpRight size={15}/></Link>)}</div>)}<Link href="/products" onClick={close} className="mega-all">View all four divisions <ArrowUpRight size={18}/></Link></div></nav>}
+      {menu === "mobile" && <nav id="mobile-menu" className="mobile-menu shell" aria-label="Mobile">{site.nav.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={pathname === item.href ? "page" : undefined}>{item.label}<ArrowUpRight size={20}/></Link>)}<Link href="/industries" onClick={close}>Who we work with <ArrowUpRight size={20}/></Link><Link href="/contact" onClick={close}>Contact <ArrowUpRight size={20}/></Link></nav>}
     </header>
   );
 }
+

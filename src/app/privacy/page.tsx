@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/ui/PageIntro";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -56,9 +57,13 @@ export default function PrivacyPage() {
             <p className="mt-3">
               Questions about this policy or a request to have your enquiry
               information removed can be sent to{" "}
-              <a href="mailto:enquiries@interlockknits.com" className="text-navy underline decoration-gold underline-offset-4">
-                enquiries@interlockknits.com
-              </a>
+              {site.contact.email ? (
+                <a href={`mailto:${site.contact.email}`} className="text-navy underline decoration-gold underline-offset-4">
+                  {site.contact.email}
+                </a>
+              ) : (
+                <span className="text-navy">{site.contact.placeholders.email}</span>
+              )}
               .
             </p>
           </div>
