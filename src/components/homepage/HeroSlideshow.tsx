@@ -90,7 +90,7 @@ export default function HeroSlideshow() {
 
   return (
     <section
-      aria-label="INTERLOCK manufacturing showcase"
+      aria-label="Wintex manufacturing showcase"
       className="relative flex min-h-[100dvh] items-center overflow-hidden bg-navy text-ivory"
     >
       <div className="absolute inset-0">
@@ -148,7 +148,7 @@ export default function HeroSlideshow() {
           Knitwear manufacturing, refined over four decades.
         </h1>
         <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-ivory/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
-          Established in Pakistan in 1982, INTERLOCK manufactures sweaters,
+          Established in Pakistan in 1982, Wintex manufactures sweaters,
           cardigans, uniform knitwear and accessories for international
           buyers.
         </p>

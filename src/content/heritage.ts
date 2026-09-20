@@ -13,7 +13,7 @@ export const heritageTimeline: HeritageMarker[] = [
     year: "1982",
     title: "Established in Pakistan",
     description:
-      "INTERLOCK begins manufacturing knitwear, building the machinery, technique, and production discipline the company still runs on today.",
+      "Wintex begins manufacturing knitwear, building the machinery, technique, and production discipline the company still runs on today.",
   },
   {
     year: "Since",
@@ -25,12 +25,12 @@ export const heritageTimeline: HeritageMarker[] = [
     year: "Alongside",
     title: "Specification-led military and institutional work",
     description:
-      "Working through a Pakistani export partner, INTERLOCK manufactures jerseys, socks, gloves, and related knitted items to fixed military-style specifications, extending its production discipline beyond fashion styling into strict repeatability.",
+      "Working through a Pakistani export partner, Wintex manufactures jerseys, socks, gloves, and related knitted items to fixed military-style specifications, extending its production discipline beyond fashion styling into strict repeatability.",
   },
   {
     year: "Now",
     title: "Building direct international partnerships",
     description:
-      "With decades of manufacturing knowledge established at home, INTERLOCK is opening direct relationships with brands, distributors, and institutional buyers outside Pakistan.",
+      "With decades of manufacturing knowledge established at home, Wintex is opening direct relationships with brands, distributors, and institutional buyers outside Pakistan.",
   },
 ];

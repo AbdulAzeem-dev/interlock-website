@@ -1,6 +1,6 @@
-# INTERLOCK website
+# WINTEX website
 
-Next.js (App Router) + TypeScript + Tailwind CSS v4 marketing site for INTERLOCK,
+Next.js (App Router) + TypeScript + Tailwind CSS v4 marketing site for WINTEX,
 a Pakistan-based knitwear manufacturer established in 1982.
 
 ## Setup

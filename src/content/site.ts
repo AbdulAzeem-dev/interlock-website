@@ -3,7 +3,7 @@ const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "";
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP || "";
 const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
 export const site = {
-  name: "INTERLOCK",
+  name: "Wintex",
   descriptor: "Fine Knitwear Manufacturers",
   founded: 1982,
   country: "Pakistan",
@@ -29,6 +29,6 @@ export const site = {
     { label: "About", href: "/about" },
   ],
   footerLegal: [{ label: "Privacy Policy", href: "/privacy" }, { label: "Terms of Use", href: "/terms" }],
-  photoCredits: "Product and material images are illustrative references, not verified INTERLOCK production photographs. See photography credits for sources.",
+  photoCredits: "Product and material images are illustrative references, not verified Wintex production photographs. See photography credits for sources.",
 } as const;
 

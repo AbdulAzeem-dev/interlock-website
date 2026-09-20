@@ -1,4 +1,4 @@
-# INTERLOCK buyer experience review
+# WINTEX buyer experience review
 
 ## Starting audit
 
@@ -15,7 +15,7 @@ Critical findings:
 
 ## Design direction
 
-Redesign with an authorized information architecture improvement, preserving existing route slugs and the supplied INTERLOCK mark. Retain navy and a restrained gold accent. Use a neutral, bright surface and confident sans-serif typography for product clarity; retain the established serif in the brand wordmark. No cinematic loading, rotating hero or scroll hijacking.
+Redesign with an authorized information architecture improvement, preserving existing route slugs and the supplied WINTEX mark. Retain navy and a restrained gold accent. Use a neutral, bright surface and confident sans-serif typography for product clarity; retain the established serif in the brand wordmark. No cinematic loading, rotating hero or scroll hijacking.
 
 DESIGN_VARIANCE: 5. MOTION_INTENSITY: 3. VISUAL_DENSITY: 4.
 

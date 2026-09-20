@@ -6,7 +6,7 @@ import type { ProductDivision } from "@/content/divisions";
 export default function ProductDivisionCard({ division }: { division: ProductDivision }) {
   return (
     <article className="division-card">
-      <Link href={`/products/divisions/${division.slug}`} className="division-card-link">
+      <Link href={`/products/divisions/${division.slug}`} className="division-card-link" aria-label={`View ${division.title}`}>
         <div className="division-card-media">
           <Image src={division.hero.src} alt={division.hero.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className={division.slug === "military" ? "division-military-image" : "object-cover"} />
           <span className="division-number">{division.number}</span>
@@ -18,10 +18,10 @@ export default function ProductDivisionCard({ division }: { division: ProductDiv
           <p>{division.description}</p>
           <span className="division-card-cta">{division.categoryLabel}<ArrowUpRight size={16} /></span>
         </div>
-      </Link>
-      <div className="division-card-gallery" aria-label={`${division.title} image references`}>
-        {division.gallery.slice(0, 3).map((image) => <Image key={image.src} src={image.src} alt={image.alt} width={240} height={180} className="object-cover" />)}
+      <div className="division-card-gallery" aria-hidden="true">
+        {division.gallery.slice(0, 3).map((image) => <Image key={image.src} src={image.src} alt="" width={240} height={180} className="object-cover" />)}
       </div>
+      </Link>
     </article>
   );
 }

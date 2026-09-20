@@ -3,8 +3,9 @@ import { useActionState, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle, DownloadSimple } from "@phosphor-icons/react";
 import { submitRfq } from "@/lib/actions";
-import { MAX_FILE_BYTES, ALLOWED_FILE_TYPES, type RfqState } from "@/lib/rfq";
+import { MAX_FILE_BYTES, ALLOWED_FILE_TYPES, getRfqCategoryLabel, type RfqState } from "@/lib/rfq";
 import { productCategories } from "@/content/products";
+import { productDivisions } from "@/content/divisions";
 
 type Values = Record<string,string>;
 export default function RFQForm({category = "general", deliveryEnabled = false}: {category?:string;deliveryEnabled?:boolean}) {
@@ -25,10 +26,10 @@ export default function RFQForm({category = "general", deliveryEnabled = false}:
   function error(name:string) { return state.fieldErrors?.[name]&&<span id={`${name}-error`} className="field-error">{state.fieldErrors[name]}</span>; }
   function saveBrief() {
     const label=(key:string)=>key.replace(/([A-Z])/g," $1").replace(/^./,c=>c.toUpperCase());
-    const lines=Object.entries(values).filter(([,value])=>value).map(([key,value])=>`${label(key)}: ${key==="productCategory"?(productCategories.find(p=>p.slug===value)?.name||value):value}`);
-    const content=["INTERLOCK | Manufacturing inquiry","DRAFT ONLY. This brief has not been sent.","",...lines,"",file?`Reference file: ${file.name} (attach this separately when sending)`:""].join("\n");
+    const lines=Object.entries(values).filter(([,value])=>value).map(([key,value])=>`${label(key)}: ${key==="productCategory"?getRfqCategoryLabel(value):value}`);
+    const content=["Wintex | Manufacturing inquiry","DRAFT ONLY. This brief has not been sent.","",...lines,"",file?`Reference file: ${file.name} (attach this separately when sending)`:""].join("\n");
     const url=URL.createObjectURL(new Blob([content],{type:"text/plain;charset=utf-8"}));
-    const link=document.createElement("a"); link.href=url; link.download="interlock-inquiry-brief.txt"; link.click();
+    const link=document.createElement("a"); link.href=url; link.download="wintex-inquiry-brief.txt"; link.click();
     setTimeout(()=>URL.revokeObjectURL(url),1000);
     setDraftStatus("Brief saved to your device. It has not been sent.");
   }
@@ -45,7 +46,7 @@ export default function RFQForm({category = "general", deliveryEnabled = false}:
       <div className="form-field"><label htmlFor="name">Your name *</label><input {...props("name")} required autoComplete="name" maxLength={250}/>{error("name")}</div>
       <div className="form-field"><label htmlFor="email">Email address *</label><input {...props("email")} required type="email" autoComplete="email" maxLength={250}/>{error("email")}</div>
       <div className="form-field"><label htmlFor="company">Company / brand <span>(optional)</span></label><input {...props("company")} autoComplete="organization" maxLength={250}/>{error("company")}</div>
-      <div className="form-field"><label htmlFor="productCategory">Product category</label><select {...props("productCategory")}><option value="general">Not sure yet / multiple products</option>{productCategories.map(p=><option key={p.slug} value={p.slug}>{p.name}</option>)}<option value="private-label">Custom & private label</option></select>{error("productCategory")}</div>
+      <div className="form-field"><label htmlFor="productCategory">Product category</label><select {...props("productCategory")}><option value="general">Not sure yet / multiple products</option><optgroup label="Product ranges">{productDivisions.map(division=><option key={division.slug} value={division.slug}>{division.title}</option>)}</optgroup><optgroup label="Specific garments">{productCategories.map(p=><option key={p.slug} value={p.slug}>{p.name}</option>)}</optgroup><option value="private-label">Custom & private label</option></select>{error("productCategory")}</div>
     </div>
     <div className="form-field"><label htmlFor="quantity">Approximate quantity <span>(optional)</span></label><input {...props("quantity")} placeholder="e.g. 200 pieces across 2 colourways" maxLength={250}/>{error("quantity")}</div>
     <div className="form-field"><label htmlFor="details">What would you like to make? *</label><textarea {...props("details")} required rows={4} maxLength={5000} placeholder="Tell us about your design, materials, target delivery or any questions you have."/>{error("details")}</div>
@@ -64,7 +65,7 @@ export default function RFQForm({category = "general", deliveryEnabled = false}:
       <div className="form-field"><label htmlFor="privateLabel">Labels & branding</label><textarea {...props("privateLabel")} rows={2} maxLength={5000}/>{error("privateLabel")}</div>
       <div className="form-field"><label htmlFor="packaging">Packaging</label><textarea {...props("packaging")} rows={2} maxLength={5000}/>{error("packaging")}</div>
     </div></details>
-    <label className="consent-label"><input type="checkbox" name="consent" required aria-describedby={state.fieldErrors?.consent?"consent-error":undefined}/><span>I agree to be contacted by INTERLOCK about this enquiry. <Link href="/privacy" className="underline">Privacy Policy</Link></span></label>{error("consent")}
+    <label className="consent-label"><input type="checkbox" name="consent" required aria-describedby={state.fieldErrors?.consent?"consent-error":undefined}/><span>I agree to be contacted by Wintex about this enquiry. <Link href="/privacy" className="underline">Privacy Policy</Link></span></label>{error("consent")}
     <div className="form-submit-row"><button type="submit" className="button button-primary" disabled={pending}>{pending?"Sending inquiry…":deliveryEnabled?"Send inquiry":"Save inquiry brief"}{!pending&&<ArrowUpRight size={17}/>}</button>{deliveryEnabled&&<button type="button" className="text-link" onClick={saveBrief}><DownloadSimple size={16}/>Save a copy</button>}</div>
     {draftStatus&&<p role="status" className="form-draft-status">{draftStatus}</p>}
     <noscript><p className="form-notice">For direct contact, use the business email or WhatsApp details on this page. Saving a draft requires JavaScript.</p></noscript>

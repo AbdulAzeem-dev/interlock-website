@@ -1,11 +1,11 @@
-# INTERLOCK — Content Strategy
+# WINTEX — Content Strategy
 Internal planning document. Not published on the website.
 
 ## Voice rules
 - No banned phrases: "where quality meets innovation", "we bring your vision to
   life", "your trusted partner for all your needs", "excellence in every stitch",
-  "transforming ideas into reality", "unmatched quality and service", "at INTERLOCK
-  we believe", "welcome to INTERLOCK".
+  "transforming ideas into reality", "unmatched quality and service", "at WINTEX
+  we believe", "welcome to WINTEX".
 - No unsupported superlatives: world-class, revolutionary, cutting-edge, best,
   leading, unmatched, unparalleled, luxury, premium, excellence — used only if a
   specific fact backs the claim, and even then sparingly.

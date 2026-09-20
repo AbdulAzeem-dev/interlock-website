@@ -18,39 +18,33 @@ export default function Logo({
   const content =
     variant === "icon" ? (
       <Image
-        src="/brand/interlock-icon.png"
-        alt="INTERLOCK markhor mark"
+        src="/brand/wintex-icon.png"
+        alt="Wintex markhor mark"
         width={40}
         height={39}
         className={cn("h-9 w-auto", className)}
         priority
       />
     ) : variant === "full" ? (
-      <Image
-        src="/brand/interlock-logo-full.png"
-        alt="INTERLOCK - Fine Knitwear Manufacturers, Since 1982"
-        width={324}
-        height={252}
-        className={cn("h-auto w-40", className)}
-      />
+      <span className={cn("wintex-brand-panel", className)}><Image src="/brand/wintex-icon.png" alt="" width={90} height={88}/><strong>WINTEX</strong><span>Fine Knitwear Manufacturers</span><small>Since 1982 · Pakistan</small></span>
     ) : (
-      <span className={cn("flex items-center gap-3", className)}>
+      <span className={cn("brand-lockup flex items-center gap-3", className)}>
         <Image
-          src="/brand/interlock-icon.png"
+          src="/brand/wintex-icon.png"
           alt=""
           width={36}
           height={35}
           className="h-8 w-auto shrink-0"
           priority
         />
-        <span className="flex flex-col leading-none">
+        <span className="brand-wordmark flex flex-col leading-none">
           <span
             className={cn(
               "font-[family-name:var(--font-cormorant)] text-2xl font-semibold tracking-wide",
               tone === "navy" ? "text-navy" : "text-ivory"
             )}
           >
-            INTERLOCK
+            WINTEX
           </span>
           <span
             className={cn(
@@ -69,7 +63,7 @@ export default function Logo({
   return (
     <Link
       href={href}
-      aria-label={`${"INTERLOCK"} home`}
+      aria-label={`${"Wintex"} home`}
       className="inline-flex items-center focus-visible:outline-2 focus-visible:outline-gold"
     >
       {content}

@@ -30,7 +30,7 @@ export const productDivisions: ProductDivision[] = [
       kind: "photo",
       src: "/media/products/division-knitwear.jpg",
       alt: "Folded knitted sweaters in navy, tan, and burgundy",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
+      caption: "Illustrative example, not an Wintex production photograph.",
     },
     subcategories: [
       {
@@ -42,7 +42,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/sweater.jpg",
           alt: "Stack of folded knitted sweaters in neutral tones showing rib and cable structure",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
       {
@@ -54,7 +54,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/uniform-knitwear-real.jpg",
           alt: "Navy knitted school-uniform vest with crest detail",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
       {
@@ -66,7 +66,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/military-institutional-real.jpg",
           alt: "Olive commando-style knitted sweater with button placket",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
     ],
@@ -80,7 +80,7 @@ export const productDivisions: ProductDivision[] = [
       kind: "photo",
       src: "/media/products/division-hosiery.jpg",
       alt: "Flat lay of colourful knitted socks",
-      caption: "Illustrative example, not an INTERLOCK production photograph.",
+      caption: "Illustrative example, not an Wintex production photograph.",
     },
     subcategories: [
       {
@@ -91,7 +91,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/socks-real.jpg",
           alt: "Flat lay of colourful ribbed knitted socks",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
       {
@@ -102,7 +102,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/scarf.jpg",
           alt: "Knitted scarf showing gradient colourway and ribbed structure",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
       {
@@ -113,7 +113,7 @@ export const productDivisions: ProductDivision[] = [
           kind: "photo",
           src: "/media/products/gloves.jpg",
           alt: "Pair of knitted gloves with a matching ball of yarn",
-          caption: "Illustrative example, not an INTERLOCK production photograph.",
+          caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
       {

@@ -6,6 +6,6 @@ export default function ThemeToggle() {
     const current = root.dataset.theme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     const next = current === "dark" ? "light" : "dark";
     root.dataset.theme = next;
-    try { localStorage.setItem("interlock-theme", next); } catch { /* Preference storage is optional. */ }
+    try { localStorage.setItem("wintex-theme", next); } catch { /* Preference storage is optional. */ }
   }}><CircleHalf size={15}/>Switch appearance</button>;
 }

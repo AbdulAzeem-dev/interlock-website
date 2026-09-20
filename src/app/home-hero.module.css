@@ -1,0 +1,53 @@
+/* Fixed brand colors keep the hero readable across light, dark and system themes.
+   Art direction: restrained B2B editorial; variance 5, motion 2, density 3. */
+.hero { background: #ffffff; color: #0b1d2d; }
+.layout { display: grid; grid-template-columns: 1.08fr 1fr; max-width: 1600px; margin-inline: auto; }
+.copy { align-self: center; padding: 64px clamp(28px, 4.3vw, 76px); }
+.overline { color: #80612d; font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; line-height: 1.8; }
+.copy h1 { margin: 26px 0 24px; color: #0b1d2d; font-size: clamp(44px, 5.1vw, 78px); line-height: 1.08; letter-spacing: -.055em; font-weight: 500; text-wrap: initial; }
+.copy h1 span { color: #80612d; }
+.description { max-width: 450px; color: #53606b; font-size: 15px; line-height: 1.85; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 34px; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 50px; font-size: 12px; font-weight: 600; text-decoration: none; transition: color .2s, background .2s; }
+.primary { padding: 15px 21px; background: #c6a25b; color: #0b1d2d; border-radius: 2px; }
+.primary:hover { background: #e1c68f; color: #0b1d2d; }
+.secondary { color: #0b1d2d; }
+.secondary:hover { color: #80612d; }
+.primary:focus-visible, .secondary:focus-visible { outline: 2px solid #0b1d2d; outline-offset: 5px; }
+.visual { min-width: 0; margin: 0; padding: 32px 32px 0; display: flex; flex-direction: column; background: #0b1d2d; }
+.image { position: relative; min-height: 456px; height: clamp(456px, 38vw, 576px); overflow: hidden; background: #b5b0a5; }
+.image img { object-position: center 49%; }
+.visual figcaption { padding: 18px 0; color: #d0dae3; font-size: 10px; line-height: 1.6; }
+@media (prefers-reduced-motion: no-preference) {
+  .copy { animation: hero-arrive .65s cubic-bezier(.2,.65,.3,1) both; }
+  .primary svg, .secondary svg { transition: transform .25s ease; }
+  .primary:hover svg, .secondary:hover svg { transform: translate(3px, -2px); }
+  @keyframes hero-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (max-width: 1023px) {
+  .copy { padding: 40px 28px; }
+  .copy h1 { font-size: clamp(37px, 5vw, 52px); }
+  .overline { font-size: 9px; letter-spacing: .08em; }
+  .description { font-size: 13px; }
+  .actions { gap: 10px 20px; margin-top: 25px; }
+  .image { min-height: 490px; height: 100%; }
+}
+@media (max-width: 767px) {
+  .layout { grid-template-columns: 1fr; }
+  .visual { padding: 22px 24px 0; }
+  .copy { padding: 36px 24px 32px; }
+  .copy h1 { font-size: clamp(42px, 9vw, 62px); margin-block: 20px; }
+  .description { max-width: 470px; font-size: 13px; line-height: 1.8; }
+  .actions { gap: 10px 22px; margin-top: 23px; }
+  .primary, .secondary { font-size: 11px; min-height: 46px; }
+  .primary { padding-inline: 16px; }
+  .image { min-height: 0; height: auto; aspect-ratio: 1.25; }
+  .image img { object-position: center 53%; }
+  .visual figcaption { padding: 14px 0; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary, .secondary { transition: none; }
+}
+@media (max-width: 360px) {
+  .copy h1 { font-size: 36px; }
+}

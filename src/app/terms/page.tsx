@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: "Terms governing the use of the INTERLOCK website.",
+  description: "Terms governing the use of the Wintex website.",
   alternates: { canonical: "/terms" },
   robots: { index: false, follow: true },
 };
@@ -21,9 +21,9 @@ export default function TermsPage() {
           <div>
             <h2 className="font-display text-xl text-navy">Website content</h2>
             <p className="mt-3">
-              Content on this website describes INTERLOCK&apos;s manufacturing
+              Content on this website describes Wintex&apos;s manufacturing
               capability in general terms. Product images shown for categories
-              without dedicated INTERLOCK photography are labelled as
+              without dedicated Wintex photography are labelled as
               illustrative and are not representations of a specific product,
               order, or facility. Figures such as capacity, lead time, or
               minimum order quantity are only published once confirmed; where
@@ -36,15 +36,15 @@ export default function TermsPage() {
               Nothing on this website constitutes a binding offer to
               manufacture or supply goods. An enquiry submitted through this
               website is a request for information; any resulting order is
-              subject to a separate written agreement between INTERLOCK and
+              subject to a separate written agreement between Wintex and
               the buyer.
             </p>
           </div>
           <div>
             <h2 className="font-display text-xl text-navy">Intellectual property</h2>
             <p className="mt-3">
-              The INTERLOCK name, logo, and website content are the property
-              of INTERLOCK and may not be reproduced without permission.
+              The Wintex name, logo, and website content are the property
+              of Wintex and may not be reproduced without permission.
               Reference garments, technical packs, or artwork you submit
               remain your property and are used only to evaluate and, where
               agreed, produce your order.
@@ -54,7 +54,7 @@ export default function TermsPage() {
             <h2 className="font-display text-xl text-navy">Governing law</h2>
             <p className="mt-3">
               These terms are governed by the laws of Pakistan, where
-              INTERLOCK is established. Commercial agreements for confirmed
+              Wintex is established. Commercial agreements for confirmed
               orders may specify separate governing terms by mutual
               agreement.
             </p>

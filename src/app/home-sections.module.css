@@ -1,0 +1,36 @@
+.workflow, .buyers { scroll-margin-top: 100px; }
+.workflow .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 42px 38px; }
+.steps li { display: flex; flex-direction: column; }
+.steps li h3 { margin-top: 23px; font-size: 20px; letter-spacing: -.025em; }
+.steps li > p { margin-bottom: 22px; }
+.outcome { display: flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 17px; border-top: 1px solid #e7e9eb; color: #80612d; font-size: 11px; line-height: 1.6; }
+.outcome svg { flex-shrink: 0; }
+.buyers { background: #f3f1ed; padding-block: 86px; }
+.buyerLayout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; align-items: start; }
+.buyerIntro h2 { font-size: clamp(34px, 3.5vw, 49px); line-height: 1.16; letter-spacing: -.045em; margin-block: 18px 24px; }
+.buyerIntro > p:not(:first-child) { color: #53606b; font-size: 14px; line-height: 1.85; max-width: 370px; }
+.links { display: grid; gap: 15px; margin-top: 28px; justify-items: start; }
+.links a { min-height: 35px; }
+.buyerList { list-style: none; padding: 0; margin: 0; }
+.buyerList li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 20px; padding: 25px 0; border-top: 1px solid #d5d9dc; }
+.buyerList li:first-child { padding-top: 22px; }
+.buyerList li:last-child { border-bottom: 1px solid #d5d9dc; }
+.buyerNumber { color: #80612d; font-size: 12px; padding-top: 5px; }
+.buyerList h3 { font-size: 21px; font-weight: 500; letter-spacing: -.025em; margin-bottom: 11px; }
+.buyerList p { color: #53606b; font-size: 13px; line-height: 1.85; }
+.buyerDetail { display: block; font-size: 10px; line-height: 1.7; color: #80612d; margin-top: 14px; }
+@media (max-width: 1023px) {
+  .workflow .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .buyerLayout { gap: 6%; grid-template-columns: 1fr 1.2fr; }
+}
+@media (max-width: 767px) {
+  .buyers { padding-block: 54px; }
+  .buyerLayout { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+  .workflow .steps { gap: 30px 24px; }
+  .steps li h3 { font-size: 18px; }
+}
+@media (max-width: 480px) {
+  .workflow .steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .steps li h3 { margin-top: 16px; font-size: 21px; }
+  .buyerList li { gap: 13px; }
+}

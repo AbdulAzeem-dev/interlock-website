@@ -4,10 +4,12 @@ import PageIntro from "@/components/ui/PageIntro";
 import RFQForm from "@/components/ui/RFQForm";
 import { site } from "@/content/site";
 import { getProductBySlug } from "@/content/products";
-export const metadata: Metadata = {title:"Contact & Request a Quote",description:"Discuss your next knitwear collection with INTERLOCK. Share a reference, approximate quantities and your delivery destination.",alternates:{canonical:"/contact"}};
-export default async function ContactPage({searchParams}:{searchParams:Promise<{category?:string}>}) {
-  const {category}=await searchParams;
-  const selected=category&&(getProductBySlug(category)||category==="private-label")?category:"general";
+import { getDivisionBySlug } from "@/content/divisions";
+export const metadata: Metadata = {title:"Contact & Request a Quote",description:"Discuss your next knitwear collection with Wintex. Share a reference, approximate quantities and your delivery destination.",alternates:{canonical:"/contact"}};
+export default async function ContactPage({searchParams}:{searchParams:Promise<{category?:string|string[]}>}) {
+  const {category:rawCategory}=await searchParams;
+  const category=typeof rawCategory==="string"?rawCategory:undefined;
+  const selected=category&&(getDivisionBySlug(category)||getProductBySlug(category)||category==="private-label")?category:"general";
   return <><PageIntro eyebrow="Let’s work together" title="Good knitwear starts with a conversation." body="A first collection or an established programme. Share your idea and we’ll discuss the next step."/>
   <section className="shell contact-layout">
     <aside className="contact-aside"><h2>A direct conversation.</h2><p>Prefer to email or talk through your idea? Use the contact details below.</p>

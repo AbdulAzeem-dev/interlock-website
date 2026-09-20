@@ -60,7 +60,7 @@ real detail-level product shot in the gallery.
 1. Update `src/content/products.ts`: change `media` (and `gallery` where relevant)
    for the `sweaters`, `cardigans`, `uniform-knitwear`, `military-institutional-knitwear`,
    `knitted-cotton-shirts`, `socks`, `gloves`, and `private-label` entries from
-   `{ kind: "placeholder", ... }` to `{ kind: "photo", src: "/media/products/<file>.jpg", alt: "...", caption: "Illustrative ..., not an INTERLOCK photograph." }`,
+   `{ kind: "placeholder", ... }` to `{ kind: "photo", src: "/media/products/<file>.jpg", alt: "...", caption: "Illustrative ..., not an WINTEX photograph." }`,
    matching the pattern already used for `scarf.jpg`.
 2. `uniform-knitwear.jpg` and `military-institutional.jpg` are both macro fabric
    textures (navy cable-knit vs. grey/sage ribbed knit) rather than full garment

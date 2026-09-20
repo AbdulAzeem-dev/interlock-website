@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SiteMotion from "@/components/ui/SiteMotion";
 import { site } from "@/content/site";
 import "./globals.css";
+import "./refinements.css";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -68,7 +70,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${cormorant.variable} ${montserrat.variable} h-full antialiased`}
     >
-      <head><script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('interlock-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}` }} /></head>
+      <head><script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('wintex-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}` }} /></head>
       <body className="min-h-full flex flex-col bg-ivory text-charcoal">
         <a
           href="#main-content"
@@ -81,6 +83,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <SiteMotion />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -88,9 +91,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: site.name,
-              alternateName: "Interlock Fine Knitwear Manufacturers",
+              alternateName: "Wintex Fine Knitwear Manufacturers",
               url: site.url,
-              logo: `${site.url}/brand/interlock-logo-full.png`,
+              logo: `${site.url}/brand/wintex-icon.png`,
               foundingDate: "1982",
               description: site.description,
               address: {

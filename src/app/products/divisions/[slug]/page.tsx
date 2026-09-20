@@ -28,10 +28,10 @@ export default async function ProductDivisionPage({ params }: { params: Promise<
   const division = getDivisionBySlug(slug);
   if (!division) notFound();
   const products = division.productSlugs.map((productSlug) => getProductBySlug(productSlug)).filter(Boolean);
-  const enquiryCategory = division.productSlugs[0] ?? "";
+  const enquiryCategory = division.slug;
 
   return <>
-    <main id="main-content">
+    <div>
       <div className="shell breadcrumbs"><Link href="/products">Product divisions</Link><span>/</span><span>{division.title}</span></div>
       <section className="shell division-landing-hero">
         <div className="division-landing-copy">
@@ -54,7 +54,7 @@ export default async function ProductDivisionPage({ params }: { params: Promise<
       </article> : null)}</div></section>
 
       <section className="division-route-band"><div className="shell"><div className="section-top"><div><p className="eyebrow">A practical route to production</p><h2>From reference to repeat order.</h2></div></div><ol className="division-route"><li><span>01</span><div><h3>Share the direction</h3><p>Send a reference, drawing, tech pack or existing specification with an approximate quantity.</p></div></li><li><span>02</span><div><h3>Develop the sample</h3><p>Agree yarn, construction, fit, colour and the details that make the programme yours.</p></div></li><li><span>03</span><div><h3>Approve and produce</h3><p>Your approved sample becomes the production reference for repeat manufacturing and finishing.</p></div></li></ol></div></section>
-    </main>
+    </div>
     <InquiryCTA href={`/contact?category=${enquiryCategory}`} title={`Start a ${division.title.toLowerCase()} enquiry.`} body="Tell us what you are building, how many pieces you expect and where the order needs to go." />
   </>;
 }

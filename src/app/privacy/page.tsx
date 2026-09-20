@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How INTERLOCK collects, uses, and protects information submitted through this website.",
+  description: "How Wintex collects, uses, and protects information submitted through this website.",
   alternates: { canonical: "/privacy" },
   robots: { index: false, follow: true },
 };
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <>
       <PageIntro
         title="Privacy Policy"
-        body="This page explains what information INTERLOCK collects through this website and how it is used."
+        body="This page explains what information Wintex collects through this website and how it is used."
       />
       <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-20">
         <div className="max-w-[68ch] space-y-10 text-sm leading-relaxed text-charcoal/85">

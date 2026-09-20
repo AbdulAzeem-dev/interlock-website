@@ -1,7 +1,16 @@
+import { getDivisionBySlug } from "@/content/divisions";
+import { getProductBySlug } from "@/content/products";
+
 export type RfqState = { status: "idle" | "success" | "error"; message?: string; fieldErrors?: Record<string,string>; reference?: string };
 export const MAX_FILE_BYTES = 3 * 1024 * 1024;
 export const ALLOWED_FILE_TYPES = ["application/pdf","image/jpeg","image/png","image/webp"];
 export const rfqFields = ["name","email","company","productCategory","quantity","details","country","website","material","deliveryPeriod","privateLabel","packaging","preferredContact","phone"] as const;
+
+export function getRfqCategoryLabel(category: string) {
+  if(category==="general") return "Not sure yet / multiple products";
+  if(category==="private-label") return "Custom & private label";
+  return getDivisionBySlug(category)?.title || getProductBySlug(category)?.name || category;
+}
 
 export function validateRfq(data: FormData, categories: string[]) {
   const values: Record<string,string> = {};
@@ -13,7 +22,7 @@ export function validateRfq(data: FormData, categories: string[]) {
   if(!values.name) errors.name = "Enter your name.";
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email) || values.email.length>254) errors.email = "Enter a valid email address.";
   if(!values.details) errors.details = "Tell us a little about your project.";
-  if(values.productCategory && values.productCategory!=="general" && values.productCategory!=="private-label" && !categories.includes(values.productCategory)) errors.productCategory = "Choose a category from the list.";
+  if(values.productCategory && values.productCategory!=="general" && values.productCategory!=="private-label" && !getDivisionBySlug(values.productCategory) && !categories.includes(values.productCategory)) errors.productCategory = "Choose a category from the list.";
   if(["Phone","WhatsApp"].includes(values.preferredContact) && !/^\+?[\d\s().-]{7,25}$/.test(values.phone)) errors.phone = "Include a phone number with country code.";
   if(data.get("consent")!=="on") errors.consent = "Please agree to be contacted about your inquiry.";
   const file = data.get("attachment");
@@ -36,7 +45,7 @@ export async function deliverRfq(data: FormData, categories: string[], webhookUr
     const attachment = file ? { name:file.name, type:file.type, size:file.size, contentBase64:Buffer.from(await file.arrayBuffer()).toString("base64") } : null;
     const response=await fetch(webhookUrl,{
       method:"POST", headers:{"Content-Type":"application/json",...(webhookToken?{Authorization:`Bearer ${webhookToken}`}:{})},
-      body:JSON.stringify({reference,...values,attachment,consent:true,submittedAt:new Date().toISOString()}),
+      body:JSON.stringify({reference,...values,productCategoryLabel:getRfqCategoryLabel(values.productCategory),attachment,consent:true,submittedAt:new Date().toISOString()}),
       signal:AbortSignal.timeout(15000), cache:"no-store", redirect:"error",
     });
     if(!response.ok) return {status:"error",message:"Your inquiry could not be delivered. Your details are still here. Please try again, save your brief, or contact us directly."};

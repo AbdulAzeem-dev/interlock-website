@@ -39,8 +39,8 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/knitwear cover.jpg",
-      "alt": "Folded sweaters in neutral colours showing rib and cable knit",
+      "src": "/media/products/navy-half-zip-editorial.png",
+      "alt": "Navy half-zip sweater with textured knitting on a warm stone background",
       "caption": "Illustrative knitwear reference."
     },
     "gallery": [
@@ -153,7 +153,7 @@ export const productCategories: ProductCategory[] = [
       "School & corporate"
     ],
     "description": [
-      "Uniform knitwear is a longstanding part of INTERLOCK’s manufacturing history. Programmes are developed around an agreed colour reference, size run and branding position so the specification can be retained for repeat orders."
+      "Uniform knitwear is a longstanding part of Wintex’s manufacturing history. Programmes are developed around an agreed colour reference, size run and branding position so the specification can be retained for repeat orders."
     ],
     "applications": [
       "School and college uniform distributors",
@@ -197,7 +197,7 @@ export const productCategories: ProductCategory[] = [
       "Fixed specifications"
     ],
     "description": [
-      "INTERLOCK has manufactured military-style knitwear through a Pakistani export partner. This experience supports specification-led institutional work, where repeatable construction, colour and sizing matter."
+      "Wintex has manufactured military-style knitwear through a Pakistani export partner. This experience supports specification-led institutional work, where repeatable construction, colour and sizing matter."
     ],
     "applications": [
       "Institutional knitwear contractors",
@@ -212,7 +212,7 @@ export const productCategories: ProductCategory[] = [
     ],
     "considerations": [
       "Share the complete technical specification and required documentation.",
-      "INTERLOCK is a manufacturing partner and does not claim a direct contract or affiliation with a government or military body."
+      "Wintex is a manufacturing partner and does not claim a direct contract or affiliation with a government or military body."
     ],
     "media": {
       "kind": "photo",
