@@ -1,4 +1,4 @@
-# INTERLOCK — Asset Manifest
+# WINTEX — Asset Manifest
 Internal planning document. Not published on the website.
 
 ## Logo
@@ -25,8 +25,8 @@ military/uniform subcategory tiles). Unlike the first two sourcing passes, no
 photographer name or licence could be independently verified for these files -
 they were provided directly by the site owner rather than sourced with a
 documented licence trail. They are treated the same as the rest of the site's
-non-INTERLOCK photography: real, unbranded, and disclosed with the same
-"illustrative example, not an INTERLOCK production photograph" caption. One file
+non-WINTEX photography: real, unbranded, and disclosed with the same
+"illustrative example, not an WINTEX production photograph" caption. One file
 from the owner's folder (a knitted polo shirt with a visible "J.Crew" neck tag) was
 deliberately excluded for showing a competitor's brand.
 
@@ -38,7 +38,7 @@ Flickr CC BY, and Pexels License). Full source/licence/creator logs recorded in
 replace every remaining placeholder tile with premium real photography: sweater,
 cardigan, uniform-knitwear texture, military-institutional texture, cotton shirt,
 socks, gloves, private-label hang tag). These are generic, honest illustrative
-photographs - never captioned or implied to be INTERLOCK's own specific facility,
+photographs - never captioned or implied to be WINTEX's own specific facility,
 staff, product, or client output, per the brief's authenticity rules (Section 8).
 As of the second sourcing pass, **no product category uses the abstract placeholder
 tile any more** - all nine categories show a real photograph.
@@ -46,7 +46,7 @@ tile any more** - all nine categories show a real photograph.
 **Disclosure applied consistently:** every one of these photos, in every position
 across the site (hero, manufacturer-proof section, quality section, manufacturing
 page, about page, and every product category page), carries a small on-page
-caption stating it is illustrative and not an INTERLOCK photograph, in addition to
+caption stating it is illustrative and not an WINTEX photograph, in addition to
 the sitewide footer credit line (`site.photoCredits`). A skeptical sourcing/QA buyer
 who reverse-image-searches any photo on the site will find the same disclosure
 already on the page, not a surprise.
@@ -73,8 +73,8 @@ label section background, card hover states.
 - No certificates, client logos, or inspection reports of any kind.
 
 ## Heritage section — honest treatment
-No real 1982-era INTERLOCK photograph exists in this project and none is fabricated
-or substituted with a generic "old factory" stock photo pretending to be INTERLOCK's
+No real 1982-era WINTEX photograph exists in this project and none is fabricated
+or substituted with a generic "old factory" stock photo pretending to be WINTEX's
 own archive. The Heritage/About timeline is built typographically (large-numeral
 year markers, short factual copy) rather than propped up with a fake historical
 image. `REQUIRED_BUSINESS_INPUTS.md` lists the real archival photography that would

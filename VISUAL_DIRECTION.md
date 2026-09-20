@@ -1,4 +1,4 @@
-# INTERLOCK — Visual Direction
+# WINTEX — Visual Direction
 Internal planning document. Not published on the website.
 
 ## Design read (design-taste-frontend Section 0.B)

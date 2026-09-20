@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/ui/PageIntro";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How INTERLOCK collects, uses, and protects information submitted through this website.",
+  description: "How Wintex collects, uses, and protects information submitted through this website.",
   alternates: { canonical: "/privacy" },
   robots: { index: false, follow: true },
 };
@@ -13,7 +14,7 @@ export default function PrivacyPage() {
     <>
       <PageIntro
         title="Privacy Policy"
-        body="This page explains what information INTERLOCK collects through this website and how it is used."
+        body="This page explains what information Wintex collects through this website and how it is used."
       />
       <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 md:py-20">
         <div className="max-w-[68ch] space-y-10 text-sm leading-relaxed text-charcoal/85">
@@ -56,9 +57,13 @@ export default function PrivacyPage() {
             <p className="mt-3">
               Questions about this policy or a request to have your enquiry
               information removed can be sent to{" "}
-              <a href="mailto:enquiries@interlockknits.com" className="text-navy underline decoration-gold underline-offset-4">
-                enquiries@interlockknits.com
-              </a>
+              {site.contact.email ? (
+                <a href={`mailto:${site.contact.email}`} className="text-navy underline decoration-gold underline-offset-4">
+                  {site.contact.email}
+                </a>
+              ) : (
+                <span className="text-navy">{site.contact.placeholders.email}</span>
+              )}
               .
             </p>
           </div>

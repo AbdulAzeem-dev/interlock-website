@@ -1,177 +1,65 @@
-import SectionHeading from "@/components/ui/SectionHeading";
-import Reveal from "@/components/ui/Reveal";
-import MediaBlock from "@/components/ui/MediaBlock";
-import HeritageTimeline from "@/components/ui/HeritageTimeline";
-import { ButtonLink } from "@/components/ui/Button";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import HeroSlideshow from "@/components/homepage/HeroSlideshow";
-import Ticker from "@/components/homepage/Ticker";
-import ProductDivisions from "@/components/homepage/ProductDivisions";
-import FactoryVideoSection from "@/components/homepage/FactoryVideoSection";
-import CapacitySection from "@/components/homepage/CapacitySection";
-import EnquiryStack from "@/components/homepage/EnquiryStack";
-import { site } from "@/content/site";
-import { capabilities } from "@/content/capabilities";
-import { heritageTimeline } from "@/content/heritage";
 import type { Metadata } from "next";
-
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Check } from "@phosphor-icons/react/dist/ssr";
+import InquiryCTA from "@/components/ui/InquiryCTA";
+import BuyerFAQ from "@/components/ui/BuyerFAQ";
+import ProductDivisionCard from "@/components/ui/ProductDivisionCard";
+import { productDivisions } from "@/content/divisions";
+import styles from "./home-hero.module.css";
+import sections from "./home-sections.module.css";
+import Logo from "@/components/ui/Logo";
 export const metadata: Metadata = {
-  title: "Custom Knitwear Manufacturer in Pakistan Since 1982",
-  description:
-    "INTERLOCK manufactures sweaters, cardigans, uniform knitwear, cotton knit shirts, socks, gloves and scarves for international brands, distributors and institutional buyers. Established in Pakistan, 1982.",
+  title: "Private Label Knitwear Manufacturer in Pakistan Since 1982",
+  description: "Bring your knitwear collection to life with Wintex. Sweaters, cardigans and accessories, developed to your brief. Manufacturing in Pakistan since 1982.",
   alternates: { canonical: "/" },
 };
-
+const steps = [
+  ["Design & development", "Start with a sketch, reference garment or tech pack. We review construction, measurements and trims around your intended use and target cost.", "A clear garment brief"],
+  ["Yarn selection & sourcing", "Discuss composition, colour, weight and feel. Yarn availability and any specific sourcing requirements are reviewed before sampling.", "An agreed yarn direction"],
+  ["Sampling & approval", "Review the fit, stitch, hand-feel and finish. We work through agreed revisions so your approved sample becomes the production reference.", "Your approved sample"],
+  ["Computerized knitting", "Cixing and Shima flat-knitting machines turn the agreed construction into knitted panels. Machine suitability is reviewed for your yarn and design.", "Knitting to specification"],
+  ["Linking & finishing", "Panels are joined and garments finished, with attention to seams, shape, trims and label placement against the approved reference.", "A finished, branded garment"],
+  ["Quality checks & dispatch", "Measurements, appearance and packing are checked against the order requirements. Delivery arrangements and documentation are agreed for your destination.", "Prepared for the agreed handover"],
+];
+const buyers = [
+  ["Fashion & emerging labels", "Sweaters, cardigans and accessories developed around your own fit, colours and brand identity — including collections for online stores.", "Collection development · Private label"],
+  ["Retailers & wholesalers", "Coordinated knitwear ranges with agreed sizing, labelling and packing for retail shelves and wholesale programmes.", "Own-brand ranges · Repeat orders"],
+  ["Uniform & institutional suppliers", "Specification-led knitwear for school, workwear and institutional programmes, with attention to colour, size ranges and branding.", "Uniform programmes · Consistent specifications"],
+  // ["Buying houses & export partners", "A manufacturing conversation built around your buyer’s brief, approval requirements and destination-specific packing and documentation.", "Buyer specifications · Export coordination"],
+];
 export default function Home() {
-  return (
-    <>
-      <HeroSlideshow />
-
-      <Ticker />
-
-      {/* PRODUCT DIVISIONS */}
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:py-28">
-        <SectionHeading
-          title="One manufacturing partner. Three specialist product divisions."
-          body="From fashion knitwear and institutional uniforms to hosiery and activewear, INTERLOCK supports diverse product programmes through one manufacturing relationship."
-        />
-        <div className="mt-14">
-          <ProductDivisions />
-        </div>
-      </section>
-
-      <FactoryVideoSection />
-
-      <CapacitySection />
-
-      {/* MANUFACTURER PROOF - dark section, process photography */}
-      <section className="bg-navy py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
-            <Reveal>
-              <MediaBlock
-                media={{
-                  kind: "photo",
-                  src: "/media/process/yarn-cones.jpg",
-                  alt: "Cones of coloured yarn prepared for knitting",
-                  caption: "Illustrative yarn preparation, not INTERLOCK's own stock photograph.",
-                }}
-                className="aspect-[4/5] w-full"
-                dark
-              />
-            </Reveal>
-            <div>
-              <SectionHeading
-                tone="ivory"
-                title="Proof is in the process."
-                body="An enquiry becomes a finished, packed product through a fixed sequence: requirement review, sampling, colour and sizing management, production checks, and finishing. Nothing moves to bulk production until a sample is approved against your reference."
-              />
-              <div className="mt-10">
-                {capabilities.slice(0, 4).map((c, i) => (
-                  <ProcessStepDark key={c.title} index={i + 1} {...c} />
-                ))}
-              </div>
-            </div>
+  return <div className="home-page">
+    <section className={styles.hero} aria-labelledby="home-heading">
+      <div className={styles.layout}>
+        <div className={styles.copy}>
+          <p className={styles.overline}>Knitwear manufacturers · Pakistan · Since 1982</p>
+          <h1 id="home-heading">Your label.<br/><span>Our knitwear.</span></h1>
+          <p className={styles.description}>Custom sweaters, cardigans and accessories for your brand. From your first sample to production, made to your brief.</p>
+          <div className={styles.actions}>
+            <Link href="/contact" className={styles.primary}>Discuss your project <ArrowUpRight size={19}/></Link>
+            <Link href="/products" className={styles.secondary}>Explore our knitwear <ArrowRight size={18}/></Link>
           </div>
         </div>
-      </section>
-
-      <EnquiryStack />
-
-      {/* QUALITY - dark section, texture photography */}
-      <section className="bg-navy py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
-            <div>
-              <SectionHeading tone="ivory" title="Quality is a checklist, not a slogan." />
-              <ul className="mt-8 space-y-4">
-                {[
-                  "Every order is produced against an approved sample, not a general description.",
-                  "Colour is matched and retained against a fixed reference for every reorder.",
-                  "Sizing is graded against your measurement chart, not a generic block.",
-                  "Stitch, seam, and finishing are checked before packing.",
-                  "Logo, embroidery, and label placement are verified against your specification.",
-                  "Finished goods are packed to your agreed packaging requirements before dispatch.",
-                ].map((line) => (
-                  <li key={line} className="flex gap-3 border-t border-ivory/15 pt-4 text-sm leading-relaxed text-ivory/80">
-                    <span className="mt-0.5 font-display italic text-gold">&#10003;</span>
-                    {line}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <Reveal>
-              <MediaBlock
-                media={{
-                  kind: "photo",
-                  src: "/media/texture/knit-rib-macro.jpg",
-                  alt: "Close macro detail of ribbed knit fabric construction",
-                  caption: "Illustrative knit texture, not an INTERLOCK product photograph.",
-                }}
-                className="aspect-[4/5] w-full"
-                dark
-              />
-            </Reveal>
+        <figure className={styles.visual}>
+          <div className={styles.image}>
+            <Image src="/media/hero/sweaters-folded.jpg" alt="Navy, stone and burgundy knitwear with ribbed necklines and label details, shown as a product reference" fill preload sizes="(max-width: 767px) 100vw, 48vw" className="object-cover"/>
           </div>
-        </div>
-      </section>
-
-      {/* HERITAGE */}
-      <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:py-28">
-        <SectionHeading
-          title="Manufacturing knitwear since 1982."
-          body="Four decades of production experience shows up as technical judgement: knowing how a yarn will behave, how a colour will hold, and how to keep a reorder identical to the last one."
-        />
-        <div className="mt-14 bg-navy px-6 py-14 sm:px-10 md:px-14">
-          <HeritageTimeline markers={heritageTimeline} tone="ivory" />
-        </div>
-      </section>
-
-      {/* PRIVATE LABEL CTA */}
-      <section className="bg-parchment py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <SectionHeading
-              title="Start with your product brief."
-              body="Share your product category, reference, quantities, materials and target timeline. Our team will review the requirements and respond with the next practical step."
-            />
-            <div className="flex lg:justify-end">
-              <ButtonLink href="/contact" className="group">
-                {site.enquiryCta}
-                <ArrowRight
-                  size={18}
-                  weight="light"
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
-function ProcessStepDark({
-  index,
-  title,
-  description,
-}: {
-  index: number;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="flex gap-5 border-t border-ivory/15 py-5 first:border-t-0">
-      <span className="font-display text-xl italic text-gold">
-        {String(index).padStart(2, "0")}
-      </span>
-      <div>
-        <h3 className="font-display text-base text-ivory">{title}</h3>
-        <p className="mt-1 max-w-sm text-sm leading-relaxed text-ivory/70">
-          {description}
-        </p>
+          <figcaption>Product reference. Yarn, fit and finish developed to your specification.</figcaption>
+        </figure>
       </div>
-    </div>
-  );
+    </section>
+    <section className="proof-strip" aria-label="Manufacturing at a glance"><div className="shell proof-grid"><div><strong>1982</strong><span>Established in Pakistan</span></div><div><strong>50<span> pieces</span></strong><span>Starting runs, subject to specification</span></div><div><strong>10,000<span> pieces</span></strong><span>Monthly capacity, subject to product mix</span></div><div className="proof-detail"><Check size={25}/><span>Sampling through to<br/>private-label production</span></div></div></section>
+    <section className="home-products section-space" id="product-range"><div className="shell">
+      <div className="section-top"><div><p className="eyebrow">Explore our range</p><h2>Knitwear for your next collection.</h2><p>From fashion collections to uniform orders. Choose a category to see styles, construction options and details to include in your brief.</p></div><Link href="/products" className="text-link">View the complete range <ArrowUpRight size={18}/></Link></div>
+      <div className="home-divisions">{productDivisions.map((division) => <ProductDivisionCard key={division.slug} division={division}/>)}</div>
+    </div></section>
+    <section className="material-section"><div className="shell material-grid"><figure><div className="material-image"><Image src="/media/products/cardigan.jpg" alt="Close view of a cardigan showing its knit, button and pocket finishing" fill sizes="(min-width: 1024px) 48vw, 100vw" className="object-cover"/></div><figcaption>Reference detail / stitch and finishing are agreed in development</figcaption></figure><div className="material-copy"><p className="eyebrow">Made to your brief</p><h2>Good manufacturing is in the details.</h2><p>Yarn, fit, colour, finish. We work through the choices that make a garment yours, then use the approved sample as the reference for production.</p><div className="detail-pairs"><div><h3>Built around your fit</h3><p>Stitch, weight, silhouette and measurements.</p></div><div><h3>Finished for your label</h3><p>Colourways, woven labels, trims and packing.</p></div></div><Link href="/private-label" className="text-link">Explore private label <ArrowUpRight size={18}/></Link></div></div></section>
+    <section className={`shell section-space ${sections.workflow}`} id="how-we-work" aria-labelledby="process-heading"><div className="section-top"><div><p className="eyebrow">How we work</p><h2 id="process-heading">From your first sketch<br/>to the finished shipment.</h2><p>Six stages, with the important decisions agreed along the way. Your approved sample and specification guide production.</p></div><Link href="/manufacturing" className="text-link">Explore our capabilities <ArrowUpRight size={18}/></Link></div><ol className={`process-grid ${sections.steps}`}>{steps.map(([title, body, outcome], index) => <li key={title}><span className="step-number">0{index + 1}</span><h3>{title}</h3><p>{body}</p><span className={sections.outcome}><Check size={15} aria-hidden="true"/>{outcome}</span></li>)}</ol></section>
+    <section className={sections.buyers} id="who-we-serve" aria-labelledby="buyers-heading"><div className={`shell ${sections.buyerLayout}`}><div className={sections.buyerIntro}><p className="eyebrow">Who we serve</p><h2 id="buyers-heading">Different buyers.<br/>A shared standard.</h2><p>A new collection and a uniform programme need different things. We start with what matters to your business.</p><div className={sections.links}><Link href="/private-label" className="text-link">Private label manufacturing <ArrowUpRight size={18}/></Link><Link href="/industries" className="text-link">Who we manufacture for <ArrowUpRight size={18}/></Link></div></div><ol className={sections.buyerList}>{buyers.map(([title, body, detail], index) => <li key={title}><span className={sections.buyerNumber}>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p><span className={sections.buyerDetail}>{detail}</span></div></li>)}</ol></div></section>
+    <section className="heritage-band"><div className="shell heritage-grid"><figure className="supplier-art"><div><Logo variant="full" href={false}/></div><figcaption>Our name. Our manufacturing heritage.</figcaption></figure><div><p className="eyebrow">Manufacturing in Pakistan since 1982</p><h2>Know the people behind your product.</h2><p>Our background is in domestic uniform knitwear and specification-led production through a Pakistani export partner. Today, we’re building direct relationships with international brands and buyers.</p><p>Ask us for the company details and current production information you need for your supplier review.</p><Link href="/about" className="text-link">Meet Wintex <ArrowUpRight size={18}/></Link></div></div></section>
+    <section className="shell section-space faq-section"><div><h2>Before we get started.</h2><p>A few practical answers for your first order.</p></div><BuyerFAQ/></section>
+    <InquiryCTA/>
+  </div>;
 }
+

@@ -5,7 +5,7 @@ import { Play } from "@phosphor-icons/react";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const VIDEO_SRC = "/videos/interlock-factory.mp4";
+const VIDEO_SRC = "/videos/wintex-factory.mp4";
 const POSTER_SRC = "/media/hero/video-poster.jpg";
 
 export default function FactoryVideoSection() {
@@ -38,7 +38,7 @@ export default function FactoryVideoSection() {
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <SectionHeading
           tone="ivory"
-          title="Inside Interlock"
+          title="Inside Wintex"
           body="A closer look at the machinery, craftsmanship and people behind our knitwear production."
         />
         <Reveal className="mt-12">

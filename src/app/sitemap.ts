@@ -3,6 +3,7 @@ import { site } from "@/content/site";
 import { productCategories } from "@/content/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (!site.domainConfirmed) return [];
   const staticRoutes = [
     "",
     "/products",

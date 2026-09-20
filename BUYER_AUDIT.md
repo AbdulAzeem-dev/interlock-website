@@ -1,18 +1,18 @@
-# INTERLOCK — Buyer Audit
+# WINTEX — Buyer Audit
 Internal planning document. Not published on the website. This is a genuine
 critical pass against the built site (not a plan), run after implementation.
 
 ## Personas
 - A: US private-label fashion brand sourcing sweaters/cardigans.
 - B: UK school-uniform distributor needing colour consistency and repeat orders.
-- C: European sourcing/QA manager verifying INTERLOCK is a real factory.
+- C: European sourcing/QA manager verifying WINTEX is a real factory.
 - D: UAE/Saudi institutional supplier needing jerseys, sweaters, socks, gloves.
 - E: Australian wholesaler seeking a flexible long-term manufacturing partner.
 
 ## Finding 1 (fixed): unlabelled stock photography in trust-critical positions
 **Persona most affected:** C, then A.
 As first built, the homepage hero and the "Proof is in the process" and "Quality"
-sections used real, properly-licensed but non-INTERLOCK photography (a circular
+sections used real, properly-licensed but non-WINTEX photography (a circular
 knitting machine, yarn cones, knit texture) with no on-page disclosure — only a
 small credit line buried in the footer. A skeptical sourcing/QA manager (Persona C)
 routinely reverse-image-searches supplier photography during due diligence. Finding
@@ -21,9 +21,9 @@ mill, with no disclosure on the page itself, is worse for trust than showing no
 photo at all — it reads as the exact "trader dressing up as a factory" problem the
 brief explicitly warns against.
 **Fix applied:** every one of these photos now carries a small on-page caption
-("Illustrative circular-knitting process, not an INTERLOCK facility photograph.")
+("Illustrative circular-knitting process, not an WINTEX facility photograph.")
 directly under the image, in addition to the footer credit line. See
-`ASSET_MANIFEST.md`. This does not remove the underlying limitation (INTERLOCK has
+`ASSET_MANIFEST.md`. This does not remove the underlying limitation (WINTEX has
 no published photography of its own yet) but it removes the deception risk, and a
 caption that proactively says "this is illustrative" reads as more credible than
 either silence or an implied claim.
@@ -45,10 +45,10 @@ trade-off, not an oversight.
 will notice the two categories they care about most have no photo, which reads as
 incomplete rather than fraudulent, but still costs some conversion confidence. This
 is the second-highest-value pre-launch upgrade after Finding 1's underlying cause,
-same root fix: real INTERLOCK product photography.
+same root fix: real WINTEX product photography.
 
 ## Finding 3 (not fixed, out of scope): no working contact channel yet
-`enquiries@interlockknits.com` and the RFQ form's webhook are both unconfirmed
+`enquiries@wintexknits.com` and the RFQ form's webhook are both unconfirmed
 placeholders (REQUIRED_BUSINESS_INPUTS items 1 and 17). The form itself is fully
 functional (validates, shows success/error states, logs server-side), but nothing
 sent through it reaches a real inbox until `RFQ_WEBHOOK_URL` is set and a real email
@@ -57,7 +57,7 @@ even though it does not block the site from being reviewed or demoed.
 
 ## Finding 4 (fixed during build): the military/institutional category needed careful wording
 Initial instinct was to lean on the military-style production history for
-credibility with Persona D. Copy was written and re-checked to say INTERLOCK
+credibility with Persona D. Copy was written and re-checked to say WINTEX
 manufactured through a Pakistani export partner and never claims a direct
 government or military supply relationship, per the brief's hard constraint. This
 wording should still get an owner sign-off before launch given its sensitivity
@@ -96,7 +96,7 @@ weight (same card size, same grid), not a hero treatment for one category.
 ## Scores (honest, not aspirational)
 | Category | Score /10 | Why not higher |
 |---|---|---|
-| Authenticity | 9 | No fabricated claims anywhere; only reason not 10 is Finding 1's underlying cause (no INTERLOCK-owned photography exists yet, even though it's now honestly disclosed) |
+| Authenticity | 9 | No fabricated claims anywhere; only reason not 10 is Finding 1's underlying cause (no WINTEX-owned photography exists yet, even though it's now honestly disclosed) |
 | Visual quality | 8 | Editorial layout, restrained palette, real typography from the brand guide; held back one point by the placeholder tiles in Finding 2 |
 | Manufacturing credibility | 7 | Process description is specific and confident; credibility is capped until real photography or a verifiable fact (capacity, certification) exists |
 | Content clarity | 9 | Every page answers what/who/how within the first screen; no jargon, no filler |
@@ -112,7 +112,7 @@ gap traces to a specific, named, fixable cause already logged in
 `REQUIRED_BUSINESS_INPUTS.md` — not a vague or unaddressed weakness.
 
 ## What would move every score to 9+
-1. Real INTERLOCK factory and product photography (closes Findings 1 and 2 at the root).
+1. Real WINTEX factory and product photography (closes Findings 1 and 2 at the root).
 2. A working contact channel (closes Finding 3).
 3. One verifiable fact beyond "established 1982" — a certification, a machine count, or a permitted client reference.
 

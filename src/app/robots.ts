@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      ...(site.domainConfirmed ? { allow: "/" } : { disallow: "/" }),
     },
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: site.domainConfirmed ? `${site.url}/sitemap.xml` : undefined,
   };
 }

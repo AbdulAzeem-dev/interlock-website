@@ -26,7 +26,7 @@ export default function OpengraphImage() {
             fontWeight: 600,
           }}
         >
-          INTERLOCK
+          Wintex
         </div>
         <div
           style={{

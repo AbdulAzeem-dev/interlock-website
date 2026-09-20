@@ -2,7 +2,7 @@
 
 Sourced by background research fork on 2026-07-31. All images are real photographs
 (no AI generation), filtered to commercial-use-compatible licences. None of these
-depict INTERLOCK's own facility, staff, or products — they are generic illustrative
+depict WINTEX's own facility, staff, or products — they are generic illustrative
 photography only. Do not caption any of them as "our factory," "our team," or
 "our product" — use category-level, non-specific captions (e.g. "Circular knitting
 in progress", "Yarn selection", "Ribbed knit structure").
@@ -37,7 +37,7 @@ landscape loses the yarn creel detail that makes it convincing.
   site's editorial standard.
 - **Cardigan:** best-matching candidate ("Argyle Cardigan," CC BY 2.0, Menswear
   Market) clearly shows a Polo Ralph Lauren logo on the chest. Rejected: using it
-  would misattribute a competitor's branded product to INTERLOCK.
+  would misattribute a competitor's branded product to WINTEX.
 - **Socks:** candidates were casual selfie-style photos of someone's feet indoors.
   Rejected as inconsistent with a B2B manufacturing site's tone.
 - **Gloves:** best candidate was a single fingerless glove, amateur phone photo on
@@ -50,7 +50,7 @@ landscape loses the yarn creel detail that makes it convincing.
   in the time available.
 
 **Recommendation:** leave these six as clearly-labelled placeholder slots (per the
-design skill's own fallback guidance) until INTERLOCK supplies real product and
+design skill's own fallback guidance) until WINTEX supplies real product and
 factory photography. The data layer should keep these as named, swappable media
 references so dropping in real photos later is a one-line change per category, not
 a redesign.

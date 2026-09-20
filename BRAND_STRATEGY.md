@@ -1,7 +1,7 @@
-# INTERLOCK — Brand Strategy
+# WINTEX — Brand Strategy
 Internal planning document. Not published on the website.
 
-## What INTERLOCK is
+## What WINTEX is
 A Pakistan-based knitwear manufacturer established in 1982. Forty-four years of
 production experience across sweaters, cardigans, uniform knitwear, knitted cotton
 shirts, and knitted accessories (socks, gloves, mufflers, scarves, caps). Historically
@@ -11,7 +11,7 @@ partner (third-party manufacturer, not a direct government/military supplier).
 Now building direct B2B relationships with international brands, distributors,
 institutional buyers, and sourcing teams.
 
-## What INTERLOCK is not
+## What WINTEX is not
 - Not a retail brand, not e-commerce, no cart, no prices.
 - Not only a school-uniform manufacturer.
 - Not only a military-knitwear manufacturer.
@@ -51,7 +51,7 @@ Calm, precise, confident, evidence-led. No superlatives without support ("world-
 British/neutral international English throughout.
 
 ## Non-negotiable facts
-- Brand name: INTERLOCK
+- Brand name: WINTEX
 - Established: 1982 (never 1988, never any other year)
 - Location: Pakistan (stated confidently, never hidden)
 - Descriptor: "Fine Knitwear Manufacturers"

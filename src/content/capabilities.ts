@@ -43,7 +43,7 @@ export const capabilities: Capability[] = [
 
 export const collaborationSteps = [
   "Share your product brief, reference garment, or technical specification",
-  "INTERLOCK reviews feasibility and responds with next steps",
+  "Wintex reviews feasibility and responds with next steps",
   "A sample is developed and reviewed against your reference",
   "Commercial details are confirmed",
   "Bulk production begins",

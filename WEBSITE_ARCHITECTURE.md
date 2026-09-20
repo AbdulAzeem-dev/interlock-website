@@ -1,4 +1,4 @@
-# INTERLOCK — Website Architecture
+# WINTEX — Website Architecture
 Internal planning document. Not published on the website.
 
 ## Stack

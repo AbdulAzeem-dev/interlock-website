@@ -1,0 +1,157 @@
+/* Shared interaction language: quiet movement, clear focus, readable buyer information. */
+.site-header { box-shadow: 0 4px 22px #0b1d2d06; }
+.desktop-nav a { font-size: 12px; }
+.desktop-nav > a, .product-nav > a { position: relative; }
+.desktop-nav > a::after, .product-nav > a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 7px;
+  height: 1px; background: currentColor; transform: scaleX(0);
+  transform-origin: left; transition: transform .25s ease;
+}
+.desktop-nav a:is(:hover, :focus-visible)::after { transform: scaleX(1); }
+.mega-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.mega-division { align-items: flex-start !important; }
+.mega-division strong { display: block; font-size: 14px; font-weight: 500; line-height: 1.5; }
+.mega-division small { display: block; margin-top: 10px; font-size: 11px; line-height: 1.8; color: var(--muted); }
+.mega-menu, .mobile-menu { animation: menu-enter .2s ease-out; }
+@keyframes menu-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.button { transition: background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.button svg, .division-card-arrow svg, .division-card-cta svg { transition: transform .3s ease; }
+.button:active { transform: translateY(1px); }
+.text-link { text-decoration-color: transparent; transition: color .2s, text-decoration-color .2s; }
+.text-link:is(:hover, :focus-visible) { text-decoration: underline; text-decoration-thickness: 1px; }
+.division-card { position: relative; transition: transform .35s ease, box-shadow .35s ease; }
+.division-card-link { height: 100%; }
+.division-card-media img { transition: transform .65s cubic-bezier(.2,.65,.3,1); }
+.division-card-arrow { transition: background .3s ease, color .3s ease; }
+.division-card-body { padding: 27px 28px; }
+.division-card-body h3 { font-size: clamp(22px, 2.1vw, 29px); }
+.division-card-body > p:not(.eyebrow) { font-size: 14px; line-height: 1.8; }
+.division-card-cta { font-size: 11px; line-height: 1.6; }
+.division-card-gallery { padding: 0 18px 18px; gap: 9px; }
+.division-card-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.division-card:focus-within { box-shadow: inset 0 0 0 1px var(--accent); }
+.division-card:focus-within .division-card-arrow { background: #c6a25b; color: #0b1d2d; }
+.home-page .home-products .division-card-arrow { transition: background .3s, color .3s; }
+.section-top h2 { margin-top: 11px; }
+.section-top p, .material-copy > p:not(.eyebrow), .heritage-grid p,
+.process-grid p, .faq-section > div > p, .faq-list details p,
+.story-copy p, .quality-grid p, .division-route p { font-size: 14px; line-height: 1.85; }
+.faq-list summary { min-height: 70px; font-size: 14px; transition: color .2s; }
+.faq-list summary:is(:hover, :focus-visible) { color: var(--accent); }
+.faq-list summary svg { transition: transform .25s ease; }
+.faq-list details[open] { padding-inline: 18px; background: var(--surface-alt); }
+.faq-list details[open] p { animation: menu-enter .25s ease-out; }
+.process-grid li { position: relative; padding-top: 25px; }
+.process-grid li::before { content: ""; position: absolute; top: -1px; left: 0; width: 42px; height: 2px; background: #c6a25b; }
+.process-grid h3 { margin-top: 27px; }
+.step-outcome { display: block; margin-top: 18px; font-size: 11px; color: var(--ink); font-weight: 600; }
+.supplier-art { margin: 0 auto; width: 280px; max-width: 100%; }
+.supplier-art > div { position: relative; aspect-ratio: .86; background: #fff; }
+.supplier-art img { object-fit: contain; padding: 24px; }
+.supplier-art figcaption { margin-top: 10px; color: #d0dae3; font-size: 11px; }
+.supplier-founded { display: block; margin-top: 24px; color: #d9bd85; font-size: 22px; letter-spacing: -.02em; }
+.home-page .heritage-band .eyebrow { color: #d9bd85; }
+.contact-next { padding: 26px; background: var(--surface-alt); border-left: 2px solid #c6a25b; }
+.rfq-form { border-top: 3px solid #c6a25b; }
+.form-field input, .form-field select, .form-field textarea { transition: border-color .2s, box-shadow .2s; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px #c6a25b20; }
+.footer-grid > div:not(:first-child) a, .footer-description { font-size: 12px; }
+@media (hover: hover) and (pointer: fine) {
+  .button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px #0b1d2d12; }
+  .button:hover svg { transform: translate(2px, -2px); }
+  .division-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px #0b1d2d15, inset 0 0 0 1px #c6a25b80; }
+  .division-card:hover .division-card-media img { transform: scale(1.035); }
+  .division-card:hover .division-military-image { transform: scale(1.015); }
+  .home-page .home-products .division-card:hover .division-card-arrow,
+  .division-card:hover .division-card-arrow { background: #c6a25b; color: #0b1d2d; }
+  .division-card:hover .division-card-arrow svg, .division-card:hover .division-card-cta svg { transform: translate(2px, -2px); }
+}
+@media (max-width: 767px) {
+  .division-card-body { padding: 22px; }
+  .division-card-body > p:not(.eyebrow), .section-top p, .process-grid p { font-size: 13px; }
+  .faq-list summary { font-size: 13px; }
+  .supplier-art { width: 240px; }
+  .process-grid h3 { margin-top: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .division-card:hover, .button:hover, .division-card:hover .division-card-media img { transform: none; }
+}
+.wintex-brand-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 280px; padding: 28px 20px; background: #fff; color: #0b1d2d; text-align: center; }
+.wintex-brand-panel strong { font-family: var(--font-cormorant), serif; font-size: clamp(36px, 4vw, 52px); font-weight: 600; letter-spacing: .08em; line-height: 1.2; margin-top: 16px; }
+.wintex-brand-panel > span { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; margin-top: 12px; }
+.wintex-brand-panel small { font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: #80612d; margin-top: 18px; }
+.supplier-art .wintex-brand-panel img, .story-image .wintex-brand-panel img { position: static; width: 80px; height: auto; padding: 0; object-fit: contain; }
+
+/* Align the two-line wordmark as one unit beside the markhor symbol. */
+.brand-lockup { align-items: center; gap: 11px; }
+.brand-wordmark { display: flex; flex-direction: column; align-items: center; gap: 5px; white-space: nowrap; }
+.brand-wordmark > span:first-child { display: block; font-size: 28px; line-height: .9; letter-spacing: .055em; margin-right: -.055em; }
+.brand-wordmark > span:last-child { display: block; margin-top: 0; font-size: 9px; line-height: 1; letter-spacing: .22em; margin-right: -.22em; }
+@media (max-width: 480px) {
+  .header-logo .brand-wordmark { gap: 4px; }
+  .header-logo .brand-wordmark > span:first-child { font-size: 23px; line-height: .9; }
+  .header-logo .brand-wordmark > span:last-child { font-size: 8px; line-height: 1; }
+}
+
+/* Equal category cards: matching image frames and bottom-aligned previews. */
+.division-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.division-grid .division-card:first-child { grid-row: auto; }
+.division-grid .division-card .division-card-media { aspect-ratio: 1.3; }
+.division-card-link { display: flex; flex-direction: column; height: 100%; }
+.division-card-media { flex-shrink: 0; }
+.division-card-body { display: flex; flex-direction: column; flex: 1; }
+.division-card-body > p:not(.eyebrow) { flex: 1; }
+.division-card-gallery { margin-top: auto; flex-shrink: 0; }
+.division-grid .division-card .division-card-gallery img { height: 88px; }
+@media (max-width: 767px) {
+  .division-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .division-grid .division-card .division-card-media { aspect-ratio: 1.18; }
+  .division-grid .division-card .division-card-gallery img { height: 66px; }
+}
+.division-grid .division-card:first-child .division-card-media { aspect-ratio: 1.3; }
+.catalog-grid .product-card-link { display: flex; flex-direction: column; height: 100%; align-items: flex-start; }
+.catalog-grid .product-card-image, .catalog-grid .product-card-heading { width: 100%; flex-shrink: 0; }
+.catalog-grid .product-card p { flex: 1; }
+.catalog-grid .product-card-cta { margin-top: 18px; }
+@media (max-width: 767px) {
+  .division-grid .division-card:first-child .division-card-media { aspect-ratio: 1.18; }
+}
+
+/* Phone layouts prioritize legible copy and comfortable touch controls. */
+@media (max-width: 767px) {
+  .mobile-menu { max-height: calc(100dvh - 72px); overflow-y: auto; overscroll-behavior: contain; }
+  .mobile-menu a, .mobile-toggle, .range-filters a { min-height: 44px; }
+  .mobile-toggle { flex-shrink: 0; }
+  .nav-actions { flex-shrink: 0; }
+  .form-grid { grid-template-columns: minmax(0, 1fr); }
+  .form-field input, .form-field select, .form-field textarea { font-size: 16px; min-width: 0; }
+  .form-field, .contact-layout > *, .division-product-type-copy, .spec-grid > * { min-width: 0; }
+  .rfq-form { width: 100%; }
+  .range-filters { flex-wrap: wrap; }
+  .catalog-grid .product-card p { font-size: 13px; }
+  .catalog-grid .product-card-cta { font-size: 11px; min-height: 44px; display: inline-flex; align-items: center; }
+  .catalog-grid .product-card-heading svg { flex-shrink: 0; }
+  .footer-bottom > div { flex-wrap: wrap; row-gap: 12px; }
+  .footer-grid a, .contact-aside a { overflow-wrap: anywhere; }
+  .page-heading h1, .product-detail h1 { overflow-wrap: break-word; }
+}
+@media (max-width: 480px) {
+  .catalog-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .catalog-grid .product-card-image { aspect-ratio: 1.15; }
+  .catalog-grid .product-card-heading h3 { font-size: 21px; }
+  .quality-grid, .spec-grid { grid-template-columns: minmax(0, 1fr); }
+  .nav-inner { gap: 6px; }
+  .nav-quote { min-height: 44px; padding-inline: 8px; font-size: 9px; }
+  .header-logo { gap: 6px; }
+  .header-logo .brand-wordmark > span:first-child { font-size: 21px; }
+  .header-logo .brand-wordmark > span:last-child { font-size: 7px; }
+  .page-heading h1 { font-size: clamp(30px, 8.5vw, 38px); }
+}
+@media (max-width: 767px) {
+  .division-product-type { grid-template-columns: minmax(0, 1fr); }
+  .division-product-type-media { min-height: 0; min-width: 0; width: 100%; }
+}
+/* Give the sweater reference its full square composition without cropping. */
+.product-detail-image:has(img[alt^="Navy half-zip sweater"]),
+.catalog-grid .product-card-image:has(img[alt^="Navy half-zip sweater"]) { height: auto; aspect-ratio: 1; }
