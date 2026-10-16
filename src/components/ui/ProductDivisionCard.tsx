@@ -4,11 +4,12 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import type { ProductDivision } from "@/content/divisions";
 
 export default function ProductDivisionCard({ division }: { division: ProductDivision }) {
+  const cardImage = division.cardHero ?? division.hero;
   return (
     <article className="division-card">
       <Link href={`/products/divisions/${division.slug}`} className="division-card-link" aria-label={`View ${division.title}`}>
         <div className="division-card-media">
-          <Image src={division.hero.src} alt={division.hero.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className={division.slug === "military" ? "division-military-image" : "object-cover"} />
+          <Image src={cardImage.src} alt={cardImage.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className={division.slug === "military" ? "division-military-image" : division.slug === "uniforms" ? "division-uniform-image" : "object-cover"} />
           <span className="division-number">{division.number}</span>
           <span className="division-card-arrow"><ArrowUpRight size={20} /></span>
         </div>

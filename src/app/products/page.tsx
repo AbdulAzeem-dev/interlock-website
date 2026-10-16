@@ -6,7 +6,7 @@ import InquiryCTA from "@/components/ui/InquiryCTA";
 import { productCategories } from "@/content/products";
 import ProductDivisionCard from "@/components/ui/ProductDivisionCard";
 import { getDivisionBySlug, productDivisions } from "@/content/divisions";
-export const metadata: Metadata = { title: "Knitwear Product Range", description: "Explore custom sweaters, cardigans, cotton shirts, uniform knitwear and accessories. Find your category and discuss a sample with Wintex.", alternates: { canonical: "/products" } };
+export const metadata: Metadata = { title: "Knitwear Product Range", description: "Explore custom sweaters, cardigans, cotton shirts, uniform knitwear, socks, knitted caps, gloves and mufflers. Find your category and discuss a sample with Wintex.", alternates: { canonical: "/products" } };
 const ranges = [{id:"all",label:"All product families"}, ...productDivisions.map((division) => ({ id: division.slug, label: division.title }))];
 export default async function ProductsPage({searchParams}: {searchParams: Promise<{division?: string; range?: string}>}) {
   const {division, range} = await searchParams;

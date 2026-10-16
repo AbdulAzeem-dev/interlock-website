@@ -9,13 +9,14 @@ import InquiryCTA from "@/components/ui/InquiryCTA";
 export function generateStaticParams() { return [...productCategories.map(p=>({slug:p.slug})),{slug:"private-label"}]; }
 export async function generateMetadata({params}: {params: Promise<{slug:string}>}): Promise<Metadata> {
   const {slug}=await params; const product=getProductBySlug(slug);
-  return product ? {title:`${product.name} Manufacturer`,description:product.summary,alternates:{canonical:`/products/${slug}`}} : {};
+  return product ? {title:slug === "sweaters" ? "Custom Sweaters & Seasonal Knitwear" : `${product.name} Manufacturer`,description:slug === "sweaters" ? "Explore summer and winter knitwear references for women and men. Develop custom sweaters, knit polos, cardigans and vests with Wintex." : product.summary,alternates:{canonical:slug === "sweaters" ? "/products/divisions/fashion" : `/products/${slug}`}} : {};
 }
 export default async function ProductPage({params}: {params:Promise<{slug:string}>}) {
   const {slug}=await params;
   if(slug==="private-label") permanentRedirect("/private-label");
   const product=getProductBySlug(slug);
   if(!product) notFound();
+  if(slug==="sweaters") permanentRedirect("/products/divisions/fashion");
   const href=`/contact?category=${product.slug}`;
   return <>
     <div className="shell"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/products">Products</Link><CaretRight size={11}/><Link href={`/products?range=${product.range}`}>{product.range==="fashion"?"Fashion knitwear":product.range==="uniforms"?"Uniforms & institutional":"Accessories"}</Link><CaretRight size={11}/><span aria-current="page">{product.shortName}</span></nav>

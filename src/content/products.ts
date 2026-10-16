@@ -1,3 +1,4 @@
+import { uniformHero, uniformReferences } from "@/content/uniforms";
 export type MediaRef =
   | { kind: "photo"; src: string; alt: string; caption?: string }
   | { kind: "placeholder"; label: string; tone: "navy" | "gold" | "parchment" };
@@ -39,21 +40,21 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/navy-half-zip-editorial.png",
-      "alt": "Navy half-zip sweater with textured knitting on a warm stone background",
+      "src": "/media/sweaters/editorial/knitwear-cover.jpg",
+      "alt": "Folded sweaters in neutral colours showing rib and cable knit",
       "caption": "Illustrative knitwear reference."
     },
     "gallery": [
       {
         "kind": "photo",
-        "src": "/media/products/division-knitwear.jpg",
+        "src": "/media/sweaters/editorial/folded-knitwear.png",
         "alt": "Folded crew-neck sweaters in navy, beige and burgundy",
         "caption": "Illustrative colour and silhouette references."
       },
       {
         "kind": "photo",
-        "src": "/media/texture/knit-rib-macro.jpg",
-        "alt": "Close-up of a ribbed knit structure",
+        "src": "/media/materials/details/cardigan-buttons.jpg",
+        "alt": "Close-up of grey knitwear with button and pocket construction",
         "caption": "Illustrative stitch detail."
       }
     ]
@@ -90,14 +91,14 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/cardigan-real.jpg",
+      "src": "/media/sweaters/cardigans/green-patterned-cardigan.jpeg",
       "alt": "Green button-front cardigan with a brown knitted pattern",
       "caption": "Illustrative cardigan reference."
     },
     "gallery": [
       {
         "kind": "photo",
-        "src": "/media/products/cardigan.jpg",
+        "src": "/media/materials/details/cardigan-buttons.jpg",
         "alt": "Grey ribbed cardigan with button and pocket detail",
         "caption": "Illustrative placket and pocket construction."
       }
@@ -134,7 +135,7 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/cotton-shirt.jpg",
+      "src": "/media/sweaters/summer/b5.png",
       "alt": "Plain white cotton knit shirt on a light background",
       "caption": "Illustrative cotton shirt reference."
     },
@@ -170,20 +171,8 @@ export const productCategories: ProductCategory[] = [
       "Share your colour reference and size breakdown.",
       "Let us know your seasonal delivery schedule and reorder plans."
     ],
-    "media": {
-      "kind": "photo",
-      "src": "/media/new assests/school uniform.jpg",
-      "alt": "Navy V-neck school sweater vest with contrast trim",
-      "caption": "Illustrative uniform reference. No affiliation with the depicted institution is implied."
-    },
-    "gallery": [
-      {
-        "kind": "photo",
-        "src": "/media/products/uniform-knitwear.jpg",
-        "alt": "Navy cable-knit fabric construction",
-        "caption": "Illustrative navy knit detail."
-      }
-    ]
+    media: { kind: "photo", ...uniformHero, caption: "Uniform style reference. Colours, trims and branding are agreed at sampling." },
+    gallery: uniformReferences.filter(image => image.src !== uniformHero.src).map(image => ({ kind: "photo" as const, ...image, caption: "Uniform garment and construction reference." }))
   },
   {
     "slug": "military-institutional-knitwear",
@@ -216,8 +205,8 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/military-institutional-real.jpg",
-      "alt": "Olive ribbed institutional-style sweater with a button placket",
+      "src": "/media/Army/Camouflage sweater with sewn WINTEX label.png",
+      "alt": "Camouflage military knit sweater with reinforced shoulders and WINTEX neck label",
       "caption": "Illustrative institutional knitwear reference."
     },
     "gallery": []
@@ -253,12 +242,75 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/socks-real.jpg",
+      "src": "/media/socks/collection-flatlay.jpg",
       "alt": "Flat lay of ribbed socks in coordinated muted colours",
       "caption": "Illustrative sock range."
     },
     "gallery": []
   },
+{
+  "slug": "knitted-caps",
+  "name": "Knitted Caps",
+  "shortName": "Knitted Caps",
+  "range": "accessories",
+  "summary": "Ribbed and cable-knit beanies with custom colours, turn-up cuffs and label details, developed for seasonal accessory collections.",
+  "styles": [
+    "Ribbed beanies",
+    "Cable-knit caps",
+    "Turn-up cuffs",
+    "Pom-pom styles"
+  ],
+  "description": [
+    "Develop knitted caps as a standalone range or coordinate them with gloves and mufflers. Yarn, stitch, crown shaping, fit and cuff depth are reviewed during sampling."
+  ],
+  "applications": [
+    "Fashion and lifestyle brands",
+    "Cold-weather accessory collections",
+    "Uniform and institutional suppliers"
+  ],
+  "customization": [
+    "Yarn blend, weight and knit structure",
+    "Crown shape, fit and cuff depth",
+    "Colourways and optional pom-pom details",
+    "Woven labels, embroidery and packaging"
+  ],
+  "considerations": [
+    "Share your reference style, intended size range and label requirements.",
+    "Coordinated yarns and colours can be discussed alongside gloves and mufflers."
+  ],
+  "media": {
+    "kind": "photo",
+    "src": "/media/caps/Silver Grey Cable-Knit Beanie with WINTEX Label-1.png",
+    "alt": "Silver Grey Cable-Knit Beanie with WINTEX Label reference",
+    "caption": "Knitted-cap reference. Final specification is agreed during sampling."
+  },
+  "gallery": [
+    {
+      "kind": "photo",
+      "src": "/media/caps/Charcoal cable-knit beanie with WINTEX label-2.png",
+      "alt": "Charcoal cable-knit beanie with WINTEX label reference",
+      "caption": "Cap style and colour reference."
+    },
+    {
+      "kind": "photo",
+      "src": "/media/caps/Ivory ribbed beanie with WINTEX label-5.png",
+      "alt": "Ivory ribbed beanie with WINTEX label reference",
+      "caption": "Cap style and colour reference."
+    },
+    {
+      "kind": "photo",
+      "src": "/media/caps/Pale blue ribbed beanie with WINTEX label-4.png",
+      "alt": "Pale blue ribbed beanie with WINTEX label reference",
+      "caption": "Cap style and colour reference."
+    },
+    {
+      "kind": "photo",
+      "src": "/media/caps/Taupe cable-knit beanie with WINTEX label-3.png",
+      "alt": "Taupe cable-knit beanie with WINTEX label reference",
+      "caption": "Cap style and colour reference."
+    }
+  ]
+},
   {
     "slug": "gloves",
     "name": "Gloves",
@@ -290,11 +342,42 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/gloves.jpg",
-      "alt": "Light knitted gloves with a matching yarn ball",
-      "caption": "Illustrative knitted glove reference."
-    },
-    "gallery": []
+      "src": "/media/gloves/Navy gloves with WINTEX cuff embroidery-5.png",
+      "alt": "Navy gloves with WINTEX cuff embroidery reference",
+      "caption": "Garment reference. Final specification is agreed during sampling."
+},
+    "gallery": [
+      {
+            "kind": "photo",
+            "src": "/media/gloves/Black glove with WINTEX cuff embroidery-1.png",
+            "alt": "Black glove with WINTEX cuff embroidery reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/gloves/Camel gloves with WINTEX cuff embroidery-4.png",
+            "alt": "Camel gloves with WINTEX cuff embroidery reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/gloves/Light grey gloves with WINTEX cuff embroidery-3.png",
+            "alt": "Light grey gloves with WINTEX cuff embroidery reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/gloves/Taupe gloves with WINTEX cuff embroidery-6.png",
+            "alt": "Taupe gloves with WINTEX cuff embroidery reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/gloves/WINTEX embroidery on charcoal glove cuff-2.png",
+            "alt": "WINTEX embroidery on charcoal glove cuff reference",
+            "caption": "Style and colour reference."
+      }
+]
   },
   {
     "slug": "mufflers-scarves",
@@ -328,11 +411,30 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/products/scarves-neutral.jpg",
-      "alt": "Folded scarves in cream and brown showing rib and cable knit structures",
-      "caption": "Illustrative scarf reference."
-    },
-    "gallery": []
+      "src": "/media/scarves/Ivory Coiled Knit Scarf, WINTEX Label-4.png",
+      "alt": "Ivory Coiled Knit Scarf, WINTEX Label reference",
+      "caption": "Garment reference. Final specification is agreed during sampling."
+},
+    "gallery": [
+      {
+            "kind": "photo",
+            "src": "/media/scarves/Coiled blue-and-white scarf with tiny WINTEX label-2.png",
+            "alt": "Coiled blue-and-white scarf with tiny WINTEX label reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/scarves/folded-dark-grey-b2ba7c04c5.png",
+            "alt": "Folded dark grey scarf with Wintex label reference",
+            "caption": "Style and colour reference."
+      },
+      {
+            "kind": "photo",
+            "src": "/media/scarves/Folded grey scarf with tiny WINTEX label-3.png",
+            "alt": "Folded grey scarf with tiny WINTEX label reference",
+            "caption": "Style and colour reference."
+      }
+]
   }
 ];
 export function getProductBySlug(slug: string) { return productCategories.find(p => p.slug === slug); }

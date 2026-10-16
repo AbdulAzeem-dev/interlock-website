@@ -23,6 +23,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: [{ url: "/brand/wintex-favicon-32.png", sizes: "32x32", type: "image/png" }, { url: "/brand/wintex-favicon-192.png", sizes: "192x192", type: "image/png" }], apple: "/brand/wintex-apple-icon.png" },
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name} - Fine Knitwear Manufacturers Since 1982`,
@@ -93,7 +94,7 @@ export default function RootLayout({
               name: site.name,
               alternateName: "Wintex Fine Knitwear Manufacturers",
               url: site.url,
-              logo: `${site.url}/brand/wintex-icon.png`,
+              logo: `${site.url}/brand/wintex-logo-transparent.png`,
               foundingDate: "1982",
               description: site.description,
               address: {

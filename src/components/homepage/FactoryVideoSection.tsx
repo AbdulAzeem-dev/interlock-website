@@ -6,7 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const VIDEO_SRC = "/videos/wintex-factory.mp4";
-const POSTER_SRC = "/media/hero/video-poster.jpg";
+const POSTER_SRC = "/media/manufacturing/details/knitting-video-poster.jpg";
 
 export default function FactoryVideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);

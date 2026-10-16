@@ -28,7 +28,7 @@ export const productDivisions: ProductDivision[] = [
       "Sweaters, cardigans, pullovers and vests built for fashion, uniform, and institutional programmes.",
     cardMedia: {
       kind: "photo",
-      src: "/media/products/division-knitwear.jpg",
+      src: "/media/sweaters/editorial/folded-knitwear.png",
       alt: "Folded knitted sweaters in navy, tan, and burgundy",
       caption: "Illustrative example, not an Wintex production photograph.",
     },
@@ -40,7 +40,7 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/sweaters",
         media: {
           kind: "photo",
-          src: "/media/products/sweater.jpg",
+          src: "/media/sweaters/editorial/knitwear-cover.jpg",
           alt: "Stack of folded knitted sweaters in neutral tones showing rib and cable structure",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
@@ -52,8 +52,8 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/uniform-knitwear",
         media: {
           kind: "photo",
-          src: "/media/products/uniform-knitwear-real.jpg",
-          alt: "Navy knitted school-uniform vest with crest detail",
+          src: "/media/uniforms/Burgundy V-Neck Pullover with WINTEX Label-7.png",
+          alt: "Burgundy V-neck uniform pullover with ribbed trims",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
@@ -64,8 +64,8 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/military-institutional-knitwear",
         media: {
           kind: "photo",
-          src: "/media/products/military-institutional-real.jpg",
-          alt: "Olive commando-style knitted sweater with button placket",
+          src: "/media/Army/Camouflage Knit Sweater with WINTEX Label.png",
+          alt: "Camouflage knit sweater with reinforced shoulders",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
       },
@@ -78,7 +78,7 @@ export const productDivisions: ProductDivision[] = [
       "Socks, scarves, gloves, and knitted headwear produced to the same colour and yarn discipline as the core range.",
     cardMedia: {
       kind: "photo",
-      src: "/media/products/division-hosiery.jpg",
+      src: "/media/socks/collection-flatlay.jpg",
       alt: "Flat lay of colourful knitted socks",
       caption: "Illustrative example, not an Wintex production photograph.",
     },
@@ -89,7 +89,7 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/socks",
         media: {
           kind: "photo",
-          src: "/media/products/socks-real.jpg",
+          src: "/media/socks/collection-flatlay.jpg",
           alt: "Flat lay of colourful ribbed knitted socks",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
@@ -100,7 +100,7 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/mufflers-scarves",
         media: {
           kind: "photo",
-          src: "/media/products/scarf.jpg",
+          src: "/media/scarves/colourful-scarf.jpg",
           alt: "Knitted scarf showing gradient colourway and ribbed structure",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
@@ -111,7 +111,7 @@ export const productDivisions: ProductDivision[] = [
         href: "/products/gloves",
         media: {
           kind: "photo",
-          src: "/media/products/gloves.jpg",
+          src: "/media/gloves/cream-gloves.jpg",
           alt: "Pair of knitted gloves with a matching ball of yarn",
           caption: "Illustrative example, not an Wintex production photograph.",
         },
@@ -191,18 +191,18 @@ export const heroSlides: HeroComposite[] = [
     eyebrow: "Raw Materials & Machinery",
     large: {
       kind: "photo",
-      src: "/media/hero/machine-studio.jpg",
+      src: "/media/manufacturing/machines/machine-studio.jpg",
       alt: "Flat knitting machine with yarn cones mounted, production floor",
     },
     small: [
       {
         kind: "photo",
-        src: "/media/hero/yarn-warm.jpg",
+        src: "/media/materials/yarn/warm-yarn.jpg",
         alt: "Cones of warm-toned yarn ready for knitting",
       },
       {
         kind: "photo",
-        src: "/media/hero/yarn-dark.jpg",
+        src: "/media/materials/yarn/dark-yarn.jpg",
         alt: "Row of yarn cones in blue and green tones",
       },
     ],
@@ -211,18 +211,18 @@ export const heroSlides: HeroComposite[] = [
     eyebrow: "Machinery & Craft",
     large: {
       kind: "photo",
-      src: "/media/hero/machine-blue-yarn.jpg",
+      src: "/media/manufacturing/machines/machine-blue-yarn.jpg",
       alt: "Flat knitting machine in operation with blue yarn",
     },
     small: [
       {
         kind: "photo",
-        src: "/media/hero/needles-macro.jpg",
+        src: "/media/manufacturing/details/knitting-needles.jpg",
         alt: "Macro detail of knitting machine needles",
       },
       {
         kind: "photo",
-        src: "/media/hero/yarn-cream-burgundy.jpg",
+        src: "/media/materials/yarn/cream-burgundy-yarn.jpg",
         alt: "Cones of cream and burgundy yarn",
       },
     ],
@@ -231,18 +231,18 @@ export const heroSlides: HeroComposite[] = [
     eyebrow: "Finished Knitwear",
     large: {
       kind: "photo",
-      src: "/media/hero/factory-bw.jpg",
+      src: "/media/manufacturing/factory/factory-bw.jpg",
       alt: "Black and white photograph of a knitwear production floor",
     },
     small: [
       {
         kind: "photo",
-        src: "/media/hero/socks-flatlay.jpg",
+        src: "/media/socks/collection-flatlay.jpg",
         alt: "Flat lay of colourful knitted socks",
       },
       {
         kind: "photo",
-        src: "/media/hero/sweaters-folded.jpg",
+        src: "/media/sweaters/editorial/folded-knitwear.png",
         alt: "Folded knitted sweaters in navy, tan, and burgundy",
       },
     ],

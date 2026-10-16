@@ -153,5 +153,117 @@
   .division-product-type-media { min-height: 0; min-width: 0; width: 100%; }
 }
 /* Give the sweater reference its full square composition without cropping. */
-.product-detail-image:has(img[alt^="Navy half-zip sweater"]),
-.catalog-grid .product-card-image:has(img[alt^="Navy half-zip sweater"]) { height: auto; aspect-ratio: 1; }
+ .product-detail-image:has(img[alt^="Navy half-zip sweater"]) { height: auto; aspect-ratio: 1; }
+
+.catalog-grid img[alt^="Navy half-zip sweater"] { object-fit: contain; background: #e9e3d8; }
+/* Lead product pages with the garment in narrow previews and on phones. */
+@media (max-width: 767px) {
+  .product-detail > figure { order: 0; }
+  .product-detail > div { order: 1; }
+}
+.division-card-media img[alt^="Navy half-zip sweater"],
+.division-landing-hero-figure img[alt^="Navy half-zip sweater"] { object-fit: contain; background: #e9e3d8; }
+.brand-label-art { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.brand-label-art img { display: block; width: 100%; height: auto; object-fit: contain; }
+.supplier-art { width: min(100%, 460px); }
+.supplier-art > div { aspect-ratio: 2; background: transparent; }
+.supplier-art .brand-label-art img { padding: 0; }
+.story-image:has(.brand-label-art) { aspect-ratio: 1.65; background: #f3f0e9; padding: 20px; }
+.story-image:has(.brand-tag-image) { aspect-ratio: 2 / 3; background: #102333; }
+
+/* Frame the visible mark, trimming only the transparent padding in the source PNG. */
+.brand-logo-art { display: block; position: relative; width: 162px; height: 46px; overflow: hidden; flex: none; background: transparent; line-height: 0; }
+.brand-logo-art img { display: block; position: absolute; top: -12px; left: -17px; width: 196px; max-width: none; height: auto; }
+@media (max-width: 767px) {
+  .brand-logo-art { width: 145px; height: 42px; }
+  .brand-logo-art img { top: -11px; left: -15px; width: 175px; }
+}
+@media (max-width: 360px) {
+  .brand-logo-art { width: 130px; height: 38px; }
+  .brand-logo-art img { top: -10px; left: -14px; width: 158px; }
+}
+/* New military product references have a cool off-white studio background. */
+.division-card-media .division-military-image,
+.division-landing-hero-figure-military > div,
+.division-landing-hero-figure-military .division-military-image { background: #eef0f1; }
+/* The new transparent cream-and-gold logo needs a dark surface for legibility. */
+.site-header { background: #0b1d2d; color: #f9f7f2; border-color: #34495b; --ink: #f9f7f2; --muted: #c6d0d8; --line: #34495b; --surface: #0b1d2d; --button-ink: #0b1d2d; }
+.site-header .nav-quote { background: #c6a25b; color: #0b1d2d; }
+.site-header .brand-logo-art img, .site-footer .brand-logo-art img { filter: none; }
+
+/* Seasonal knitwear page */
+.sweater-hero { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(35px, 5vw, 90px); align-items: center; padding-block: 70px 100px; }
+.sweater-hero-copy { max-width: 540px; }
+.sweater-hero h1 { max-width: 11ch; font-size: clamp(50px, 5.5vw, 82px); line-height: 1.04; letter-spacing: -.055em; margin: 22px 0 28px; }
+.sweater-hero-copy > p:not(.eyebrow):not(.sweater-reference-note) { max-width: 48ch; font-size: 15px; line-height: 1.8; color: var(--muted); }
+.sweater-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 32px; }
+.sweater-reference-note { max-width: 52ch; margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 11px; line-height: 1.65; color: var(--muted); }
+.sweater-hero-visual { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; align-items: end; min-width: 0; }
+.sweater-hero-image { position: relative; min-width: 0; aspect-ratio: .76; overflow: hidden; background: #edf0f1; }
+.sweater-hero-image-summer { aspect-ratio: .8; transform: translateY(32px); background: #f4f2eb; }
+.sweater-hero-image img { padding: 7%; }
+.sweater-hero-image span { position: absolute; bottom: 15px; left: 15px; z-index: 1; background: #0b1d2d; color: #fff; padding: 9px 11px; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+.sweater-season { padding-block: 78px 75px; overflow: hidden; scroll-margin-top: 80px; }
+.sweater-season-summer { background: #f8f8f6; }
+.sweater-season-winter { background: #0b1d2d; color: #f9f7f2; --ink: #f9f7f2; --muted: #b9c8d2; --line: #385064; --surface: #0b1d2d; --surface-alt: #eff1f1; }
+.sweater-season-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; padding-bottom: 30px; }
+.sweater-season-heading h2 { margin-top: 11px; font-size: clamp(42px, 4.8vw, 66px); line-height: 1.05; letter-spacing: -.05em; }
+.sweater-season-heading > div:last-child { max-width: 51ch; justify-self: end; }
+.sweater-season-heading p:not(.eyebrow) { color: var(--muted); font-size: 13px; line-height: 1.8; }
+.sweater-season-heading span { display: block; margin-top: 18px; color: var(--accent); font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
+.sweater-development { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; padding-block: 100px; }
+.sweater-development-intro h2 { max-width: 12ch; margin: 16px 0 20px; font-size: clamp(35px, 3.4vw, 53px); line-height: 1.1; letter-spacing: -.04em; }
+.sweater-development-intro > p:last-child { max-width: 52ch; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.sweater-development-grid { display: grid; gap: 0; }
+.sweater-development-grid > div { display: grid; grid-template-columns: 34px 1fr; column-gap: 15px; padding: 19px 0; border-top: 1px solid var(--line); }
+.sweater-development-grid > div:last-child { border-bottom: 1px solid var(--line); }
+.sweater-development-grid span { grid-row: span 2; color: var(--accent); font-size: 11px; }
+.sweater-development-grid h3 { font-size: 15px; }
+.sweater-development-grid p { max-width: 50ch; margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.75; }
+@media (max-width: 900px) {
+  .sweater-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 45px 85px; }
+  .sweater-hero-copy { max-width: 680px; }
+  .sweater-hero-visual { max-width: 660px; }
+  .sweater-development { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .sweater-hero { gap: 28px; padding-block: 35px 65px; }
+  .sweater-hero h1 { font-size: clamp(44px, 12vw, 62px); }
+  .sweater-hero-copy > p:not(.eyebrow):not(.sweater-reference-note) { font-size: 13px; }
+  .sweater-hero-actions { gap: 17px; }
+  .sweater-hero-visual { gap: 8px; }
+  .sweater-hero-image-summer { transform: translateY(20px); }
+  .sweater-hero-image span { bottom: 8px; left: 8px; font-size: 8px; padding: 7px; }
+  .sweater-season { padding-block: 55px; }
+  .sweater-season-heading { grid-template-columns: 1fr; gap: 13px; padding-bottom: 27px; }
+  .sweater-season-heading > div:last-child { justify-self: start; }
+  .sweater-season-heading h2 { font-size: 44px; }
+  .sweater-development { padding-block: 70px; }
+}
+.sweater-page { --surface: #fff; --surface-alt: #f0f1f1; --ink: #0b1d2d; --muted: #65717d; --line: #d5dce1; --button-ink: #fff; background: #fff; color: var(--ink); }
+.sweater-hero-stage { background: #101923; color: #f7f7f3; --ink: #f7f7f3; --muted: #c1cbd4; --line: #3b4b58; --button-ink: #101923; }
+.sweater-season-summer { color: #0b1d2d; --ink: #0b1d2d; --muted: #65717d; --line: #d5dce1; --surface: #f8f8f6; --surface-alt: #ebeeee; --button-ink: #fff; }
+.sweater-season .reference-slide img,
+.sweater-season figure img { object-fit: contain; }
+/* Keep the fashion breadcrumb and introduction on one continuous navy surface. */
+.sweater-hero-stage .breadcrumbs { padding-top: 20px; color: #b9c6d1; }
+.sweater-hero-stage .sweater-hero { padding-top: 42px; }
+@media (max-width: 640px) {
+  .sweater-hero-stage .breadcrumbs { padding-top: 16px; }
+  .sweater-hero-stage .sweater-hero { padding-top: 26px; }
+}
+
+/* Preserve the full accessory silhouettes in reference and product-type frames. */
+.accessories-page .division-reference-section figure img,
+.accessories-page .division-product-type-media img { object-fit: contain; }
+.accessories-page .division-reference-section figure,
+.accessories-page .division-product-type-media { background: #f7f8f8; }
+
+/* Show each supplied uniform garment in full on cards, hero and galleries. */
+.division-uniform-image,
+.uniforms-page .division-reference-section figure img,
+.uniforms-page .division-product-type-media img,
+.product-detail-image img[alt^="Uniform reference:"],
+.gallery-image img[alt^="Uniform reference:"] { object-fit: contain; background: #fff; }
+.uniforms-page .division-reference-section figure,
+.uniforms-page .division-product-type-media { background: #fff; }

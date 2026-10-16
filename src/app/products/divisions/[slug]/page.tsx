@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "@phosphor-icons/react/dist/ssr";
 import InquiryCTA from "@/components/ui/InquiryCTA";
+import FashionCollectionsPage from "@/components/products/FashionCollectionsPage";
 import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 import { getDivisionBySlug, productDivisions } from "@/content/divisions";
 import { getProductBySlug } from "@/content/products";
@@ -27,11 +28,12 @@ export default async function ProductDivisionPage({ params }: { params: Promise<
   const { slug } = await params;
   const division = getDivisionBySlug(slug);
   if (!division) notFound();
+  if (slug === "fashion") return <FashionCollectionsPage />;
   const products = division.productSlugs.map((productSlug) => getProductBySlug(productSlug)).filter(Boolean);
   const enquiryCategory = division.slug;
 
   return <>
-    <div>
+    <div className={division.slug === "hosiery-accessories" ? "accessories-page" : division.slug === "uniforms" ? "uniforms-page" : undefined}>
       <div className="shell breadcrumbs"><Link href="/products">Product divisions</Link><span>/</span><span>{division.title}</span></div>
       <section className="shell division-landing-hero">
         <div className="division-landing-copy">
@@ -41,7 +43,7 @@ export default async function ProductDivisionPage({ params }: { params: Promise<
           <div className="division-landing-actions"><Link href={`/contact?category=${enquiryCategory}`} className="button button-primary">Discuss this division <ArrowUpRight size={18} /></Link><Link href="#reference-gallery" className="text-link">View references <ArrowUpRight size={17} /></Link></div>
           <p className="division-landing-note">Start with a product direction, approximate quantity and destination. We will confirm the practical route with you.</p>
         </div>
-        <figure className={`division-landing-hero-figure ${division.slug === "military" ? "division-landing-hero-figure-military" : ""}`}><div><Image src={division.hero.src} alt={division.hero.alt} fill preload sizes="(min-width: 900px) 54vw, 100vw" className={division.slug === "military" ? "division-military-image" : "object-cover"} /></div><figcaption>Reference imagery. Final design and construction are agreed during development.</figcaption></figure>
+        <figure className={`division-landing-hero-figure ${division.slug === "military" ? "division-landing-hero-figure-military" : ""}`}><div><Image src={division.hero.src} alt={division.hero.alt} fill preload sizes="(min-width: 900px) 54vw, 100vw" className={division.slug === "military" ? "division-military-image" : division.slug === "uniforms" ? "division-uniform-image" : "object-cover"} /></div><figcaption>Reference imagery. Final design and construction are agreed during development.</figcaption></figure>
       </section>
 
       <section className="division-intent-band"><div className="shell division-intent-grid"><div><p className="eyebrow">Bring us the brief</p><h2>What buyers usually need to specify.</h2></div><ul>{division.briefPoints.map((point) => <li key={point}><Check size={17} />{point}</li>)}</ul></div></section>

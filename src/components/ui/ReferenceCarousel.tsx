@@ -5,7 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore }
 import styles from "./ReferenceCarousel.module.css";
 import { ArrowLeft, ArrowRight, Pause, Play } from "@phosphor-icons/react";
 
-type ReferenceImage = { src: string; alt: string };
+type ReferenceImage = { src: string; alt: string; category?: string };
 const motionQuery = "(prefers-reduced-motion: reduce)";
 
 function subscribeToMotion(change: () => void) {
@@ -95,7 +95,7 @@ export default function ReferenceCarousel({ images, label }: { images: Reference
         {(reducedMotion ? images : [...images, ...images, ...images]).map((image, index) => <li className={styles.slide} key={`${image.src}-${index}`} aria-hidden={index >= images.length ? true : undefined} data-repeat-start={index === images.length ? "true" : undefined}>
           <figure className={styles.figure}>
             <Image src={image.src} alt={index >= images.length ? "" : image.alt} fill sizes="(min-width: 1024px) 24vw, 72vw" className={styles.image} />
-            <span className={styles.number} aria-hidden="true">{String(index % images.length + 1).padStart(2, "0")}</span>
+            <span className={styles.number} aria-hidden="true">{image.category ? `${image.category} / ` : ""}{String(index % images.length + 1).padStart(2, "0")}</span>
           </figure>
         </li>)}
       </ul>
