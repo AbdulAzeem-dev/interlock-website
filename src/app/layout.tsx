@@ -68,6 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${cormorant.variable} ${montserrat.variable} h-full antialiased`}
     >

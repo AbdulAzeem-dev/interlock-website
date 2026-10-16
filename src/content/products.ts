@@ -40,9 +40,9 @@ export const productCategories: ProductCategory[] = [
     ],
     "media": {
       "kind": "photo",
-      "src": "/media/sweaters/editorial/knitwear-cover.jpg",
-      "alt": "Folded sweaters in neutral colours showing rib and cable knit",
-      "caption": "Illustrative knitwear reference."
+      "src": "/media/sweaters/winter/b10.png",
+      "alt": "Navy textured sweater reference",
+      "caption": "Illustrative sweater reference."
     },
     "gallery": [
       {

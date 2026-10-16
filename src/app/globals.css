@@ -108,7 +108,8 @@ figcaption { padding-top: 9px; font-size: 10px; line-height: 1.5; color: var(--m
 .featured-products, .catalog-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 40px 24px; }
 .product-card-image { position: relative; aspect-ratio: 4/4.7; overflow: hidden; background: var(--surface-alt); }
 .product-card-image img { transition: transform .45s; }
-.product-card-link:hover img { transform: scale(1.025); }
+.product-card-image .product-card-art { padding: 7%; object-fit: contain; }
+.product-card-link:hover .product-card-art { transform: scale(1.018); }
 .product-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 20px; }
 .product-card-heading h3 { font-size: 20px; }
 .product-card-heading svg { width: 20px; }
@@ -159,6 +160,13 @@ figcaption { padding-top: 9px; font-size: 10px; line-height: 1.5; color: var(--m
 .page-heading .eyebrow { margin-bottom: 22px; }
 .page-heading h1 { max-width: 960px; }
 .page-heading p:not(.eyebrow) { max-width: 620px; color: var(--muted); font-size: 14px; margin-top: 23px; }
+.editorial-page { background: #fff; color: #0b1d2d; --surface: #fff; --surface-alt: #f3f5f5; --ink: #0b1d2d; --muted: #596875; --line: #d7dfe3; --button-ink: #fff; }
+.editorial-page .page-heading { background: #0b1d2d; color: #f8f7f2; border-color: #304252; --ink: #f8f7f2; --muted: #c0cad1; --line: #304252; --button-ink: #0b1d2d; }
+.editorial-page .page-heading .eyebrow { color: #d9bd85; }
+.editorial-page .material-section { background: #0b1d2d; color: #f8f7f2; --ink: #f8f7f2; --muted: #c0cad1; --line: #304252; }
+.editorial-page .material-section .eyebrow, .editorial-page .material-section .time-label { color: #d9bd85; }
+.editorial-page .material-section::before { color: #d9bd85; }
+.editorial-page .inquiry-cta { background: #f3f5f5; }
 .catalog-section { padding-block: 32px 85px; }
 .catalog-toolbar { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 32px; }
 .range-filters { display: flex; flex-wrap: wrap; gap: 8px; }

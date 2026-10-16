@@ -1,10 +1,17 @@
 .workflow, .buyers { scroll-margin-top: 100px; }
-.workflow .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 42px 38px; }
-.steps li { display: flex; flex-direction: column; }
-.steps li h3 { margin-top: 23px; font-size: 20px; letter-spacing: -.025em; }
-.steps li > p { margin-bottom: 22px; }
-.outcome { display: flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 17px; border-top: 1px solid #e7e9eb; color: #80612d; font-size: 11px; line-height: 1.6; }
+.workflow .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.workflow .steps li { display: flex; flex-direction: column; min-height: 342px; padding: 27px 27px 24px; border: 1px solid #d8e0e5; background: #fff; box-shadow: 0 8px 22px #0b1d2d08; transition: transform .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease, color .3s ease; }
+.workflow .steps li::before { top: 0; left: 27px; width: 46px; background: #c6a25b; transition: width .3s ease, background .3s ease; }
+.workflow .steps li h3 { margin-top: 27px; font-size: 20px; letter-spacing: -.025em; transition: color .3s ease; }
+.workflow .steps li > p { margin-bottom: 22px; transition: color .3s ease; }
+.outcome { display: flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 17px; border-top: 1px solid #e7e9eb; color: #80612d; font-size: 11px; line-height: 1.6; transition: color .3s ease, border-color .3s ease; }
 .outcome svg { flex-shrink: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .workflow .steps li:hover { transform: translateY(-6px); background: #16324a; border-color: #16324a; box-shadow: 0 18px 34px #0b1d2d24; color: #fff; }
+  .workflow .steps li:hover::before { width: calc(100% - 54px); background: #d9bd85; }
+  .workflow .steps li:hover > p { color: #d3dee6; }
+  .workflow .steps li:hover .outcome { color: #f0cf90; border-color: #577087; }
+}
 .buyers { background: #f3f1ed; padding-block: 86px; }
 .buyerLayout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; align-items: start; }
 .buyerIntro h2 { font-size: clamp(34px, 3.5vw, 49px); line-height: 1.16; letter-spacing: -.045em; margin-block: 18px 24px; }
@@ -20,17 +27,19 @@
 .buyerList p { color: #53606b; font-size: 13px; line-height: 1.85; }
 .buyerDetail { display: block; font-size: 10px; line-height: 1.7; color: #80612d; margin-top: 14px; }
 @media (max-width: 1023px) {
-  .workflow .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .workflow .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .buyerLayout { gap: 6%; grid-template-columns: 1fr 1.2fr; }
 }
 @media (max-width: 767px) {
   .buyers { padding-block: 54px; }
   .buyerLayout { grid-template-columns: minmax(0, 1fr); gap: 35px; }
-  .workflow .steps { gap: 30px 24px; }
-  .steps li h3 { font-size: 18px; }
+  .workflow .steps { gap: 16px; }
+  .workflow .steps li { min-height: 0; padding: 23px 21px 21px; }
+  .workflow .steps li::before { left: 21px; }
+  .workflow .steps li h3 { font-size: 18px; }
 }
 @media (max-width: 480px) {
-  .workflow .steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .steps li h3 { margin-top: 16px; font-size: 21px; }
+  .workflow .steps { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .workflow .steps li h3 { margin-top: 20px; font-size: 21px; }
   .buyerList li { gap: 13px; }
 }
