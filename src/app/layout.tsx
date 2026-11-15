@@ -98,10 +98,16 @@ export default function RootLayout({
               logo: `${site.url}/brand/wintex-logo-transparent.png`,
               foundingDate: "1982",
               description: site.description,
+              email: site.contact.email,
+              contactPoint: site.contact.phones.map((phone) => ({ "@type": "ContactPoint", telephone: phone.display.replace(/\s/g, ""), contactType: "sales", email: site.contact.email })),
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "Iqbal Town",
+                addressLocality: site.contact.city,
+                addressRegion: "Punjab",
                 addressCountry: "PK",
               },
+              hasMap: site.contact.mapUrl,
               sameAs: [],
             }),
           }}

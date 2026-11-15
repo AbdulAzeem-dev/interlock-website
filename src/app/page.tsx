@@ -9,6 +9,8 @@ import { productDivisions } from "@/content/divisions";
 import styles from "./home-hero.module.css";
 import sections from "./home-sections.module.css";
 import Logo from "@/components/ui/Logo";
+import FactoryFilm from "@/components/ui/FactoryFilm";
+import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Private Label Knitwear Manufacturer in Pakistan Since 1982",
   description: "Bring your knitwear collection to life with Wintex. Sweaters, cardigans and accessories, developed to your brief. Manufacturing in Pakistan since 1982.",
@@ -53,6 +55,10 @@ export default function Home() {
     <section className="home-products section-space" id="product-range"><div className="shell">
       <div className="section-top"><div><p className="eyebrow">Explore our range</p><h2>Knitwear for your next collection.</h2><p>From fashion collections to uniform orders. Choose a category to see styles, construction options and details to include in your brief.</p></div><Link href="/products" className="text-link">View the complete range <ArrowUpRight size={18}/></Link></div>
       <div className="home-divisions">{productDivisions.map((division) => <ProductDivisionCard key={division.slug} division={division}/>)}</div>
+    </div></section>
+    <section className={sections.film} id="inside-wintex" aria-labelledby="film-heading"><div className="shell">
+      <div className="section-top"><div><p className="eyebrow">Inside Wintex</p><h2 id="film-heading">See where your knitwear is made.</h2><p>From yarn and computerised flat knitting to finishing and packing. A short look inside our factory in Lahore.</p></div></div>
+      <FactoryFilm {...site.factoryFilm}/>
     </div></section>
     <section className="material-section" id="made-to-your-brief"><div className="shell material-grid"><figure><div className="material-image"><Image src="/media/sweaters/editorial/knitwear-cover.jpg" alt="Folded knitwear showing stitch texture, ribbed edges and garment finishing" fill sizes="(min-width: 1024px) 48vw, 100vw" className="object-cover"/></div><figcaption>Reference detail / stitch and finishing are agreed in development</figcaption></figure><div className="material-copy"><p className="eyebrow">Made to your brief</p><h2>Good manufacturing is in the details.</h2><p>Yarn, fit, colour, finish. We work through the choices that make a garment yours, then use the approved sample as the reference for production.</p><div className="detail-pairs"><div><h3>Built around your fit</h3><p>Stitch, weight, silhouette and measurements.</p></div><div><h3>Finished for your label</h3><p>Colourways, woven labels, trims and packing.</p></div></div><Link href="/private-label" className="text-link">Explore private label <ArrowUpRight size={18}/></Link></div></div></section>
     <section className={`shell section-space ${sections.workflow}`} id="how-we-work" aria-labelledby="process-heading"><div className="section-top"><div><p className="eyebrow">How we work</p><h2 id="process-heading">From your first sketch<br/>to the finished shipment.</h2><p>Six stages, with the important decisions agreed along the way. Your approved sample and specification guide production.</p></div><Link href="/manufacturing" className="text-link">Explore our capabilities <ArrowUpRight size={18}/></Link></div><ol className={`process-grid ${sections.steps}`}>{steps.map(([title, body, outcome], index) => <li key={title}><span className="step-number">0{index + 1}</span><h3>{title}</h3><p>{body}</p><span className={sections.outcome}><Check size={15} aria-hidden="true"/>{outcome}</span></li>)}</ol></section>

@@ -44,7 +44,9 @@ export default function Header() {
           {site.nav.slice(1).map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}
         </nav>
         <div className="nav-actions">
-          <Link href="/contact" className="button button-primary nav-quote" onClick={close}>Request a quote <ArrowUpRight size={17} /></Link>
+          {site.booking.url
+            ? <a href={site.booking.url} target="_blank" rel="noopener noreferrer" className="button button-primary nav-quote" onClick={close}>{site.enquiryCta} <ArrowUpRight size={17} /></a>
+            : <Link href="/contact" className="button button-primary nav-quote" onClick={close}>{site.enquiryCta} <ArrowUpRight size={17} /></Link>}
           <button ref={mobileToggle} type="button" className="mobile-toggle" aria-label={menu === "mobile" ? "Close menu" : "Open menu"} aria-expanded={menu === "mobile"} aria-controls="mobile-menu" onClick={() => setMenu(menu === "mobile" ? null : "mobile")}>{menu === "mobile" ? <X size={25} /> : <List size={25} />}</button>
         </div>
       </div>

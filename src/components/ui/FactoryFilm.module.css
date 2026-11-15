@@ -1,0 +1,22 @@
+/* Fixed brand colours: the film sits on a navy band in every theme. */
+.frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #081923; border: 1px solid #304252; }
+.cover { position: absolute; inset: 0; display: block; width: 100%; padding: 0; border: 0; background: none; color: #ffffff; }
+.poster { object-fit: cover; transition: transform .7s cubic-bezier(.2,.65,.3,1); }
+.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #0b1d2dcc 0%, #0b1d2d00 45%); }
+.play { position: absolute; z-index: 1; top: 50%; left: 50%; display: grid; place-items: center; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: #c6a25b; color: #0b1d2d; box-shadow: 0 10px 30px #0b1d2d55; transition: transform .3s ease, background .3s ease; }
+.play svg { margin-left: 4px; }
+.label { position: absolute; z-index: 1; left: 28px; bottom: 24px; display: flex; align-items: center; gap: 14px; font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+.label span { padding-left: 14px; border-left: 1px solid #ffffff66; color: #d0dae3; font-weight: 500; }
+.cover:focus-visible { outline: 2px solid #c6a25b; outline-offset: -6px; }
+.player { display: block; width: 100%; height: 100%; --media-object-fit: cover; }
+@media (hover: hover) and (pointer: fine) {
+  .cover:hover .poster { transform: scale(1.02); }
+  .cover:hover .play { transform: scale(1.06); background: #d9bd85; }
+}
+@media (max-width: 767px) {
+  .play { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+  .label { left: 18px; bottom: 16px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .poster, .play { transition: none; }
+}

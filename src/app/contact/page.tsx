@@ -5,20 +5,20 @@ import RFQForm from "@/components/ui/RFQForm";
 import { site } from "@/content/site";
 import { getProductBySlug } from "@/content/products";
 import { getDivisionBySlug } from "@/content/divisions";
-export const metadata: Metadata = {title:"Contact & Request a Quote",description:"Discuss your next knitwear collection with Wintex. Share a reference, approximate quantities and your delivery destination.",alternates:{canonical:"/contact"}};
+export const metadata: Metadata = {title:"Book a Free Call",description:"Book a free call with Wintex. Tell us about your knitwear project, then choose a time to talk with our team.",alternates:{canonical:"/contact"}};
 export default async function ContactPage({searchParams}:{searchParams:Promise<{category?:string|string[]}>}) {
   const {category:rawCategory}=await searchParams;
   const category=typeof rawCategory==="string"?rawCategory:undefined;
   const selected=category&&(getDivisionBySlug(category)||getProductBySlug(category)||category==="private-label")?category:"general";
-  return <><PageIntro eyebrow="Let’s work together" title="Good knitwear starts with a conversation." body="A first collection or an established programme. Share your idea and we’ll discuss the next step."/>
+  return <><PageIntro eyebrow="Book a free call" title="Good knitwear starts with a conversation." body="A first collection or an established programme. Tell us a little about your project, then choose a time for a free call with our team."/>
   <section className="shell contact-layout">
     <aside className="contact-aside"><h2>A direct conversation.</h2><p>Prefer to email or talk through your idea? Use the contact details below.</p>
       <div className="contact-method"><EnvelopeSimple size={24}/><div><h3>Email</h3>{site.contact.email?<a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>:<p>{site.contact.placeholders.email}</p>}</div></div>
-      <div className="contact-method"><WhatsappLogo size={24}/><div><h3>WhatsApp</h3>{site.contact.whatsappUrl?<a href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp}</a>:<p>{site.contact.placeholders.whatsapp}</p>}</div></div>
-      <div className="contact-method"><MapPin size={24}/><div><h3>Our location</h3><p>{site.contact.address||site.contact.placeholders.address}</p></div></div>
+      <div className="contact-method"><WhatsappLogo size={24}/><div><h3>Phone &amp; WhatsApp</h3>{site.contact.phones.map(phone=><p key={phone.telUrl}>{phone.label}: <a href={phone.telUrl}>{phone.display}</a> · <a href={phone.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></p>)}</div></div>
+      <div className="contact-method"><MapPin size={24}/><div><h3>Our location</h3><p>WINTEX Knitwear Manufacturer<br/>{site.contact.address||site.contact.placeholders.address}</p><p><a href={site.contact.mapUrl} target="_blank" rel="noopener noreferrer">Plus Code: {site.contact.plusCode} · View on map</a></p></div></div>
       <div className="contact-next"><h3>What happens next?</h3><ol><li>We review your product and quantity requirements.</li><li>We discuss feasibility, missing details and sampling.</li><li>We agree a quotation and production plan with you.</li></ol></div>
     </aside>
-    <RFQForm key={selected} category={selected} deliveryEnabled={Boolean(process.env.RFQ_WEBHOOK_URL)}/>
+    <RFQForm key={selected} category={selected} deliveryEnabled={Boolean(process.env.RFQ_WEBHOOK_URL)} bookingUrl={site.booking.url}/>
   </section></>;
 }
 

@@ -50,7 +50,7 @@ export default function FactoryVideoSection() {
               controls={playing}
               playsInline
               muted
-              preload="metadata"
+              preload="none"
               onPause={() => setPlaying(false)}
               onPlay={() => setPlaying(true)}
               className="h-full w-full object-cover"

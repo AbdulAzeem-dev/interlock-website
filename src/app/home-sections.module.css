@@ -43,3 +43,8 @@
   .workflow .steps li h3 { margin-top: 20px; font-size: 21px; }
   .buyerList li { gap: 13px; }
 }
+.film { background: #0b1d2d; color: #ffffff; padding-block: 90px; scroll-margin-top: 100px; }
+.film h2 { color: #ffffff; }
+.film :global(.eyebrow) { color: #d9bd85; }
+.film :global(.section-top) p { color: #d0dae3; }
+@media (max-width: 767px) { .film { padding-block: 60px; } }

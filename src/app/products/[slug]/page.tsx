@@ -6,6 +6,7 @@ import { ArrowUpRight, CaretRight } from "@phosphor-icons/react/dist/ssr";
 import { getProductBySlug, getRelatedProducts, productCategories } from "@/content/products";
 import ProductCategoryCard from "@/components/ui/ProductCategoryCard";
 import InquiryCTA from "@/components/ui/InquiryCTA";
+import { site } from "@/content/site";
 export function generateStaticParams() { return [...productCategories.map(p=>({slug:p.slug})),{slug:"private-label"}]; }
 export async function generateMetadata({params}: {params: Promise<{slug:string}>}): Promise<Metadata> {
   const {slug}=await params; const product=getProductBySlug(slug);
@@ -24,7 +25,7 @@ export default async function ProductPage({params}: {params:Promise<{slug:string
       <figure><div className="product-detail-image">{product.media.kind==="photo"&&<Image src={product.media.src} alt={product.media.alt} fill preload loading="eager" sizes="(min-width: 768px) 46vw, 100vw" className="object-cover"/>}</div><figcaption>{product.media.kind==="photo"&&product.media.caption} Product details are agreed at sampling.</figcaption></figure>
       <div><p className="eyebrow">Custom manufacturing</p><h1>{product.name}</h1><p className="product-description">{product.summary}</p><div className="product-options" aria-label="Available starting points">{product.styles.map(style=><span key={style}>{style}</span>)}</div>
         <dl className="product-meta"><div><dt>Order quantity</dt><dd>From 50 pieces*<br/>Confirmed for your specification</dd></div><div><dt>Development</dt><dd>Your reference or tech pack<br/>Sample approval before bulk</dd></div></dl>
-        <Link href={href} className="button button-primary">Request a {product.range==="accessories"?"product":"knitwear"} quote <ArrowUpRight size={18}/></Link><p className="product-next">Your category is included in the inquiry.</p><p className="product-next">*Minimums depend on yarn, colourways and construction.</p>
+        <Link href={href} className="button button-primary">{site.enquiryCta} <ArrowUpRight size={18}/></Link><p className="product-next">Your category is included in the inquiry.</p><p className="product-next">*Minimums depend on yarn, colourways and construction.</p>
       </div>
     </section></div>
     <section className="product-specs"><div className="shell"><div className="spec-grid"><div><h2>Developed around<br/>your requirements.</h2>{product.description.map(p=><p key={p}>{p}</p>)}</div><div><h3>What you can customize</h3><ul>{product.customization.map(c=><li key={c}>{c}</li>)}</ul></div><div><h3>Built for</h3><ul>{product.applications.map(a=><li key={a}>{a}</li>)}</ul></div></div>

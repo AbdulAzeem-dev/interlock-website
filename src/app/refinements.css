@@ -267,3 +267,16 @@
 .gallery-image img[alt^="Uniform reference:"] { object-fit: contain; background: #fff; }
 .uniforms-page .division-reference-section figure,
 .uniforms-page .division-product-type-media { background: #fff; }
+
+/* Book a free call: two-step form, then a link to the Google Calendar booking page. */
+.form-steps { display: flex; gap: 28px; margin: 0 0 28px; padding: 0 0 18px; list-style: none; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; color: var(--muted); }
+.form-steps li { display: flex; align-items: center; gap: 10px; }
+.form-steps span { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--line); border-radius: 50%; font-size: 10px; }
+.form-steps li[aria-current] { color: var(--ink); }
+.form-steps li[aria-current] span { background: #c6a25b; border-color: #c6a25b; color: #0b1d2d; }
+.booking-step { border-top: 3px solid #c6a25b; }
+.booking-step > svg { color: var(--accent); }
+.booking-step .button { margin-top: 26px; }
+.booking-step .booking-meta { margin-top: 12px; font-size: 11px; }
+.booking-links { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.booking-links .text-link { margin-top: 0; }

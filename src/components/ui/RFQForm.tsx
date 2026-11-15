@@ -1,25 +1,26 @@
 "use client";
 import { useActionState, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle, DownloadSimple } from "@phosphor-icons/react";
+import { ArrowUpRight, CalendarCheck, CheckCircle, DownloadSimple } from "@phosphor-icons/react";
 import { submitRfq } from "@/lib/actions";
 import { MAX_FILE_BYTES, ALLOWED_FILE_TYPES, getRfqCategoryLabel, type RfqState } from "@/lib/rfq";
 import { productCategories } from "@/content/products";
 import { productDivisions } from "@/content/divisions";
 
 type Values = Record<string,string>;
-export default function RFQForm({category = "general", deliveryEnabled = false}: {category?:string;deliveryEnabled?:boolean}) {
+export default function RFQForm({category = "general", deliveryEnabled = false, bookingUrl = ""}: {category?:string;deliveryEnabled?:boolean;bookingUrl?:string}) {
   const [values,setValues] = useState<Values>({name:"",email:"",company:"",productCategory:category,quantity:"",details:"",country:"",website:"",material:"",deliveryPeriod:"",privateLabel:"",packaging:"",preferredContact:"Email",phone:""});
   const [file,setFile] = useState<File|null>(null);
   const [fileError,setFileError] = useState("");
   const [draftStatus,setDraftStatus] = useState("");
+  const [booking,setBooking] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
   const [state,formAction,pending] = useActionState<RfqState,FormData>(async (previous,data) => {
     if(file) data.set("attachment",file);
     return submitRfq(previous,data);
   }, {status:"idle"});
-  useEffect(()=>{ if(state.status!=="idle") feedbackRef.current?.focus(); },[state]);
+  useEffect(()=>{ if(state.status!=="idle"||booking) feedbackRef.current?.focus(); },[state,booking]);
   function props(name:string) {
     return {id:name,name,value:values[name]||"",onChange:(event:React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)=>setValues({...values,[name]:event.target.value}),"aria-invalid":Boolean(state.fieldErrors?.[name]),"aria-describedby":state.fieldErrors?.[name]?`${name}-error`:undefined};
   }
@@ -33,12 +34,19 @@ export default function RFQForm({category = "general", deliveryEnabled = false}:
     setTimeout(()=>URL.revokeObjectURL(url),1000);
     setDraftStatus("Brief saved to your device. It has not been sent.");
   }
+  const steps = bookingUrl&&<ol className="form-steps" aria-label="Booking steps"><li aria-current={booking||state.status==="success"?undefined:"step"}><span>1</span>Your project</li><li aria-current={booking||state.status==="success"?"step":undefined}><span>2</span>Choose a time</li></ol>;
+  if(bookingUrl&&(booking||state.status==="success")) return <div className="form-success booking-step" ref={feedbackRef} tabIndex={-1} role="status">{steps}<CalendarCheck size={36}/><h2>{state.status==="success"?"Thank you. Now choose a time for your call.":"Now choose a time for your free call."}</h2><p>Pick a date and time that suits you. You’ll receive a calendar invitation with the meeting details by email.</p>{state.status==="success"&&<p>Reference: <strong>{state.reference}</strong></p>}
+    <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="button button-primary">Choose a date &amp; time <ArrowUpRight size={17}/></a>
+    <p className="booking-meta">Opens our Google Calendar booking page in a new tab.</p>
+    <div className="booking-links">{state.status!=="success"&&<button type="button" className="text-link" onClick={()=>setBooking(false)}>Edit your details</button>}{!deliveryEnabled&&<button type="button" className="text-link" onClick={saveBrief}><DownloadSimple size={16}/>Save a copy of your brief</button>}</div>
+    {draftStatus&&<p role="status" className="form-draft-status">{draftStatus}</p>}
+  </div>;
   if(state.status==="success") return <div className="form-success" ref={feedbackRef} tabIndex={-1} role="status"><CheckCircle size={36}/><h2>Thank you for your inquiry.</h2><p>{state.message}</p><p>Reference: <strong>{state.reference}</strong></p><Link href="/products" className="text-link">Continue exploring <ArrowUpRight size={17}/></Link></div>;
   return <form ref={formRef} className="rfq-form" action={formAction} onSubmit={event=>{
-    if(!deliveryEnabled) {event.preventDefault();saveBrief();}
+    if(!deliveryEnabled) {event.preventDefault();if(bookingUrl) setBooking(true); else saveBrief();}
     else if(fileError){event.preventDefault();document.getElementById("attachment")?.focus();}
   }}>
-    <div className="form-intro"><h2>Tell us about your project.</h2><p>Start with what you know. Only your name, email and project brief are required.</p></div>
+    {steps}<div className="form-intro"><h2>Tell us about your project.</h2><p>Start with what you know. Only your name, email and project brief are required.</p></div>
     {!deliveryEnabled&&<div className="form-notice"><strong>Preview: inquiry delivery is not connected.</strong><br/>You can prepare and save a brief. Contact placeholders will be replaced before launch.</div>}
     {state.message&&<div className="form-feedback" role="alert" ref={feedbackRef} tabIndex={-1}>{state.message}</div>}
     <div className="honeypot" aria-hidden="true"><label>Leave empty<input name="company_role" tabIndex={-1} autoComplete="off"/></label></div>
@@ -66,7 +74,7 @@ export default function RFQForm({category = "general", deliveryEnabled = false}:
       <div className="form-field"><label htmlFor="packaging">Packaging</label><textarea {...props("packaging")} rows={2} maxLength={5000}/>{error("packaging")}</div>
     </div></details>
     <label className="consent-label"><input type="checkbox" name="consent" required aria-describedby={state.fieldErrors?.consent?"consent-error":undefined}/><span>I agree to be contacted by Wintex about this enquiry. <Link href="/privacy" className="underline">Privacy Policy</Link></span></label>{error("consent")}
-    <div className="form-submit-row"><button type="submit" className="button button-primary" disabled={pending}>{pending?"Sending inquiry…":deliveryEnabled?"Send inquiry":"Save inquiry brief"}{!pending&&<ArrowUpRight size={17}/>}</button>{deliveryEnabled&&<button type="button" className="text-link" onClick={saveBrief}><DownloadSimple size={16}/>Save a copy</button>}</div>
+    <div className="form-submit-row"><button type="submit" className="button button-primary" disabled={pending}>{pending?"Sending inquiry…":bookingUrl?"Continue to choose a time":deliveryEnabled?"Send inquiry":"Save inquiry brief"}{!pending&&<ArrowUpRight size={17}/>}</button>{deliveryEnabled&&<button type="button" className="text-link" onClick={saveBrief}><DownloadSimple size={16}/>Save a copy</button>}</div>
     {draftStatus&&<p role="status" className="form-draft-status">{draftStatus}</p>}
     <noscript><p className="form-notice">For direct contact, use the business email or WhatsApp details on this page. Saving a draft requires JavaScript.</p></noscript>
   </form>;

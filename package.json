@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mux/mux-player-react": "^3.14.1",
     "@phosphor-icons/react": "^2.1.7",
     "motion": "^12.4.7",
     "next": "^16.3.5",
